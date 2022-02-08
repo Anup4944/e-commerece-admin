@@ -24,6 +24,15 @@ mongoose
   .then(console.log("Database connection successful"))
   .catch((err) => console.log(err));
 
+//Routers
+
+import userRouter from "./routers/user.router.js";
+import authRouter from "./routers/auth.js";
+
+// Use API
+app.use("/api/v1/user", userRouter);
+app.use("/api/v1/auth", authRouter);
+
 //404 return
 app.use((req, res, next) => {
   const error = new Error("Resources not found");

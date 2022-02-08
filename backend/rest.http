@@ -1,0 +1,37 @@
+
+
+################## LOGIN / USER ####################
+
+### REGISTER/CREATE USER
+POST http://localhost:5000/api/v1/user/register
+Content-Type: application/json
+
+{
+  "firstName": "JAnn",
+  "lastName": "Poudel",
+  "email": "aj@w.com",
+  "password": "vangunneR@45"
+}
+
+### GET ALL USERS
+GET http://localhost:5000/api/v1/user/all
+
+
+### LOGIN 
+POST http://localhost:5000/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "ap@w.com",
+  "password": "vangunneR@45"
+}
+
+### LOGOUT
+PUT http://localhost:5000/api/v1/auth/logout
+Content-Type: application/json
+
+{
+  "accessJwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFwQHcuY29tIiwiX2lkIjoiNjIwMjVkYzY5NTgwOTdlYTI4ZmQyOTg5IiwiaWF0IjoxNjQ0MzIzODU2LCJleHAiOjE2NDYwNTE4NTZ9.wIgFe2eA32BJToD4EQWHriNSkuqIWzN1SnwEOVUuXPI",
+  "refreshJwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFwQHcuY29tIiwiaWF0IjoxNjQ0MzIzODU2LCJleHAiOjE2NDY5MTU4NTZ9.SUKKxd5eN84-BLElp7THaWP95nFEzyvbUUAAo2AwVrc"
+}
+
