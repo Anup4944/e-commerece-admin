@@ -1,5 +1,5 @@
 import express from "express";
-import { comparePassword } from "../helpers/bcrypt.helper.js";
+import { comparePassword, hashPassword } from "../helpers/bcrypt.helper.js";
 import { emailProcessor } from "../helpers/email.helper.js";
 import {
   createAccessJwt,
@@ -7,11 +7,16 @@ import {
   verifyRefreshJwt,
 } from "../helpers/jwt.helpers.js";
 import { getRandOTP } from "../helpers/opt.helper.js";
-import { storePin } from "../models/reset-pin/resetPin.model.js";
+import {
+  deletePin,
+  findPin,
+  storePin,
+} from "../models/reset-pin/resetPin.model.js";
 import { deleteAccessJwt } from "../models/session/session.model.js";
 import {
   deleteRefreshJwtByUserId,
   getUserByEmail,
+  updateNewPassword,
 } from "../models/user/user.model.js";
 const router = express.Router();
 
@@ -124,6 +129,80 @@ router.post("/otp", async (req, res) => {
       status: "error",
       message:
         "Error! There is some problem in our system, please try again later.",
+    });
+  }
+});
+
+//UPATE PASSWORD
+router.patch("/password", async (req, res) => {
+  try {
+    const { pin, email, password } = req.body;
+
+    const pinInfo = await findPin({ pin, email });
+
+    if (pinInfo?._id) {
+      const hashPass = await hashPassword(password);
+
+      if (hashPass) {
+        const result = await updateNewPassword({
+          email,
+          hashPass,
+        });
+
+        if (result?._id) {
+          const emailObj = { type: "UPDATE_PASS_SUCCESS", email };
+
+          deletePin(pinInfo?._id);
+
+          emailProcessor(emailObj);
+
+          return res.send({
+            status: "successful",
+            message: "Your password has been updated. You may login now!",
+          });
+        }
+      }
+    } else {
+      res.send({
+        status: "error",
+        message: "Incorrect pin",
+      });
+    }
+  } catch (error) {
+    res.send({
+      status: "error",
+      message:
+        "Error! There is some problem in our system, please try again later.",
+    });
+  }
+});
+
+// UPDATE PASSWORD VIA SETTINGS
+router.patch("/update-password", async (req, res) => {
+  try {
+    const { newPassword, email } = req.body;
+
+    const hashedPassword = await hashPassword(newPassword);
+
+    if (email) {
+      const updatePassword = await updatePass({
+        newPassword: hashedPassword,
+        email,
+      });
+      res.send({
+        status: "success",
+        message: "Your password has been updated.",
+      });
+    } else {
+      res.send({
+        status: "error",
+        message: "Please try again later",
+      });
+    }
+  } catch (error) {
+    res.send({
+      status: "error",
+      message: "Please try again later",
     });
   }
 });

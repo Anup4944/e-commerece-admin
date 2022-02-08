@@ -30,7 +30,6 @@ const send = async (mailInfo) => {
 };
 
 export const emailProcessor = ({ type, ...data }) => {
-  console.log("from email processer", type, data);
   let info = {
     from: `ABC Shop <${process.env.EMAIL_USER}>`, // sender address
     to: "bar@example.com, baz@example.com", // list of receivers
@@ -65,7 +64,7 @@ export const emailProcessor = ({ type, ...data }) => {
         html: `
         <div>
         <p>Hi there,</p>
-        <p>This is to notify that you password for React and Node Blog has been changed just now. </p>
+        <p>Hi,  this is to notify that you password at Shopping store has been changed just now.   </p>
 				<p>IF you do not recognize this activity, please contact us ASAP</p>
         <p>Regards,</p>
       </div>`,

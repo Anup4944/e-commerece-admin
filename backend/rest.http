@@ -13,17 +13,13 @@ Content-Type: application/json
   "password": "vangunneR@45"
 }
 
-### GET ALL USERS
-GET http://localhost:5000/api/v1/user/all
-
-
 ### LOGIN 
 POST http://localhost:5000/api/v1/auth/login
 Content-Type: application/json
 
 {
-  "email": "ap@w.com",
-  "password": "vangunneR@45"
+  "email": "aj@w.com",
+  "password": "abc@45"
 }
 
 ### LOGOUT
@@ -35,3 +31,32 @@ Content-Type: application/json
   "refreshJwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFwQHcuY29tIiwiaWF0IjoxNjQ0MzIzODU2LCJleHAiOjE2NDY5MTU4NTZ9.SUKKxd5eN84-BLElp7THaWP95nFEzyvbUUAAo2AwVrc"
 }
 
+### GET USER BY EMAIL
+GET http://localhost:5000/api/v1/user/byemail
+Content-Type: application/json
+
+{
+  "email" : "aj@w.com"
+}
+
+### GET ALL USERS
+GET http://localhost:5000/api/v1/user/all
+
+
+### SEND OTP
+POST http://localhost:5000/api/v1/auth/otp
+Content-Type: application/json
+
+{
+  "email": "aj@w.com"
+}
+
+### UPDATE PASSWORD
+PATCH  http://localhost:5000/api/v1/auth/password
+Content-Type: application/json
+
+{
+  "pin": 89461,
+  "email": "aj@w.com",
+  "password" : "abc@45"
+}
