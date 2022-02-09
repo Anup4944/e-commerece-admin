@@ -22,20 +22,20 @@ const ProductSchema = new mongoose.Schema(
     },
     onSale: {
       type: Boolean,
-      require: true,
+      require: false,
       default: false,
     },
     salePrice: {
       type: Number,
     },
     saleEndDate: {
-      type: Date,
+      type: String,
+
       default: null,
     },
     qty: {
       type: Number,
       require: true,
-      default: 0,
     },
     images: {
       type: Array,
@@ -43,7 +43,6 @@ const ProductSchema = new mongoose.Schema(
     },
     categories: {
       type: Array,
-      required: false,
     },
   },
   { timestamps: true }

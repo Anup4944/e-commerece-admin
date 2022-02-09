@@ -19,7 +19,7 @@ Content-Type: application/json
 
 {
   "email": "aj@w.com",
-  "password": "abc@45"
+  "password": "vangunneR45"
 }
 
 ### LOGOUT
@@ -56,7 +56,56 @@ PATCH  http://localhost:5000/api/v1/auth/password
 Content-Type: application/json
 
 {
-  "pin": 89461,
+  "pin": 79546,
   "email": "aj@w.com",
-  "password" : "abc@45"
+  "password" : "vangunneR@45"
 }
+
+### UPDATE PASSWORD VIA SETTINGS
+PATCH http://localhost:5000/api/v1/auth/update-password
+Content-Type: application/json
+
+{
+  "newPassword": "vangunneR45",
+  "email" : "aj@w.com"
+}
+
+################## PRODUCT ####################
+
+
+### CREATE PRODUCT
+POST http://localhost:5000/api/v1/product
+Content-Type: application/json
+
+{
+  "isAvailable": true,
+  "name": "Nike Shoes",
+  "desc": "Perfect shoes for men",
+  "price": 75.95,
+  "qty": 1,
+  "images": [],
+  "categories": "Clothing",
+  "onSale": true,
+  "salePrice": 50.2,
+  "saleEndDate": "2022-19-02",
+  }
+
+### UPDATE PRODUCT
+PUT http://localhost:5000/api/v1/product/620323a8b08232e008dd863e
+Content-Type: application/json
+
+{
+  "isAvailable": true,
+  "name": "Men's Short Sleeve Henley Tee",
+  "desc": "Classic fit  neck",
+  "price": 75.95,
+  "qty": 1,
+  "images": [],
+  "categories": "Clothing",
+  "onSale": true,
+  "salePrice": 50.96,
+  "saleEndDate": "2022-19-02T13:34:00.000",
+  }
+
+### GET SINGLE PRODUCT / PRODUCT BY ID
+GET http://localhost:5000/api/v1/product

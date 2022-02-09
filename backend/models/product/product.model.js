@@ -8,7 +8,7 @@ export const getAllProducts = () => {
   return ProductSchema.find();
 };
 
-export const getProductById = () => {
+export const getProductById = (_id) => {
   return ProductSchema.findById(_id);
 };
 
