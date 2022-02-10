@@ -79,31 +79,32 @@ Content-Type: application/json
 
 {
   "isAvailable": true,
-  "name": "Nike Shoes",
-  "price": 75.95,
-  "description": "Perfect shoes for men",
+  "name": "Apple Watch",
+  "price": 145.95,
+  "description": "Perfect watch for human mankind",
   "qty": 1,
   "images": [],
-  "categories": "Clothing",
-  "salePrice": 50.2,
-  "saleEndDate": 2022-03-20
+  "onSale": true,
+  "categories": "Technology",
+  "salePrice": 99.99,
+  "saleEndDate": "2022-03-25"
   }
 
 ### UPDATE PRODUCT
-PUT http://localhost:5000/api/v1/product/620323a8b08232e008dd863e
+PUT http://localhost:5000/api/v1/product/6204a5132fb60ec80643b9a7
 Content-Type: application/json
 
 {
   "isAvailable": true,
-  "name": "Men's Short Sleeve Henley Tee",
-  "desc": "Classic fit  neck",
-  "price": 75.95,
+  "name": "Apple Watch Updated",
+  "price": 145.95,
+  "description": "Perfect watch for human mankind",
   "qty": 1,
   "images": [],
-  "categories": "Clothing",
-  "onSale": true,
-  "salePrice": 50.96,
-  "saleEndDate": "2022-19-02T13:34:00.000",
+  "onSale": false,
+  "categories": "Technology",
+  "salePrice": 0,
+  "saleEndDate": 0
   }
 
 ### GET SINGLE PRODUCT / PRODUCT BY ID

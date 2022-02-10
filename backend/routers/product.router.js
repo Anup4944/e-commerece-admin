@@ -1,5 +1,4 @@
 import express from "express";
-import slugify from "slugify";
 import { newProductValidation } from "../middlewares/formValidation.middleware.js";
 import {
   getAllProducts,
@@ -9,17 +8,15 @@ import {
 } from "../models/product/product.model.js";
 const router = express.Router();
 
+// ADD PRODUCT
 router.post("/", newProductValidation, async (req, res) => {
   try {
     const newProd = {
       ...req.body,
       date: new Date(req.body.saleEndDate),
-      slug: slugify(req.body),
     };
 
-    console.log(newProd);
-
-    const result = await insertProduct(...newProd);
+    const result = await insertProduct(newProd);
 
     if (result?._id) {
       return res.send({
@@ -38,6 +35,7 @@ router.post("/", newProductValidation, async (req, res) => {
   }
 });
 
+// GET PRODUCT BY OR GET ALL PRODUCTS
 router.get("/:_id?", async (req, res) => {
   const { _id } = req.params;
   try {
@@ -53,10 +51,14 @@ router.get("/:_id?", async (req, res) => {
   }
 });
 
+// UPDATE PRODUCT BY ID
 router.put("/:_id", async (req, res) => {
   try {
     const { _id } = req.params;
-    const { ...newProduct } = req.body;
+
+    const newProduct = {
+      ...req.body,
+    };
 
     console.log(newProduct);
 
@@ -73,7 +75,7 @@ router.put("/:_id", async (req, res) => {
 
     res.status(200).send({
       status: "success",
-      message: "Your post has been updated",
+      message: "Your product has been updated",
       updatedProduct,
     });
   } catch (error) {

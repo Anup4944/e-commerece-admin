@@ -16,11 +16,11 @@ export const deleteProduct = (_id) => {
   return ProductSchema.findByIdAndDelete(_id);
 };
 
-export const updateProductById = ({ _id, updateProduct }) => {
+export const updateProductById = ({ _id, newProduct }) => {
   return ProductSchema.findByIdAndUpdate(
     { _id },
     {
-      $set: updateProduct,
+      $set: newProduct,
     },
     { new: true }
   );

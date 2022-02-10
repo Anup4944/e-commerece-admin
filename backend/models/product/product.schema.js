@@ -21,11 +21,7 @@ const ProductSchema = new mongoose.Schema(
       require: true,
       default: "",
     },
-    slug: {
-      type: String,
-      require: true,
-      default: "",
-    },
+
     qty: {
       type: Number,
       require: true,
@@ -44,10 +40,13 @@ const ProductSchema = new mongoose.Schema(
     },
     salePrice: {
       type: Number,
+      require: false,
       default: 0,
     },
     saleEndDate: {
       type: Date,
+      require: false,
+      default: undefined,
     },
   },
   { timestamps: true }

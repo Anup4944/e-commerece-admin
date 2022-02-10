@@ -36,6 +36,7 @@ export const newProductValidation = (req, res, next) => {
     name: shortStr.required(),
     qty: num.required(),
     isAvailable: boolean.required(),
+    onSale: boolean.required(),
     price: num.required(),
     salePrice: num,
     saleEndDate: date,
