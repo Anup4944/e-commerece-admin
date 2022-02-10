@@ -11,12 +11,14 @@ import {
   updateProductById,
 } from "../models/product/product.model.js";
 const router = express.Router();
+import slugify from "slugify";
 
 // ADD PRODUCT
 router.post("/", newProductValidation, async (req, res) => {
   try {
     const newProd = {
       ...req.body,
+      slug: slugify(req.body.name),
       date: new Date(req.body.saleEndDate),
     };
 

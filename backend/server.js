@@ -30,11 +30,13 @@ mongoose
 import userRouter from "./routers/user.router.js";
 import authRouter from "./routers/auth.js";
 import productRouter from "./routers/product.router.js";
+import categoryRouter from "./routers/category.router.js";
 
 // Use API
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/product", productRouter);
+app.use("/api/v1/category", categoryRouter);
 
 //404 return
 app.use((req, res, next) => {

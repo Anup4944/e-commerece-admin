@@ -7,6 +7,7 @@ import {
   verifyRefreshJwt,
 } from "../helpers/jwt.helpers.js";
 import { getRandOTP } from "../helpers/opt.helper.js";
+import { loginValidation } from "../middlewares/formValidation.middleware.js";
 import {
   deletePin,
   findPin,
@@ -22,7 +23,7 @@ import {
 const router = express.Router();
 
 //LOGIN
-router.post("/login", async (req, res) => {
+router.post("/login", loginValidation, async (req, res) => {
   try {
     const { email, password } = req.body;
 

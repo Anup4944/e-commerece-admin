@@ -72,23 +72,22 @@ Content-Type: application/json
 
 ################## PRODUCT ####################
 
-
 ### CREATE PRODUCT
 POST http://localhost:5000/api/v1/product
 Content-Type: application/json
 
 {
   "isAvailable": true,
-  "name": "Samsung Galaxy",
-  "price": 1045.95,
-  "description": "Samsung Galaxy is a series of computing and mobile computing devices that are designed, manufactured and marketed by Samsung Electronics.",
-  "qty": 1,
+  "name": "Iphone 7plus",
+  "price": 1005,
+  "description": "The iPhone 7 and iPhone 7 Plus are smartphones designed, developed, and marketed by Apple Inc. They are the tenth generation of the iPhone.",
+  "qty": 7,
   "images": [],
-  "onSale": false,
+  "onSale": true,
   "categories": "Technology",
   "salePrice": 0,
   "saleEndDate": ""
-  }
+}
 
 ### UPDATE PRODUCT
 PUT http://localhost:5000/api/v1/product/6204b24a2ae69a32a076dd71
@@ -115,3 +114,35 @@ GET http://localhost:5000/api/v1/product
 
 ### DELETE PRODUCT BY ID
 DELETE http://localhost:5000/api/v1/product/620328b6daa542f9bbc72c7f
+
+
+################## CATEGORY ####################
+
+### CREATE CATEGORY
+POST http://localhost:5000/api/v1/category
+Content-Type: application/json
+
+{
+  "name": "Technology",
+  "parentCat": null
+}
+
+### UDPATE CATEGORY
+PUT http://localhost:5000/api/v1/category
+Content-Type: application/json
+
+{
+  "_id":"6204b601d78ae6cc4b2599f7",
+  "name" : "Technology",
+  "parentCat" : null
+}
+
+### DELETE CATEGORY
+DELETE  http://localhost:5000/api/v1/category 
+Content-Type: application/json
+
+{
+  "_id":"6204b601d78ae6cc4b2599f7",
+  "name" : "Technology",
+  "parentCat" : null
+}
