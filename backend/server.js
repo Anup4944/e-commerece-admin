@@ -16,9 +16,9 @@ const PORT = 5000;
 //midddleware
 app.use(cors());
 app.use(morgan("tiny"));
-app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(bodyParser.json());
 //database connection
 mongoose
   .connect(process.env.MONGO_URL, {})

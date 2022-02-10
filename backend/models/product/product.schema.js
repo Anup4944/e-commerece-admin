@@ -11,27 +11,20 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    desc: {
-      type: String,
-      required: true,
-    },
     price: {
       type: Number,
       require: true,
       default: 0,
     },
-    onSale: {
-      type: Boolean,
-      require: false,
-      default: false,
-    },
-    salePrice: {
-      type: Number,
-    },
-    saleEndDate: {
+    description: {
       type: String,
-
-      default: null,
+      require: true,
+      default: "",
+    },
+    slug: {
+      type: String,
+      require: true,
+      default: "",
     },
     qty: {
       type: Number,
@@ -43,6 +36,18 @@ const ProductSchema = new mongoose.Schema(
     },
     categories: {
       type: Array,
+    },
+    onSale: {
+      type: Boolean,
+      require: false,
+      default: false,
+    },
+    salePrice: {
+      type: Number,
+      default: 0,
+    },
+    saleEndDate: {
+      type: Date,
     },
   },
   { timestamps: true }

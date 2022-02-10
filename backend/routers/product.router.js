@@ -1,4 +1,6 @@
 import express from "express";
+import slugify from "slugify";
+import { newProductValidation } from "../middlewares/formValidation.middleware.js";
 import {
   getAllProducts,
   getProductById,
@@ -7,11 +9,17 @@ import {
 } from "../models/product/product.model.js";
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/", newProductValidation, async (req, res) => {
   try {
-    const newProd = { ...req.body };
+    const newProd = {
+      ...req.body,
+      date: new Date(req.body.saleEndDate),
+      slug: slugify(req.body),
+    };
 
-    const result = await insertProduct(newProd);
+    console.log(newProd);
+
+    const result = await insertProduct(...newProd);
 
     if (result?._id) {
       return res.send({

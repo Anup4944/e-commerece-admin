@@ -80,14 +80,13 @@ Content-Type: application/json
 {
   "isAvailable": true,
   "name": "Nike Shoes",
-  "desc": "Perfect shoes for men",
   "price": 75.95,
+  "description": "Perfect shoes for men",
   "qty": 1,
   "images": [],
   "categories": "Clothing",
-  "onSale": true,
   "salePrice": 50.2,
-  "saleEndDate": "2022-19-02",
+  "saleEndDate": 2022-03-20
   }
 
 ### UPDATE PRODUCT
