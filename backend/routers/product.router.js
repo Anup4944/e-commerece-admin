@@ -1,6 +1,10 @@
 import express from "express";
-import { newProductValidation } from "../middlewares/formValidation.middleware.js";
 import {
+  newProductValidation,
+  updateProductValidation,
+} from "../middlewares/formValidation.middleware.js";
+import {
+  deleteProductById,
   getAllProducts,
   getProductById,
   insertProduct,
@@ -35,12 +39,31 @@ router.post("/", newProductValidation, async (req, res) => {
   }
 });
 
-// GET PRODUCT BY OR GET ALL PRODUCTS
-router.get("/:_id?", async (req, res) => {
+// GET PRODUCT BY ID
+router.get("/:_id", async (req, res) => {
   const { _id } = req.params;
   try {
-    const result = _id ? await getProductById(_id) : await getAllProducts();
+    const result = await getProductById(_id);
 
+    result
+      ? res.json({
+          status: "success",
+          message: "Here is your products",
+          result,
+        })
+      : res.json({
+          status: "error",
+          message: "No product found",
+        });
+  } catch (error) {
+    throw error;
+  }
+});
+
+//GET ALL PRODUCTS
+router.get("/", async (req, res) => {
+  try {
+    const result = await getAllProducts();
     res.json({
       status: "success",
       message: "Here are the products",
@@ -52,15 +75,13 @@ router.get("/:_id?", async (req, res) => {
 });
 
 // UPDATE PRODUCT BY ID
-router.put("/:_id", async (req, res) => {
+router.put("/:_id", updateProductValidation, async (req, res) => {
   try {
     const { _id } = req.params;
 
     const newProduct = {
       ...req.body,
     };
-
-    console.log(newProduct);
 
     const prod = await getProductById(_id);
 
@@ -86,17 +107,18 @@ router.put("/:_id", async (req, res) => {
   }
 });
 
-router.delete("/", async (req, res) => {
+router.delete("/:_id", async (req, res) => {
   try {
-    if (!req.body) {
+    const { _id } = req.params;
+
+    if (!req.params) {
       return res.json({
         status: "error",
         message: "Unable to add the product, Please try again later",
       });
     }
 
-    const result = await deleteProduct(req.body);
-    console.log(result);
+    const result = await deleteProductById(_id);
 
     if (result?._id) {
       return res.json({

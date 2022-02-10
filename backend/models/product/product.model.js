@@ -12,7 +12,7 @@ export const getProductById = (_id) => {
   return ProductSchema.findById(_id);
 };
 
-export const deleteProduct = (_id) => {
+export const deleteProductById = (_id) => {
   return ProductSchema.findByIdAndDelete(_id);
 };
 

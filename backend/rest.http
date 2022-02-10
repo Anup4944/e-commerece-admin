@@ -79,33 +79,39 @@ Content-Type: application/json
 
 {
   "isAvailable": true,
-  "name": "Apple Watch",
-  "price": 145.95,
-  "description": "Perfect watch for human mankind",
-  "qty": 1,
-  "images": [],
-  "onSale": true,
-  "categories": "Technology",
-  "salePrice": 99.99,
-  "saleEndDate": "2022-03-25"
-  }
-
-### UPDATE PRODUCT
-PUT http://localhost:5000/api/v1/product/6204a5132fb60ec80643b9a7
-Content-Type: application/json
-
-{
-  "isAvailable": true,
-  "name": "Apple Watch Updated",
-  "price": 145.95,
-  "description": "Perfect watch for human mankind",
+  "name": "Samsung Galaxy",
+  "price": 1045.95,
+  "description": "Samsung Galaxy is a series of computing and mobile computing devices that are designed, manufactured and marketed by Samsung Electronics.",
   "qty": 1,
   "images": [],
   "onSale": false,
   "categories": "Technology",
   "salePrice": 0,
-  "saleEndDate": 0
+  "saleEndDate": ""
   }
 
-### GET SINGLE PRODUCT / PRODUCT BY ID
+### UPDATE PRODUCT
+PUT http://localhost:5000/api/v1/product/6204b24a2ae69a32a076dd71
+Content-Type: application/json
+
+{
+  "isAvailable": true,
+  "name": "Samsung Galaxy",
+  "price": 1045.95,
+  "description": "Samsung Galaxy is a series of computing and mobile computing devices that are designed, manufactured and marketed by Samsung Electronics.",
+  "qty": 15,
+  "images": [],
+  "onSale": true,
+  "categories": "Technology",
+  "salePrice": 899.99,
+  "saleEndDate": "2022/03/01"
+  }
+
+### GET SINGLE PRODUCT BY ID
+GET http://localhost:5000/api/v1/product/620327b1e23f1fb3bb532ddb
+
+### GET ALL PRODUCTS
 GET http://localhost:5000/api/v1/product
+
+### DELETE PRODUCT BY ID
+DELETE http://localhost:5000/api/v1/product/620328b6daa542f9bbc72c7f
