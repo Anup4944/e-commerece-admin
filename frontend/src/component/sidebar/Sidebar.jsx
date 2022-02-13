@@ -1,6 +1,16 @@
 import React from "react";
 import "./sidebar.css";
-import { LineStyle, Timeline, TrendingUp } from "@material-ui/icons";
+import {
+  LineStyle,
+  Timeline,
+  TrendingUp,
+  Person,
+  AttachMoney,
+  Feedback,
+  MailOutline,
+  Settings,
+  Assessment,
+} from "@material-ui/icons";
 
 export const Sidebar = () => {
   return (
@@ -16,7 +26,7 @@ export const Sidebar = () => {
               <Timeline className="sidebarIcon" /> Analytics
             </li>
             <li className="sidebarListItem">
-              <TrendingUp className="sidebarIcon" /> Home
+              <TrendingUp className="sidebarIcon" /> Sales
             </li>
           </ul>
         </div>
@@ -24,13 +34,16 @@ export const Sidebar = () => {
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem">
-              <LineStyle className="sidebarIcon" /> Users
+              <Person className="sidebarIcon" /> Users
             </li>
             <li className="sidebarListItem">
               <Timeline className="sidebarIcon" /> Products
             </li>
             <li className="sidebarListItem">
-              <TrendingUp className="sidebarIcon" /> Transactions
+              <AttachMoney className="sidebarIcon" /> Transactions
+            </li>
+            <li className="sidebarListItem">
+              <Assessment className="sidebarIcon" /> Reports
             </li>
           </ul>
         </div>
@@ -38,13 +51,10 @@ export const Sidebar = () => {
           <h3 className="sidebarTitle">Notifications</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem">
-              <LineStyle className="sidebarIcon" /> Mail
+              <MailOutline className="sidebarIcon" /> Mail
             </li>
             <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" /> Feedbacks
-            </li>
-            <li className="sidebarListItem">
-              <TrendingUp className="sidebarIcon" /> Messages
+              <Feedback className="sidebarIcon" /> Feedbacks
             </li>
           </ul>
         </div>
@@ -52,7 +62,7 @@ export const Sidebar = () => {
           <h3 className="sidebarTitle">Staff</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem">
-              <LineStyle className="sidebarIcon" /> Manage
+              <Settings className="sidebarIcon" /> Manage
             </li>
             <li className="sidebarListItem">
               <Timeline className="sidebarIcon" /> Analytics
