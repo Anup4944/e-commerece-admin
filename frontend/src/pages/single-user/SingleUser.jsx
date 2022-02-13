@@ -8,13 +8,16 @@ import {
   PermIdentity,
   PhoneAndroidOutlined,
 } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 
 export const SingleUser = () => {
   return (
     <div className="SingleUser">
       <div className="userTitleCon">
         <h1 className="userTitle">Edit User</h1>
-        <button className="userAddButton">Create </button>
+        <Link to="/newUser">
+          <button className="userAddButton">Create </button>{" "}
+        </Link>
       </div>
       <div className="userContainer">
         <div className="userShow">
