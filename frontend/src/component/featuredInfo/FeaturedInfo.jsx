@@ -1,4 +1,5 @@
 import "./featuredInfo.css";
+import React from "react";
 
 import { ArrowDownwardSharp, ArrowUpward } from "@material-ui/icons";
 
@@ -7,7 +8,6 @@ export const FeaturedInfo = () => {
     <div className="featured">
       <div className="featuredItem">
         <div className="featuredTitle">Revenue </div>
-
         <div className="featuredMoneyContainer">
           <div className="featureMoney">$2,475</div>
           <div className="featuredMoneyRate">
@@ -16,9 +16,9 @@ export const FeaturedInfo = () => {
         </div>
         <div className="featuredSub">Compared to last month</div>
       </div>
+
       <div className="featuredItem">
         <div className="featuredTitle">Sales </div>
-
         <div className="featuredMoneyContainer">
           <div className="featureMoney">$2,475</div>
           <div className="featuredMoneyRate">
@@ -27,9 +27,9 @@ export const FeaturedInfo = () => {
         </div>
         <div className="featuredSub">Compared to last month</div>
       </div>
+
       <div className="featuredItem">
         <div className="featuredTitle">Cost </div>
-
         <div className="featuredMoneyContainer">
           <div className="featureMoney">$2,475</div>
           <div className="featuredMoneyRate">
