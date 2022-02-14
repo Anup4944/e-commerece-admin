@@ -1,0 +1,77 @@
+.container {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url("C:\Users\anupp\OneDrive\Documents\Projects\e-commerce-admin\frontend\src\bg1.jpg")
+    no-repeat center center fixed;
+  background-size: cover;
+  object-fit: cover;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper {
+  padding: 20px;
+  width: 25%;
+  color: white;
+}
+
+.header {
+  display: inline-block;
+  font-size: 30px;
+  border-bottom: 3px solid #00dd00;
+  margin-bottom: 30px;
+  padding: 12 0px;
+}
+.box {
+  display: flex;
+  align-items: center;
+  border-top: 2px solid #00dd00;
+  border-bottom: 2px solid #00dd00;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+.inputContainer {
+  height: 100%;
+  width: 75%;
+  color: rgb(255, 255, 255);
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 10px 23px 2px 5px;
+  font-size: 20px;
+  background: none;
+}
+.btn {
+  cursor: pointer;
+  outline: none;
+  margin: 12px 0px;
+  padding: 6px;
+  border-radius: 10px;
+  border: 2px solid #00dd00;
+  background: none;
+  color: white;
+  font-weight: bold;
+}
+
+.btn:hover {
+  border: none;
+  color: #00dd00;
+  background-color: white;
+  box-shadow: 0 0 10px #00dd00, 0 0 40px #00dd00, 0 0 80px #00dd00;
+}
+.box:hover {
+  color: #00dd00;
+  background-color: white;
+  box-shadow: 0 0 10px #00dd00, 0 0 40px #00dd00, 0 0 80px #00dd00;
+}
+.box input:hover {
+  color: #00dd00;
+}
+
+.bottomContainer {
+  display: flex;
+  justify-content: space-between;
+}

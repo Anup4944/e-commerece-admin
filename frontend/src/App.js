@@ -10,45 +10,56 @@ import { NewUser } from "./pages/new-user/NewUser";
 import { ProductList } from "./pages/product-list/ProductList";
 import { Product } from "./pages/product/Product";
 import { NewProduct } from "./pages/new-product/NewProduct";
+import { Login } from "./pages/login/Login";
 
 function App() {
+  const user = false;
   return (
     <>
-      <Router className="App">
-        <Topbar />
-        <div className="container">
-          <Sidebar />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
+      <Router>
+        <Switch>
+          {" "}
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          {user && (
+            <>
+              <Topbar />
+              <div className="container">
+                <Sidebar />
 
-            <Route exact path="/users">
-              <UserList />
-            </Route>
+                <Route exact path="/">
+                  <Home />
+                </Route>
 
-            <Route exact path="/user/:userId">
-              <SingleUser />
-            </Route>
+                <Route exact path="/users">
+                  <UserList />
+                </Route>
 
-            <Route exact path="/newUser">
-              <NewUser />
-            </Route>
+                <Route exact path="/user/:userId">
+                  <SingleUser />
+                </Route>
 
-            <Route exact path="/products">
-              <ProductList />
-            </Route>
+                <Route exact path="/newUser">
+                  <NewUser />
+                </Route>
 
-            <Route exact path="/newProduct">
-              <NewProduct />
-            </Route>
+                <Route exact path="/products">
+                  <ProductList />
+                </Route>
 
-            <Route exact path="/product/:productId">
-              {/* Single product */}
-              <Product />
-            </Route>
-          </Switch>
-        </div>
+                <Route exact path="/newProduct">
+                  <NewProduct />
+                </Route>
+
+                <Route exact path="/product/:productId">
+                  {/* Single product */}
+                  <Product />
+                </Route>
+              </div>{" "}
+            </>
+          )}
+        </Switch>
       </Router>
     </>
   );
