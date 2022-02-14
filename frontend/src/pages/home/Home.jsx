@@ -10,12 +10,7 @@ export const Home = () => {
   return (
     <div className="home">
       <FeaturedInfo />
-      <Chart
-        data={userData}
-        title="User Analytics"
-        grid
-        dataKey="Active users"
-      />
+      <Chart data={userData} title="User Analytics" dataKey="activeUser" />
       <div className="homeWidgets">
         <WidgetSmall />
         <WidgetLarge />

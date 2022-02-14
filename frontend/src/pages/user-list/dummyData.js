@@ -209,52 +209,52 @@ export const productRows = [
 
 export const userData = [
   {
-    name: "January",
-    "Active user": 4000,
+    name: "Jan",
+    activeUser: 4000,
   },
   {
-    name: "Febuary",
-    "Active user": 6000,
+    name: "Feb",
+    activeUser: 6000,
   },
   {
-    name: "March",
-    "Active user": 3000,
+    name: "Mar",
+    activeUser: 3000,
   },
   {
-    name: "April",
-    "Active user": 5000,
+    name: "Apr",
+    activeUser: 5000,
   },
   {
     name: "May",
-    "Active user": 8000,
+    activeUser: 8000,
   },
   {
-    name: "June",
-    "Active user": 4000,
+    name: "Jun",
+    activeUser: 4000,
   },
   {
     name: "July",
-    "Active user": 2000,
+    activeUser: 2000,
   },
   {
-    name: "August",
-    "Active user": 500,
+    name: "Aug",
+    activeUser: 500,
   },
   {
-    name: "September",
-    "Active user": 1000,
+    name: "Sep",
+    activeUser: 1000,
   },
   {
-    name: "October",
-    "Active user": 4000,
+    name: "Oct",
+    activeUser: 4000,
   },
   {
-    name: "November",
-    "Active user": 6000,
+    name: "Nov",
+    activeUser: 6000,
   },
   {
-    name: "December",
-    "Active user": 1000,
+    name: "Dec",
+    activeUser: 1000,
   },
 ];
 
