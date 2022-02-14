@@ -9,6 +9,7 @@ import { SingleUser } from "./pages/single-user/SingleUser";
 import { NewUser } from "./pages/new-user/NewUser";
 import { ProductList } from "./pages/product-list/ProductList";
 import { Product } from "./pages/product/Product";
+import { NewProduct } from "./pages/new-product/NewProduct";
 
 function App() {
   return (
@@ -39,7 +40,7 @@ function App() {
             </Route>
 
             <Route exact path="/newProduct">
-              <ProductList />
+              <NewProduct />
             </Route>
 
             <Route exact path="/product/:productId">

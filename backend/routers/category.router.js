@@ -7,6 +7,7 @@ const router = express.Router();
 import slugify from "slugify";
 import {
   createCategory,
+  deleteCategory,
   updateCategory,
 } from "../models/category/category.model.js";
 
@@ -57,8 +58,8 @@ router.put("/", updateCategoryValidation, async (req, res) => {
 //DELETE CATEGORY
 router.delete("/", async (req, res) => {
   try {
-    const { name, parentCat, _id } = req.body;
-    const result = await deleteCategories(_id);
+    const catArgs = req.body;
+    const result = await deleteCategory(catArgs);
 
     if (result.deletedCount) {
       return res.send({

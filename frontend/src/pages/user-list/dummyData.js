@@ -206,3 +206,69 @@ export const productRows = [
     price: "$120.00",
   },
 ];
+
+export const userData = [
+  {
+    name: "January",
+    "Active user": 4000,
+  },
+  {
+    name: "Febuary",
+    "Active user": 6000,
+  },
+  {
+    name: "March",
+    "Active user": 3000,
+  },
+  {
+    name: "April",
+    "Active user": 5000,
+  },
+  {
+    name: "May",
+    "Active user": 8000,
+  },
+  {
+    name: "June",
+    "Active user": 4000,
+  },
+  {
+    name: "July",
+    "Active user": 2000,
+  },
+  {
+    name: "August",
+    "Active user": 500,
+  },
+  {
+    name: "September",
+    "Active user": 1000,
+  },
+  {
+    name: "October",
+    "Active user": 4000,
+  },
+  {
+    name: "November",
+    "Active user": 6000,
+  },
+  {
+    name: "December",
+    "Active user": 1000,
+  },
+];
+
+export const productData = [
+  {
+    name: "Jan",
+    Sales: 4000,
+  },
+  {
+    name: "Feb",
+    Sales: 3000,
+  },
+  {
+    name: "Mar",
+    Sales: 5000,
+  },
+];

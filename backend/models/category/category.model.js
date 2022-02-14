@@ -15,3 +15,11 @@ export const updateCategory = ({ _id, ...catData }) => {
     { new: true }
   );
 };
+
+export const deleteCategory = (catArgs) => {
+  return CategorySchema.deleteMany({
+    _id: {
+      $in: catArgs,
+    },
+  });
+};
