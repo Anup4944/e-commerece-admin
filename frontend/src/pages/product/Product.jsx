@@ -26,24 +26,24 @@ export const Product = () => {
               alt=""
               className="productInfoImg"
             />
-            <span className="productName">Apple Airpods</span>{" "}
+            <div className="productName">Apple Airpods</div>{" "}
           </div>
           <div className="productInfoBottom">
             <div className="productInfoItem">
-              <span className="productInfoKey">Id :</span>
-              <span className="productInfoValue">123</span>
+              <div className="productInfoKey">Id :</div>
+              <div className="productInfoValue">123</div>
             </div>
             <div className="productInfoItem">
-              <span className="productInfoKey">Sales :</span>
-              <span className="productInfoValue"> $123</span>
+              <div className="productInfoKey">Sales :</div>
+              <div className="productInfoValue"> $123</div>
             </div>
             <div className="productInfoItem">
-              <span className="productInfoKey">Active : </span>
-              <span className="productInfoValue">Yes</span>
+              <div className="productInfoKey">Active : </div>
+              <div className="productInfoValue">Yes</div>
             </div>
             <div className="productInfoItem">
-              <span className="productInfoKey">In-stock : </span>
-              <span className="productInfoValue">No</span>
+              <div className="productInfoKey">In-stock : </div>
+              <div className="productInfoValue">No</div>
             </div>
           </div>
         </div>

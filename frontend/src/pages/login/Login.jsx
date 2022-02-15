@@ -4,7 +4,7 @@ import { LockOpen, MailOutlined } from "@material-ui/icons";
 
 export const Login = () => {
   return (
-    <div className="container">
+    <div className="page">
       <div className="wrapper">
         <form className="loginForm">
           <h1 className="header">Log In</h1>

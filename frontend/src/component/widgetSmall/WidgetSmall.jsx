@@ -5,7 +5,7 @@ import { Visibility } from "@material-ui/icons";
 export const WidgetSmall = () => {
   return (
     <div className="widgetSm">
-      <span className="widgetSmTitle">New join members</span>
+      <div className="widgetSmTitle">New join members</div>
       <ul className="widgetSmList">
         <li className="widgetSmListItem">
           <img
@@ -14,8 +14,8 @@ export const WidgetSmall = () => {
             className="widgetSmImg"
           />
           <div className="widgetSmUser">
-            <span className="widgetSmUserName">Anna Keller</span>
-            <span className="widgetSmUserTitle">Software Engineer</span>
+            <div className="widgetSmUserName">Anna Keller</div>
+            <div className="widgetSmUserTitle">Software Engineer</div>
           </div>
           <button className="widgetSmButton">
             <Visibility className="widgetSmIcon" /> Display
@@ -28,8 +28,8 @@ export const WidgetSmall = () => {
             className="widgetSmImg"
           />
           <div className="widgetSmUser">
-            <span className="widgetSmUserName">Marcus Rashford</span>
-            <span className="widgetSmUserTitle">Nurse</span>
+            <div className="widgetSmUserName">Marcus Rashford</div>
+            <div className="widgetSmUserTitle">Nurse</div>
           </div>
           <button className="widgetSmButton">
             <Visibility className="widgetSmIcon" /> Display
@@ -42,8 +42,8 @@ export const WidgetSmall = () => {
             className="widgetSmImg"
           />
           <div className="widgetSmUser">
-            <span className="widgetSmUserName">Suzan Carrol</span>
-            <span className="widgetSmUserTitle">Radiographer</span>
+            <div className="widgetSmUserName">Suzan Carrol</div>
+            <div className="widgetSmUserTitle">Radiographer</div>
           </div>
           <button className="widgetSmButton">
             <Visibility className="widgetSmIcon" /> Display

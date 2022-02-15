@@ -23,7 +23,7 @@ export const WidgetLarge = () => {
               alt=""
               className="widgetLgImg"
             />
-            <span className="widgetLgName">Suzan Carrol</span>
+            <div className="widgetLgName">Suzan Carrol</div>
           </td>
           <td className="widgetLgDate">2 June 2021</td>
           <td className="widgetLgAmonut">$200.00</td>
@@ -39,7 +39,7 @@ export const WidgetLarge = () => {
               alt=""
               className="widgetLgImg"
             />
-            <span className="widgetLgName">Marcus Rashord</span>
+            <div className="widgetLgName">Marcus Rashord</div>
           </td>
           <td className="widgetLgDate">2 June 2021</td>
           <td className="widgetLgAmonut">$200.00</td>
@@ -55,7 +55,7 @@ export const WidgetLarge = () => {
               alt=""
               className="widgetLgImg"
             />
-            <span className="widgetLgName">Suzan Carrol</span>
+            <div className="widgetLgName">Suzan Carrol</div>
           </td>
           <td className="widgetLgDate">12 October 2021</td>
           <td className="widgetLgAmonut">$500.00</td>

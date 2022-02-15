@@ -13,55 +13,42 @@ import { NewProduct } from "./pages/new-product/NewProduct";
 import { Login } from "./pages/login/Login";
 
 function App() {
-  const user = false;
   return (
-    <>
-      <Router>
-        <Switch>
-          {" "}
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          {user && (
-            <>
-              <Topbar />
-              <div className="container">
-                <Sidebar />
+    <Login />
+    // <>
+    //   <Router>
+    //     <Topbar />
 
-                <Route exact path="/">
-                  <Home />
-                </Route>
+    //     <div className="container">
+    //       <Sidebar />
+    //       <Switch>
+    //         <Route exact path="/">
+    //           <Home />
+    //         </Route>
 
-                <Route exact path="/users">
-                  <UserList />
-                </Route>
-
-                <Route exact path="/user/:userId">
-                  <SingleUser />
-                </Route>
-
-                <Route exact path="/newUser">
-                  <NewUser />
-                </Route>
-
-                <Route exact path="/products">
-                  <ProductList />
-                </Route>
-
-                <Route exact path="/newProduct">
-                  <NewProduct />
-                </Route>
-
-                <Route exact path="/product/:productId">
-                  {/* Single product */}
-                  <Product />
-                </Route>
-              </div>{" "}
-            </>
-          )}
-        </Switch>
-      </Router>
-    </>
+    //         <Route exact path="/users">
+    //           <UserList />
+    //         </Route>
+    //         <Route exact path="/user/:userId">
+    //           <SingleUser />
+    //         </Route>
+    //         <Route exact path="/newUser">
+    //           <NewUser />
+    //         </Route>
+    //         <Route exact path="/products">
+    //           <ProductList />
+    //         </Route>
+    //         <Route exact path="/newProduct">
+    //           <NewProduct />
+    //         </Route>
+    //         <Route exact path="/product/:productId">
+    //           {/* Single product */}
+    //           <Product />
+    //         </Route>
+    //       </Switch>
+    //     </div>
+    //   </Router>
+    // </>
   );
 }
 

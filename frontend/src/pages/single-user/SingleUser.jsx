@@ -28,48 +28,48 @@ export const SingleUser = () => {
               className="userShowImg"
             />
             <div className="userShowTopTitle">
-              <span className="userShowUserName">Anna Becker</span>
-              <span className="userShowUserTitle">Software Engineer </span>
+              <div className="userShowUserName">Anna Becker</div>
+              <div className="userShowUserTitle">Software Engineer </div>
             </div>
           </div>
 
           <div className="userShowBottom">
-            <span className="accDetails">Account Details</span>
+            <div className="accDetails">Account Details</div>
             <div className="userShowInfo">
               {" "}
               <PermIdentity className="userShowIcon" />
-              <span className="userShowTitle">annabeck99</span>
+              <div className="userShowTitle">annabeck99</div>
             </div>
 
             <div className="userShowInfo">
               {" "}
               <CalendarToday className="userShowIcon" />
-              <span className="userShowTitle"> 10.22.1999</span>
+              <div className="userShowTitle"> 10.22.1999</div>
             </div>
 
-            <span className="accDetails">Contact Details</span>
+            <div className="accDetails">Contact Details</div>
 
             <div className="userShowInfo">
               {" "}
               <PhoneAndroidOutlined className="userShowIcon" />
-              <span className="userShowTitle">+61 458 896 214 </span>
+              <div className="userShowTitle">+61 458 896 214 </div>
             </div>
 
             <div className="userShowInfo">
               {" "}
               <Email className="userShowIcon" />
-              <span className="userShowTitle">annabeck@gmail.com</span>
+              <div className="userShowTitle">annabeck@gmail.com</div>
             </div>
 
             <div className="userShowInfo">
               {" "}
               <LocationCity className="userShowIcon" />
-              <span className="userShowTitle">Sydney | Australia</span>
+              <div className="userShowTitle">Sydney | Australia</div>
             </div>
           </div>
         </div>
         <div className="userUpdate">
-          <span className="userUpdateTitle">Edit</span>
+          <div className="userUpdateTitle">Edit</div>
           <form action="" className="userUpdateForm">
             <div className="userUpdateLeft">
               <div className="userUpdateItem">

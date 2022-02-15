@@ -1,10 +1,11 @@
-.container {
+.page {
   margin: 0;
   padding: 0;
   width: 100vw;
   height: 100vh;
-  background: url("C:\Users\anupp\OneDrive\Documents\Projects\e-commerce-admin\frontend\src\bg1.jpg")
-    no-repeat center center fixed;
+  /* background-image: url("https://i.dailymail.co.uk/1/2018/03/17/08/2513090-0-The_SEC_Armadillo_and_SSE_Hydro_are_illuminated_green_in_Glasgow-a-9_1521273619386.jpg"); */
+
+  background-image: url("./bg1.jpg");
   background-size: cover;
   object-fit: cover;
   overflow: hidden;
@@ -19,7 +20,7 @@
 }
 
 .header {
-  display: inline-block;
+  display: block;
   font-size: 30px;
   border-bottom: 3px solid #00dd00;
   margin-bottom: 30px;
@@ -58,7 +59,6 @@
 
 .btn:hover {
   border: none;
-  color: #00dd00;
   background-color: white;
   box-shadow: 0 0 10px #00dd00, 0 0 40px #00dd00, 0 0 80px #00dd00;
 }
