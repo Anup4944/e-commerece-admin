@@ -63,12 +63,12 @@
 }
 .box:hover {
   color: #00dd00;
-  background-color: white;
-  box-shadow: 0 0 10px #00dd00, 0 0 40px #00dd00, 0 0 80px #00dd00;
+  /* background-color: white; */
+  /* box-shadow: 0 0 10px #00dd00, 0 0 40px #00dd00, 0 0 80px #00dd00; */
 }
-.box input:hover {
+/* .box input:hover {
   color: #00dd00;
-}
+} */
 
 .bottomContainer {
   display: flex;

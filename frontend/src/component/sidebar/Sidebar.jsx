@@ -10,7 +10,7 @@ import {
   MailOutline,
   Settings,
   Assessment,
-  PowerOutlined,
+  PowerSettingsNew,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { logoutAction } from "../../pages/login/loginAction";
@@ -27,7 +27,7 @@ export const Sidebar = () => {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
-            <Link to="/" className="link">
+            <Link to="/home" className="link">
               <li className="sidebarListItem">
                 <LineStyle className="sidebarIcon" /> Home
               </li>
@@ -89,7 +89,7 @@ export const Sidebar = () => {
             <li className="sidebarListItem" onClick={logMeOut}>
               <Link to="/" className="link">
                 {" "}
-                <PowerOutlined className="sidebarIcon" /> Logout{" "}
+                <PowerSettingsNew className="sidebarIcon" /> Logout{" "}
               </Link>
             </li>
           </ul>

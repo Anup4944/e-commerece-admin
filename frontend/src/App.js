@@ -23,35 +23,37 @@ function App() {
           <Route exact path="/">
             <Login />
           </Route>
-          <div>
-            <Topbar />
-            <div className="container">
-              <Sidebar />
+          {isAuth && (
+            <>
+              <Topbar />
+              <div className="container">
+                <Sidebar />
 
-              <PrivateRoute exact path="/home">
-                <Home />
-              </PrivateRoute>
+                <PrivateRoute exact path="/home">
+                  <Home />
+                </PrivateRoute>
 
-              <PrivateRoute exact path="/users">
-                <UserList />
-              </PrivateRoute>
-              <PrivateRoute exact path="/user/:userId">
-                <SingleUser />
-              </PrivateRoute>
-              <PrivateRoute exact path="/newUser">
-                <NewUser />
-              </PrivateRoute>
-              <PrivateRoute exact path="/products">
-                <ProductList />
-              </PrivateRoute>
-              <PrivateRoute exact path="/newProduct">
-                <NewProduct />
-              </PrivateRoute>
-              <PrivateRoute exact path="/product/:productId">
-                <Product />
-              </PrivateRoute>
-            </div>
-          </div>
+                <PrivateRoute exact path="/users">
+                  <UserList />
+                </PrivateRoute>
+                <PrivateRoute exact path="/user/:userId">
+                  <SingleUser />
+                </PrivateRoute>
+                <PrivateRoute exact path="/newUser">
+                  <NewUser />
+                </PrivateRoute>
+                <PrivateRoute exact path="/products">
+                  <ProductList />
+                </PrivateRoute>
+                <PrivateRoute exact path="/newProduct">
+                  <NewProduct />
+                </PrivateRoute>
+                <PrivateRoute exact path="/product/:productId">
+                  <Product />
+                </PrivateRoute>
+              </div>
+            </>
+          )}
         </Switch>
       </Router>
     </>

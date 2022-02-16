@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./login.css";
-import { LockOpen, MailOutlined } from "@material-ui/icons";
+import {
+  LockOpen,
+  MailOutlined,
+  RemoveRedEyeOutlined,
+  VisibilityOff,
+} from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
 import { loginAction } from "./loginAction";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +17,7 @@ const initialState = {
 
 export const Login = () => {
   const [loginInfo, setLoginInfo] = useState(initialState);
+  const [show, setShow] = useState(true);
   const { isAuth, status, message } = useSelector((state) => state.login);
 
   const history = useHistory();
@@ -61,7 +67,7 @@ export const Login = () => {
             <LockOpen className="icon" />
             <input
               className="inputContainer"
-              type="password"
+              type={show ? "password" : "text"}
               name="password"
               id="password"
               onChange={handleOnChange}
@@ -69,6 +75,11 @@ export const Login = () => {
               placeholder="enter your password"
               required
             />
+            {show ? (
+              <RemoveRedEyeOutlined onClick={() => setShow(false)} />
+            ) : (
+              <VisibilityOff onClick={() => setShow(true)} />
+            )}
           </div>
           <div className="bottomContainer">
             <button className="btn" type="submit" name="submit" id="submit">
