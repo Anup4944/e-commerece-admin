@@ -10,10 +10,17 @@ import {
   MailOutline,
   Settings,
   Assessment,
+  PowerOutlined,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+import { logoutAction } from "../../pages/login/loginAction";
+import { useDispatch } from "react-redux";
 
 export const Sidebar = () => {
+  const dispatch = useDispatch();
+  const logMeOut = () => {
+    dispatch(logoutAction());
+  };
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
@@ -77,6 +84,13 @@ export const Sidebar = () => {
             </li>
             <li className="sidebarListItem">
               <TrendingUp className="sidebarIcon" /> Report
+            </li>
+
+            <li className="sidebarListItem" onClick={logMeOut}>
+              <Link to="/" className="link">
+                {" "}
+                <PowerOutlined className="sidebarIcon" /> Logout{" "}
+              </Link>
             </li>
           </ul>
         </div>

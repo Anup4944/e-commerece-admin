@@ -5,7 +5,7 @@ const initialState = {
   isAuth: false,
   status: "",
   message: "",
-  users: [],
+  user: [],
 };
 
 const loginSlice = createSlice({
@@ -21,21 +21,14 @@ const loginSlice = createSlice({
       state.isAuth = true;
       state.status = payload.status;
       state.message = payload.message;
-      state.users = payload.user;
+      state.user = payload.user;
     },
-    userAutoLoginSuccess: (state, { payload }) => {
-      state.isLoading = false;
-      state.isAuth = true;
-      state.status = payload.status;
-      state.message = payload.message;
-      state.users = payload.userProf;
-    },
-    logoutSuccess: (state) => {
+    logoutSuccess: (state, { payload }) => {
       state.isLoading = false;
       state.isAuth = false;
-      state.status = "success";
-      state.message = "You have been logged out!";
-      state.users = null;
+      state.status = payload.status;
+      state.message = payload.message;
+      state.user = null;
     },
     requestFail: (state, { payload }) => {
       state.isLoading = false;

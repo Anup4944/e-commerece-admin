@@ -11,44 +11,50 @@ import { ProductList } from "./pages/product-list/ProductList";
 import { Product } from "./pages/product/Product";
 import { NewProduct } from "./pages/new-product/NewProduct";
 import { Login } from "./pages/login/Login";
+import { useSelector, useDispatch } from "react-redux";
+import { PrivateRoute } from "./pages/private-route/PrivateRoute";
 
 function App() {
+  const { isAuth } = useSelector((state) => state.login);
   return (
-    <Login />
-    // <>
-    //   <Router>
-    //     <Topbar />
+    <>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Login />
+          </Route>
+          <div>
+            <Topbar />
+            <div className="container">
+              <Sidebar />
 
-    //     <div className="container">
-    //       <Sidebar />
-    //       <Switch>
-    //         <Route exact path="/">
-    //           <Home />
-    //         </Route>
+              <PrivateRoute exact path="/home">
+                <Home />
+              </PrivateRoute>
 
-    //         <Route exact path="/users">
-    //           <UserList />
-    //         </Route>
-    //         <Route exact path="/user/:userId">
-    //           <SingleUser />
-    //         </Route>
-    //         <Route exact path="/newUser">
-    //           <NewUser />
-    //         </Route>
-    //         <Route exact path="/products">
-    //           <ProductList />
-    //         </Route>
-    //         <Route exact path="/newProduct">
-    //           <NewProduct />
-    //         </Route>
-    //         <Route exact path="/product/:productId">
-    //           {/* Single product */}
-    //           <Product />
-    //         </Route>
-    //       </Switch>
-    //     </div>
-    //   </Router>
-    // </>
+              <PrivateRoute exact path="/users">
+                <UserList />
+              </PrivateRoute>
+              <PrivateRoute exact path="/user/:userId">
+                <SingleUser />
+              </PrivateRoute>
+              <PrivateRoute exact path="/newUser">
+                <NewUser />
+              </PrivateRoute>
+              <PrivateRoute exact path="/products">
+                <ProductList />
+              </PrivateRoute>
+              <PrivateRoute exact path="/newProduct">
+                <NewProduct />
+              </PrivateRoute>
+              <PrivateRoute exact path="/product/:productId">
+                <Product />
+              </PrivateRoute>
+            </div>
+          </div>
+        </Switch>
+      </Router>
+    </>
   );
 }
 
