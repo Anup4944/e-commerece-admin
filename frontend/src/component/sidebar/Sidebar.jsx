@@ -11,15 +11,21 @@ import {
   Settings,
   Assessment,
   PowerSettingsNew,
+  AddIcCallOutlined,
+  AddIcCallTwoTone,
+  PlusOneOutlined,
 } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { logoutAction } from "../../pages/login/loginAction";
 import { useDispatch } from "react-redux";
 
 export const Sidebar = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const logMeOut = () => {
     dispatch(logoutAction());
+    history.push("/");
   };
   return (
     <div className="sidebar">
@@ -32,10 +38,11 @@ export const Sidebar = () => {
                 <LineStyle className="sidebarIcon" /> Home
               </li>
             </Link>
-
-            <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" /> Analytics
-            </li>
+            <Link to="/newProduct" className="link">
+              <li className="sidebarListItem">
+                <PlusOneOutlined className="sidebarIcon" /> Add new product
+              </li>
+            </Link>
             <li className="sidebarListItem">
               <TrendingUp className="sidebarIcon" /> Sales
             </li>
@@ -87,10 +94,9 @@ export const Sidebar = () => {
             </li>
 
             <li className="sidebarListItem" onClick={logMeOut}>
-              <Link to="/" className="link">
-                {" "}
-                <PowerSettingsNew className="sidebarIcon" /> Logout{" "}
-              </Link>
+              {/* <Link to="/" className="link"> */}
+              <PowerSettingsNew className="sidebarIcon" /> Logout
+              {/* </Link> */}
             </li>
           </ul>
         </div>

@@ -12,7 +12,6 @@ import { Product } from "./pages/product/Product";
 import { NewProduct } from "./pages/new-product/NewProduct";
 import { Login } from "./pages/login/Login";
 import { useSelector, useDispatch } from "react-redux";
-import { PrivateRoute } from "./pages/private-route/PrivateRoute";
 import { EnterEmail } from "./pages/pass-reset/EnterEmail";
 import { UpdatePass } from "./pages/pass-reset/UpdatePass";
 
@@ -22,7 +21,7 @@ function App() {
     <>
       <Router>
         <Switch>
-          <Route exact path="/">
+          {/* <Route exact path="/">
             <Login />
           </Route>
           <Route exact path="/enter-email">
@@ -31,37 +30,37 @@ function App() {
           <Route exact path="/update-password">
             <UpdatePass />
           </Route>
-          {isAuth && (
-            <>
-              <Topbar />
-              <div className="container">
-                <Sidebar />
+          {isAuth && ( */}
+          <>
+            <Topbar />
+            <div className="container">
+              <Sidebar />
 
-                <PrivateRoute exact path="/home">
-                  <Home />
-                </PrivateRoute>
+              <Route exact path="/home">
+                <Home />
+              </Route>
 
-                <PrivateRoute exact path="/users">
-                  <UserList />
-                </PrivateRoute>
-                <PrivateRoute exact path="/user/:userId">
-                  <SingleUser />
-                </PrivateRoute>
-                <PrivateRoute exact path="/newUser">
-                  <NewUser />
-                </PrivateRoute>
-                <PrivateRoute exact path="/products">
-                  <ProductList />
-                </PrivateRoute>
-                <PrivateRoute exact path="/newProduct">
-                  <NewProduct />
-                </PrivateRoute>
-                <PrivateRoute exact path="/product/:productId">
-                  <Product />
-                </PrivateRoute>
-              </div>
-            </>
-          )}
+              <Route exact path="/users">
+                <UserList />
+              </Route>
+              <Route exact path="/user/:userId">
+                <SingleUser />
+              </Route>
+              <Route exact path="/newUser">
+                <NewUser />
+              </Route>
+              <Route exact path="/products">
+                <ProductList />
+              </Route>
+              <Route exact path="/newProduct">
+                <NewProduct />
+              </Route>
+              <Route exact path="/product/:productId">
+                <Product />
+              </Route>
+            </div>
+          </>
+          {/* )} */}
         </Switch>
       </Router>
     </>

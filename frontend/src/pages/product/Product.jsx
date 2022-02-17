@@ -12,7 +12,7 @@ export const Product = () => {
         <h1 className="productTitle">Product</h1>
         <Link to="/newProduct">
           {" "}
-          <button className="productAddButton">Add</button>
+          <button className="productAddButton">Add </button>
         </Link>
       </div>
       <div className="productTop">

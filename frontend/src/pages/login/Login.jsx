@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const initialState = {
   email: "aj@w.com",
-  password: "vangunneR45",
+  password: "aspirinE@49",
 };
 
 export const Login = () => {

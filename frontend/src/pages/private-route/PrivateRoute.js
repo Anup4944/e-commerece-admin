@@ -9,7 +9,7 @@ export const PrivateRoute = ({ children, ...rest }) => {
       {...rest}
       render={({ location }) =>
         isAuth ? (
-          <div>{children}</div>
+          { children }
         ) : (
           <Redirect
             to={{
