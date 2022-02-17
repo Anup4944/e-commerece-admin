@@ -8,6 +8,7 @@ import {
 } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
 import { loginAction } from "./loginAction";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 const initialState = {
@@ -76,18 +77,20 @@ export const Login = () => {
               required
             />
             {show ? (
-              <RemoveRedEyeOutlined onClick={() => setShow(false)} />
+              <VisibilityOff onClick={() => setShow(false)} />
             ) : (
-              <VisibilityOff onClick={() => setShow(true)} />
+              <RemoveRedEyeOutlined onClick={() => setShow(true)} />
             )}
           </div>
           <div className="bottomContainer">
             <button className="btn" type="submit" name="submit" id="submit">
               Sign In{" "}
             </button>
-            <button className="btn" type="submit">
-              Reset Password
-            </button>
+            <Link className="link" to="/enter-email">
+              <button className="btn" type="submit">
+                Reset Password
+              </button>
+            </Link>
           </div>
         </form>
       </div>

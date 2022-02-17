@@ -13,6 +13,8 @@ import { NewProduct } from "./pages/new-product/NewProduct";
 import { Login } from "./pages/login/Login";
 import { useSelector, useDispatch } from "react-redux";
 import { PrivateRoute } from "./pages/private-route/PrivateRoute";
+import { EnterEmail } from "./pages/pass-reset/EnterEmail";
+import { UpdatePass } from "./pages/pass-reset/UpdatePass";
 
 function App() {
   const { isAuth } = useSelector((state) => state.login);
@@ -22,6 +24,12 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Login />
+          </Route>
+          <Route exact path="/enter-email">
+            <EnterEmail />
+          </Route>
+          <Route exact path="/update-password">
+            <UpdatePass />
           </Route>
           {isAuth && (
             <>
