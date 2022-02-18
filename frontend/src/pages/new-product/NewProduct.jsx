@@ -11,6 +11,7 @@ const initalState = {
   description: "",
   onSale: "",
   salePrice: "",
+  saleEndDate: "",
 };
 
 export const NewProduct = () => {
@@ -30,29 +31,42 @@ export const NewProduct = () => {
       ...product,
       [name]: value,
     });
-    console.log(value);
+    console.log(name, value);
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    console.log(product);
   };
 
   return (
     <div className="newProduct">
       <h1 className="addProductTitle">New Product</h1>
-      <form className="addProductForm">
+      <form className="addProductForm" onSubmit={handleOnSubmit}>
         <div className="addProductItem">
           <div className="addProductItem">
             <label>Is available</label>
-            <select value={product.isAvailable} onChange={handleOnChange}>
-              <option name="isAvailable" value="Yes" onChange={handleOnChange}>
-                Yes
-              </option>
-              <option name="isAvailable" value="No" onChange={handleOnChange}>
-                No
-              </option>
+            <select
+              name="isAvailable"
+              value={product.isAvailable}
+              onChange={handleOnChange}
+            >
+              <option>Please choose an option</option>
+
+              <option value="true">Yes</option>
+              <option value="false">No</option>
             </select>
           </div>
 
           <label>Image</label>
-          <input type="file" id="file" />
+          <input
+            type="file"
+            name="images"
+            value={product.images}
+            onChange={handleOnChange}
+          />
         </div>
+
         <div className="addProductItem">
           <label>Title</label>
           <input
@@ -60,18 +74,24 @@ export const NewProduct = () => {
             name="title"
             value={product.title}
             placeholder="Apple Airpods"
+            onChange={handleOnChange}
             required
           />
         </div>
 
         <div className="addProductItem">
           <label>Select category</label>
-          <select name="active" id="active">
+          <select
+            name="category"
+            value={product.category}
+            onChange={handleOnChange}
+            required
+          >
             <option>Please choose an category</option>
             {categories &&
-              categories.map((item, i) => (
+              categories.map((item) => (
                 <>
-                  <option value={item} key={item.i}>
+                  <option value={item} key={item}>
                     {" "}
                     {item}
                   </option>
@@ -82,31 +102,84 @@ export const NewProduct = () => {
 
         <div className="addProductItem">
           <label>Price</label>
-          <input type="text" placeholder="123" />
+          <input
+            name="price"
+            type="number"
+            value={product.price}
+            onChange={handleOnChange}
+            placeholder="123"
+            required
+          />
         </div>
 
         <div className="addProductItem">
-          <label>Qty</label>
-          <input type="number" placeholder="123" />
+          <label>Quantity</label>
+          <input
+            type="number"
+            name="quantity"
+            value={product.quantity}
+            onChange={handleOnChange}
+            placeholder="123"
+            required
+          />
         </div>
 
         <div className="addProductItem">
           <label>Description</label>
-          <textarea className="textarea" type="text" placeholder="123" />
+          <textarea
+            className="textarea"
+            type="text"
+            name="description"
+            value={product.description}
+            onChange={handleOnChange}
+            placeholder="123"
+            required
+          />
         </div>
 
         <div className="addProductItem">
           <label>On Sale</label>
-          <select name="active" id="active">
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+          <select
+            name="onSale"
+            value={product.onSale}
+            onChange={handleOnChange}
+            required
+          >
+            <option>Please choose an option</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
           </select>
         </div>
 
-        <div className="addProductItem">
-          <label>Sale Price</label>
-          <input type="text" placeholder="123" />
-        </div>
+        {product.onSale === "true" ? (
+          <div className="addProductItem">
+            <label>Sale Price</label>
+
+            <input
+              type="number"
+              name="salePrice"
+              value={product.salePrice}
+              onChange={handleOnChange}
+              placeholder="123"
+              required
+            />
+          </div>
+        ) : null}
+
+        {product.onSale === "true" ? (
+          <div className="addProductItem">
+            <label>Sale End Date</label>
+
+            <input
+              type="date"
+              name="saleEndDate"
+              value={product.saleEndDate}
+              min="2022-01-01"
+              max="2025-12-31"
+              onChange={handleOnChange}
+            />
+          </div>
+        ) : null}
 
         <button className="addProductButton">Publish</button>
       </form>
