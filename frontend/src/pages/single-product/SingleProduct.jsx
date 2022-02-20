@@ -5,7 +5,7 @@ import { productData } from "../user-list/dummyData";
 import { Chart } from "../../component/chart/Chart";
 import { PublishOutlined } from "@material-ui/icons";
 
-export const Product = () => {
+export const SingleProduct = () => {
   return (
     <div className="product">
       <div className="productTitleContainer">
@@ -54,14 +54,8 @@ export const Product = () => {
             <label>Product Name</label>
             <input type="text" placeholder="Product name" />
 
-            <label>In Stock</label>
+            <label>Is Available</label>
             <select name="instock" id="inStock">
-              <option value="yes">YES</option>
-              <option value="no">NO</option>
-            </select>
-
-            <label>Active</label>
-            <select name="active" id="active">
               <option value="yes">YES</option>
               <option value="no">NO</option>
             </select>

@@ -18,7 +18,7 @@ router.post("/", newProductValidation, async (req, res) => {
   try {
     const newProd = {
       ...req.body,
-      slug: slugify(req.body.name),
+      // slug: slugify(req.body.name),
       date: new Date(req.body.saleEndDate),
     };
 
@@ -37,6 +37,7 @@ router.post("/", newProductValidation, async (req, res) => {
       message: "Unable to add the product, Please try again later",
     });
   } catch (error) {
+    console.log(error);
     throw error;
   }
 });

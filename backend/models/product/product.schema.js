@@ -5,11 +5,13 @@ const ProductSchema = new mongoose.Schema(
     isAvailable: {
       type: Boolean,
       require: true,
-      default: true,
+      default: false,
     },
-    name: {
+    title: {
       type: String,
-      required: true,
+      unique: true,
+      require: true,
+      default: "",
     },
     price: {
       type: Number,
@@ -19,29 +21,22 @@ const ProductSchema = new mongoose.Schema(
     description: {
       type: String,
       require: true,
-      default: "",
     },
-
-    qty: {
+    quantity: {
       type: Number,
       require: true,
     },
     images: {
       type: Array,
-      required: false,
     },
     categories: {
       type: Array,
     },
     onSale: {
       type: Boolean,
-      require: false,
-      default: false,
     },
     salePrice: {
       type: Number,
-      require: false,
-      default: 0,
     },
     saleEndDate: {
       type: Date,

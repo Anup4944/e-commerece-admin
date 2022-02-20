@@ -1,25 +1,32 @@
 import React, { useState } from "react";
 import "./newProduct.css";
+import { useDispatch, useSelector } from "react-redux";
+import { saveProductAction } from "./productAction";
 
 const initalState = {
-  isAvailable: "",
+  isAvailable: true,
   images: [],
-  title: "",
-  category: "",
-  price: "",
-  quantity: "",
-  description: "",
-  onSale: "",
-  salePrice: "",
+  title: "Apple Airpods Gen 13",
+  categories: "Phones",
+  price: "1500",
+  quantity: "10",
+  description: "New generation applea airpods",
+  onSale: true,
+  salePrice: "999.99",
   saleEndDate: "",
 };
 
 export const NewProduct = () => {
   const [product, setProduct] = useState(initalState);
 
+  const { status, message } = useSelector((state) => state.product);
+
+  const dispatch = useDispatch();
+
   const categories = [
     "Household",
     "Electronice",
+    "Phones",
     "Car parts",
     "Ps5 Accessories",
   ];
@@ -31,17 +38,20 @@ export const NewProduct = () => {
       ...product,
       [name]: value,
     });
-    console.log(name, value);
   };
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    dispatch(saveProductAction(product));
     console.log(product);
   };
 
   return (
     <div className="newProduct">
       <h1 className="addProductTitle">New Product</h1>
+      {status === "error"
+        ? message && <span style={{ color: "tomato" }}>{message}</span>
+        : null}
       <form className="addProductForm" onSubmit={handleOnSubmit}>
         <div className="addProductItem">
           <div className="addProductItem">
@@ -80,14 +90,14 @@ export const NewProduct = () => {
         </div>
 
         <div className="addProductItem">
-          <label>Select category</label>
+          <label>Select categories</label>
           <select
-            name="category"
-            value={product.category}
+            name="categories"
+            value={product.categories}
             onChange={handleOnChange}
             required
           >
-            <option>Please choose an category</option>
+            <option>Please choose an categories</option>
             {categories &&
               categories.map((item) => (
                 <>
@@ -174,8 +184,8 @@ export const NewProduct = () => {
               type="date"
               name="saleEndDate"
               value={product.saleEndDate}
-              min="2022-01-01"
-              max="2025-12-31"
+              min="18/02/2022"
+              max="31/12/2025"
               onChange={handleOnChange}
             />
           </div>

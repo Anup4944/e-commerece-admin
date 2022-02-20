@@ -110,11 +110,11 @@ export const userRows = [
 ];
 export const productRows = [
   {
-    id: 1,
-    name: "Apple Airpods",
+    _id: 1,
+    title: "Apple Airpods",
     img: "https://www.macworld.co.uk/cmsdata/features/3802592/new_airpods_2021_render_gizmochina_thumb800.jpg",
-    stock: 123,
-    status: "active",
+    quantity: 123,
+    isAvailable: "active",
     price: "$120.00",
   },
   {

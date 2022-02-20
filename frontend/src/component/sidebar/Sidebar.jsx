@@ -14,6 +14,7 @@ import {
   AddIcCallOutlined,
   AddIcCallTwoTone,
   PlusOneOutlined,
+  CategorySharp,
 } from "@material-ui/icons";
 import { Link, useHistory } from "react-router-dom";
 import { logoutAction } from "../../pages/login/loginAction";
@@ -33,7 +34,7 @@ export const Sidebar = () => {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
-            <Link to="/home" className="link">
+            <Link to="/" className="link">
               <li className="sidebarListItem">
                 <LineStyle className="sidebarIcon" /> Home
               </li>
@@ -41,6 +42,11 @@ export const Sidebar = () => {
             <Link to="/newProduct" className="link">
               <li className="sidebarListItem">
                 <PlusOneOutlined className="sidebarIcon" /> Add new product
+              </li>
+            </Link>
+            <Link to="/newProduct" className="link">
+              <li className="sidebarListItem">
+                <CategorySharp className="sidebarIcon" /> Add new category
               </li>
             </Link>
             <li className="sidebarListItem">
@@ -63,9 +69,6 @@ export const Sidebar = () => {
             </Link>
             <li className="sidebarListItem">
               <AttachMoney className="sidebarIcon" /> Transactions
-            </li>
-            <li className="sidebarListItem">
-              <Assessment className="sidebarIcon" /> Reports
             </li>
           </ul>
         </div>

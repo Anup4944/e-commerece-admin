@@ -78,13 +78,13 @@ Content-Type: application/json
 
 {
   "isAvailable": true,
-  "name": "Iphone 7plus",
+  "title": "Iphone 7plus",
   "price": 1005,
   "description": "The iPhone 7 and iPhone 7 Plus are smartphones designed, developed, and marketed by Apple Inc. They are the tenth generation of the iPhone.",
-  "qty": 7,
+  "quantity": 105,
   "images": [],
-  "onSale": true,
-  "categories": "Technology",
+  "onSale": false,
+  "categories": "Electronice",
   "salePrice": 0,
   "saleEndDate": ""
 }
@@ -101,7 +101,7 @@ Content-Type: application/json
   "qty": 15,
   "images": [],
   "onSale": true,
-  "categories": "Technology",
+  "categories": "Electronice",
   "salePrice": 899.99,
   "saleEndDate": "2022/03/01"
   }

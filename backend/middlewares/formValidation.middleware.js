@@ -33,8 +33,8 @@ export const newProductValidation = (req, res, next) => {
   req.body.categories = categories;
 
   const schema = Joi.object({
-    name: shortStr.required(),
-    qty: num.required(),
+    title: shortStr.required(),
+    quantity: num.required(),
     isAvailable: boolean.required(),
     onSale: boolean.required(),
     price: num.required(),

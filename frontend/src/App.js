@@ -8,7 +8,7 @@ import { UserList } from "./pages/user-list/UserList";
 import { SingleUser } from "./pages/single-user/SingleUser";
 import { NewUser } from "./pages/new-user/NewUser";
 import { ProductList } from "./pages/product-list/ProductList";
-import { Product } from "./pages/product/Product";
+import { SingleProduct } from "./pages/single-product/SingleProduct";
 import { NewProduct } from "./pages/new-product/NewProduct";
 import { Login } from "./pages/login/Login";
 import { useSelector, useDispatch } from "react-redux";
@@ -36,7 +36,7 @@ function App() {
             <div className="container">
               <Sidebar />
 
-              <Route exact path="/home">
+              <Route exact path="/">
                 <Home />
               </Route>
 
@@ -49,14 +49,15 @@ function App() {
               <Route exact path="/newUser">
                 <NewUser />
               </Route>
-              <Route exact path="/products">
-                <ProductList />
-              </Route>
               <Route exact path="/newProduct">
                 <NewProduct />
               </Route>
+              <Route exact path="/products">
+                <ProductList />
+              </Route>
+
               <Route exact path="/product/:productId">
-                <Product />
+                <SingleProduct />
               </Route>
             </div>
           </>

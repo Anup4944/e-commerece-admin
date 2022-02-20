@@ -54,7 +54,7 @@ router.post("/login", loginValidation, async (req, res) => {
     if (result) {
       return res.status(200).send({
         status: "success",
-        message: "Login Success",
+        message: "login success",
         user,
         accessJwt,
         refreshJwt,
