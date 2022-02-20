@@ -10,7 +10,7 @@ import { getAllProductAction } from "../new-product/productAction";
 
 export const ProductList = () => {
   const { products } = useSelector((state) => state.product);
-  const [data, setData] = useState(productRows);
+  const [data, setData] = useState(products);
 
   const dispatch = useDispatch();
 
@@ -25,45 +25,50 @@ export const ProductList = () => {
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
-      field: "title",
+      field: "lastName",
       headerName: "Product Name and Image",
       width: 200,
       renderCell: (params) => {
         return (
           <div className="productListItem">
-            <img className="productListImg" src={params.row.img} alt="" />
-            {params.row.name}
+            <img className="productListImg" src={params.products.img} alt="" />
+            {params.products.name}
           </div>
         );
       },
     },
-    { field: "stock", headerName: "is Available", width: 110 },
+    { field: "firstName", headerName: "is Available", width: 110 },
 
     {
-      field: "price",
+      field: "age",
       headerName: "Price",
       width: 160,
     },
     {
-      field: "action",
-      headerName: "Action",
+      field: "categories",
+      headerName: "Price",
       width: 160,
-      renderCell: (params) => {
-        return (
-          <>
-            <Link to={"/product/" + params.row.id}>
-              <button className="productListButton">Edit</button>
-            </Link>
-            <DeleteOutline
-              className="productListDelete"
-              onClick={() => {
-                handleOnDelete(params.row.id);
-              }}
-            />
-          </>
-        );
-      },
     },
+    // {
+    //   field: "action",
+    //   headerName: "Action",
+    //   width: 160,
+    //   renderCell: (params) => {
+    //     return (
+    //       <>
+    //         <Link to={"/product/" + params.products._id}>
+    //           <button className="productListButton">Edit</button>
+    //         </Link>
+    //         <DeleteOutline
+    //           className="productListDelete"
+    //           onClick={() => {
+    //             handleOnDelete(params.products._id);
+    //           }}
+    //         />
+    //       </>
+    //     );
+    //   },
+    // },
   ];
 
   const rows = [
