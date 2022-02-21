@@ -56,7 +56,7 @@ function App() {
                 <ProductList />
               </Route>
 
-              <Route exact path="/product/:productId">
+              <Route exact path="/product/:id">
                 <SingleProduct />
               </Route>
             </div>

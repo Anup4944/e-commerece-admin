@@ -107,7 +107,7 @@ Content-Type: application/json
   }
 
 ### GET SINGLE PRODUCT BY ID
-GET http://localhost:5000/api/v1/product/620327b1e23f1fb3bb532ddb
+GET http://localhost:5000/api/v1/product/62119eec2bbb48a70af18210
 
 ### GET ALL PRODUCTS
 GET http://localhost:5000/api/v1/product

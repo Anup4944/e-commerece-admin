@@ -45,14 +45,15 @@ router.post("/", newProductValidation, async (req, res) => {
 // GET PRODUCT BY ID
 router.get("/:_id", async (req, res) => {
   const { _id } = req.params;
+  console.log(_id);
   try {
-    const result = await getProductById(_id);
+    const singleProduct = await getProductById(_id);
 
-    result
+    singleProduct
       ? res.json({
           status: "success",
-          message: "Here is your products",
-          result,
+          message: "Here is single products",
+          singleProduct,
         })
       : res.json({
           status: "error",
@@ -69,7 +70,7 @@ router.get("/", async (req, res) => {
     const result = await getAllProducts();
     res.json({
       status: "success",
-      message: "Here are the products",
+      message: "Here are all  products",
       result,
     });
   } catch (error) {

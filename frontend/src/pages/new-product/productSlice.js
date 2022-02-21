@@ -5,7 +5,7 @@ const initialState = {
   status: "",
   message: "",
   products: [],
-  singleProduct: {},
+  // singleProduct: {},
 };
 
 const productSlice = createSlice({
@@ -22,11 +22,22 @@ const productSlice = createSlice({
       state.products = payload.result;
     },
     getAllProductSuccess: (state, { payload }) => {
-      console.log(payload);
       state.isLoading = false;
       state.status = payload.status;
       state.message = payload.message;
       state.products = payload.result;
+    },
+    getSingleProductSuccess: (state, { payload }) => {
+      state.isLoading = false;
+      state.status = payload.status;
+      state.message = payload.message;
+      state.products = payload.singleProduct;
+    },
+    updateProductSuccess: (state, { payload }) => {
+      state.isLoading = false;
+      state.status = payload.status;
+      state.message = payload.message;
+      state.products = payload.updatedProduct;
     },
     requestFail: (state, { payload }) => {
       state.isLoading = false;
@@ -41,6 +52,8 @@ export const {
   requestPending,
   addProductSuccess,
   getAllProductSuccess,
+  getSingleProductSuccess,
+  updateProductSuccess,
   requestFail,
 } = actions;
 

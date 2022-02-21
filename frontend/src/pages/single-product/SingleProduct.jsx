@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./product.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { productData } from "../user-list/dummyData";
 import { Chart } from "../../component/chart/Chart";
 import { PublishOutlined } from "@material-ui/icons";
+import {
+  getSingleProductAction,
+  updateProductAction,
+} from "../new-product/productAction";
+import { useSelector, useDispatch } from "react-redux";
 
 const initialState = {
   isAvailable: "",
@@ -17,6 +22,17 @@ const initialState = {
 export const SingleProduct = () => {
   const [update, setUpdate] = useState(initialState);
 
+  const dispatch = useDispatch();
+
+  const { products } = useSelector((state) => state.product);
+
+  let { id } = useParams();
+  console.log(id);
+
+  useEffect(() => {
+    id && dispatch(getSingleProductAction(id));
+  }, [id]);
+
   const handleOnChange = (e) => {
     const { name, value } = e.target;
 
@@ -29,7 +45,9 @@ export const SingleProduct = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    dispatch(updateProductAction());
   };
+
   return (
     <div className="product">
       <div className="productTitleContainer">
@@ -93,7 +111,6 @@ export const SingleProduct = () => {
               type="number"
               value={update.price}
               onChange={handleOnChange}
-              placeholder="123"
               required
             />
             <label>Number of stocks available</label>
@@ -105,11 +122,19 @@ export const SingleProduct = () => {
               placeholder="123"
               required
             />
-            <label>Add product on Sale</label>
-            <label className="switch">
-              <input type="checkbox" />
-              <span className="slider round"></span>
-            </label>
+
+            <label>Add product on sale</label>
+            <select
+              name="onSale"
+              value={update.onSale}
+              onChange={handleOnChange}
+            >
+              <option>Please choose an option</option>
+
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+
             <label>Sale Price</label>
             <input
               name="salePrice"
