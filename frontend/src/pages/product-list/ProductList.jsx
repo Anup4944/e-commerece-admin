@@ -10,86 +10,74 @@ import { getAllProductAction } from "../new-product/productAction";
 
 export const ProductList = () => {
   const { products } = useSelector((state) => state.product);
-  const [data, setData] = useState(products);
+  // const [data, setData] = useState(products);
 
   const dispatch = useDispatch();
 
-  const handleOnDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
+  // const handleOnDelete = (id) => {
+  //   setData(data.filter((item) => item.id !== id));
+  // };
 
   useEffect(() => {
     dispatch(getAllProductAction());
   }, [dispatch]);
 
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "_id", headerName: "ID", width: 90 },
     {
-      field: "lastName",
+      field: "title",
       headerName: "Product Name and Image",
       width: 200,
       renderCell: (params) => {
         return (
           <div className="productListItem">
-            <img className="productListImg" src={params.products.img} alt="" />
-            {params.products.name}
+            <img className="productListImg" src={params.row.img} alt="" />
+            {params.row.title}
           </div>
         );
       },
     },
-    { field: "firstName", headerName: "is Available", width: 110 },
+    { field: "isAvailable", headerName: "is Available", width: 110 },
 
     {
-      field: "age",
+      field: "price",
       headerName: "Price",
       width: 160,
     },
     {
       field: "categories",
-      headerName: "Price",
+      headerName: "Category",
       width: 160,
     },
-    // {
-    //   field: "action",
-    //   headerName: "Action",
-    //   width: 160,
-    //   renderCell: (params) => {
-    //     return (
-    //       <>
-    //         <Link to={"/product/" + params.products._id}>
-    //           <button className="productListButton">Edit</button>
-    //         </Link>
-    //         <DeleteOutline
-    //           className="productListDelete"
-    //           onClick={() => {
-    //             handleOnDelete(params.products._id);
-    //           }}
-    //         />
-    //       </>
-    //     );
-    //   },
-    // },
-  ];
-
-  const rows = [
-    { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-    { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-    { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-    { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-    { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-    { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-    { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-    { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-    { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
+    {
+      field: "action",
+      headerName: "Action",
+      width: 160,
+      renderCell: (params) => {
+        return (
+          <>
+            <Link to={"/product/" + params.row._id}>
+              <button className="productListButton">Edit</button>
+            </Link>
+            <DeleteOutline
+              className="productListDelete"
+              // onClick={() => {
+              //   handleOnDelete(params.products._id);
+              // }}
+            />
+          </>
+        );
+      },
+    },
   ];
 
   return (
     <div className="productList">
       <DataGrid
-        rows={rows}
+        rows={products}
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        getRowId={(row) => row._id}
+        pageSize={8}
         checkboxSelection
         disableSelectionOnClick
       />
