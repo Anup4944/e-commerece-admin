@@ -23,15 +23,15 @@ export const ProductList = () => {
   }, [dispatch]);
 
   const columns = [
-    { field: "_id", headerName: "ID", width: 90 },
+    { field: "_id", headerName: "ID", width: 200 },
     {
       field: "title",
-      headerName: "Product Name and Image",
-      width: 200,
+      headerName: "Product Name ",
+      width: 180,
       renderCell: (params) => {
         return (
           <div className="productListItem">
-            <img className="productListImg" src={params.row.img} alt="" />
+            {/* <img className="productListImg" src={params.row.img} alt="" /> */}
             {params.row.title}
           </div>
         );
@@ -42,7 +42,7 @@ export const ProductList = () => {
     {
       field: "price",
       headerName: "Price",
-      width: 160,
+      width: 100,
     },
     {
       field: "categories",
@@ -50,9 +50,24 @@ export const ProductList = () => {
       width: 160,
     },
     {
+      field: "onSale",
+      headerName: "on Sale",
+      width: 80,
+    },
+    {
+      field: "quantity",
+      headerName: "Stocks",
+      width: 80,
+    },
+    {
+      field: "salePrice",
+      headerName: "Sale Price",
+      width: 160,
+    },
+    {
       field: "action",
       headerName: "Action",
-      width: 160,
+      width: 100,
       renderCell: (params) => {
         return (
           <>

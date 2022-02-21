@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./product.css";
 import { Link } from "react-router-dom";
 import { productData } from "../user-list/dummyData";
 import { Chart } from "../../component/chart/Chart";
 import { PublishOutlined } from "@material-ui/icons";
 
+const initialState = {
+  isAvailable: "",
+  price: "",
+  quantity: "",
+  onSale: "",
+  salePrice: "",
+  saleEndDate: "",
+};
+
 export const SingleProduct = () => {
+  const [update, setUpdate] = useState(initialState);
   return (
     <div className="product">
       <div className="productTitleContainer">
@@ -48,17 +58,56 @@ export const SingleProduct = () => {
           </div>
         </div>
       </div>
+
       <div className="productBotton">
         <form className="productForm">
           <div className="productFormLeft">
-            <label>Product Name</label>
-            <input type="text" placeholder="Product name" />
-
             <label>Is Available</label>
-            <select name="instock" id="inStock">
-              <option value="yes">YES</option>
-              <option value="no">NO</option>
-            </select>
+            <label className="switch">
+              <input type="checkbox" />
+              <span className="slider round"></span>
+            </label>
+            <label>Price</label>
+            <input
+              name="price"
+              type="number"
+              // value={product.price}
+              // onChange={handleOnChange}
+              placeholder="123"
+              required
+            />
+            <label>Number of stocks available</label>
+            <input
+              name="price"
+              type="number"
+              // value={product.price}
+              // onChange={handleOnChange}
+              placeholder="123"
+              required
+            />
+            <label>Add product on Sale</label>
+            <label className="switch">
+              <input type="checkbox" />
+              <span className="slider round"></span>
+            </label>
+            <label>Sale Price</label>
+            <input
+              name="price"
+              type="number"
+              // value={product.price}
+              // onChange={handleOnChange}
+              placeholder="123"
+              required
+            />
+            <label>Sale End Date</label>
+            <input
+              type="date"
+              name="saleEndDate"
+              // value={product.saleEndDate}
+              min="18/02/2022"
+              max="31/12/2025"
+              // onChange={handleOnChange}
+            />
           </div>
           <div className="productFormRight">
             <div className="productUpload">
