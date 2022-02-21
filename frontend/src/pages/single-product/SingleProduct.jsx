@@ -16,6 +16,20 @@ const initialState = {
 
 export const SingleProduct = () => {
   const [update, setUpdate] = useState(initialState);
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+
+    setUpdate({
+      ...update,
+      [name]: value,
+    });
+    console.log(name, value);
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="product">
       <div className="productTitleContainer">
@@ -60,28 +74,34 @@ export const SingleProduct = () => {
       </div>
 
       <div className="productBotton">
-        <form className="productForm">
+        <form className="productForm" onSubmit={handleOnSubmit}>
           <div className="productFormLeft">
-            <label>Is Available</label>
-            <label className="switch">
-              <input type="checkbox" />
-              <span className="slider round"></span>
-            </label>
+            <label>Is available</label>
+            <select
+              name="isAvailable"
+              value={update.isAvailable}
+              onChange={handleOnChange}
+            >
+              <option>Please choose an option</option>
+
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
             <label>Price</label>
             <input
               name="price"
               type="number"
-              // value={product.price}
-              // onChange={handleOnChange}
+              value={update.price}
+              onChange={handleOnChange}
               placeholder="123"
               required
             />
             <label>Number of stocks available</label>
             <input
-              name="price"
+              name="quantity"
               type="number"
-              // value={product.price}
-              // onChange={handleOnChange}
+              value={update.quantity}
+              onChange={handleOnChange}
               placeholder="123"
               required
             />
@@ -92,10 +112,10 @@ export const SingleProduct = () => {
             </label>
             <label>Sale Price</label>
             <input
-              name="price"
+              name="salePrice"
               type="number"
-              // value={product.price}
-              // onChange={handleOnChange}
+              value={update.salePrice}
+              onChange={handleOnChange}
               placeholder="123"
               required
             />
@@ -103,10 +123,10 @@ export const SingleProduct = () => {
             <input
               type="date"
               name="saleEndDate"
-              // value={product.saleEndDate}
+              value={update.saleEndDate}
               min="18/02/2022"
               max="31/12/2025"
-              // onChange={handleOnChange}
+              onChange={handleOnChange}
             />
           </div>
           <div className="productFormRight">
