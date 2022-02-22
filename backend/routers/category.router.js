@@ -15,13 +15,15 @@ import {
 // ADD CATEGORY
 router.post("/", addCategoryValidation, async (req, res) => {
   try {
-    const { name, parentCat } = req.body;
+    const { newCategory, parentCategory } = req.body;
+
     const newCat = {
-      name,
-      parentCat,
+      newCategory,
+      parentCategory,
     };
 
     const result = await createCategory(newCat);
+    console.log(result);
     res.json({
       status: "success",
       message: "New Category saved",
