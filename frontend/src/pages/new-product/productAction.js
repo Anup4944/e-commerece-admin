@@ -47,11 +47,11 @@ export const saveProductAction = (frmDt) => async (dispatch) => {
     dispatch(requestFail(err));
   }
 };
-export const updateProductAction = (frmDt) => async (dispatch) => {
+export const updateProductAction = (_id, frmDt) => async (dispatch) => {
   try {
     dispatch(requestPending());
 
-    const result = await updateProductApi(frmDt);
+    const result = await updateProductApi(_id, frmDt);
 
     result.status === "success"
       ? dispatch(updateProductSuccess(result)) &&
@@ -71,7 +71,6 @@ export const getSingleProductAction = (_id) => async (dispatch) => {
     dispatch(requestPending());
 
     const result = await getSingleProductApi(_id);
-    console.log("from action", _id);
 
     result.status === "success" && dispatch(getSingleProductSuccess(result));
   } catch (error) {

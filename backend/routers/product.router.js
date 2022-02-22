@@ -11,7 +11,6 @@ import {
   updateProductById,
 } from "../models/product/product.model.js";
 const router = express.Router();
-import slugify from "slugify";
 
 // ADD PRODUCT
 router.post("/", newProductValidation, async (req, res) => {
@@ -79,14 +78,13 @@ router.get("/", async (req, res) => {
 });
 
 // UPDATE PRODUCT BY ID
-router.put("/:_id", updateProductValidation, async (req, res) => {
+router.put("/:_id", async (req, res) => {
   try {
     const { _id } = req.params;
 
     const newProduct = {
       ...req.body,
     };
-
     const prod = await getProductById(_id);
 
     if (!prod?._id) {

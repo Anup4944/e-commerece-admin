@@ -20,14 +20,13 @@ const initialState = {
 };
 
 export const SingleProduct = () => {
+  const { singleProd } = useSelector((state) => state.product);
+
   const [update, setUpdate] = useState(initialState);
 
   const dispatch = useDispatch();
 
-  const { products } = useSelector((state) => state.product);
-
   let { id } = useParams();
-  console.log(id);
 
   useEffect(() => {
     id && dispatch(getSingleProductAction(id));
@@ -45,7 +44,7 @@ export const SingleProduct = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateProductAction());
+    dispatch(updateProductAction(id, update));
   };
 
   return (
@@ -72,21 +71,42 @@ export const SingleProduct = () => {
           </div>
           <div className="productInfoBottom">
             <div className="productInfoItem">
-              <div className="productInfoKey">Id :</div>
-              <div className="productInfoValue">123</div>
+              <div className="productInfoKey">Is Available:</div>
+
+              {singleProd?.isAvailable === true ? (
+                <div className="productInfoValue"> Yes </div>
+              ) : (
+                <div className="productInfoValue"> No </div>
+              )}
             </div>
             <div className="productInfoItem">
-              <div className="productInfoKey">Sales :</div>
-              <div className="productInfoValue"> $123</div>
+              <div className="productInfoKey">Price :</div>
+              <div className="productInfoValue">$ {singleProd?.price}</div>
             </div>
             <div className="productInfoItem">
-              <div className="productInfoKey">Active : </div>
-              <div className="productInfoValue">Yes</div>
+              <div className="productInfoKey">Stocks :</div>
+              <div className="productInfoValue">{singleProd?.quantity}</div>
             </div>
             <div className="productInfoItem">
-              <div className="productInfoKey">In-stock : </div>
-              <div className="productInfoValue">No</div>
+              <div className="productInfoKey">Is on Sale:</div>
+
+              {singleProd?.onSale === true ? (
+                <div className="productInfoValue"> Yes </div>
+              ) : (
+                <div className="productInfoValue"> No </div>
+              )}
             </div>
+
+            {singleProd?.onSale === true ? (
+              <>
+                <div className="productInfoItem">
+                  <div className="productInfoKey">Sale Price : </div>
+                  <div className="productInfoValue">
+                    ${singleProd?.salePrice}
+                  </div>
+                </div>
+              </>
+            ) : null}
           </div>
         </div>
       </div>
@@ -135,24 +155,27 @@ export const SingleProduct = () => {
               <option value="false">No</option>
             </select>
 
-            <label>Sale Price</label>
-            <input
-              name="salePrice"
-              type="number"
-              value={update.salePrice}
-              onChange={handleOnChange}
-              placeholder="123"
-              required
-            />
-            <label>Sale End Date</label>
-            <input
-              type="date"
-              name="saleEndDate"
-              value={update.saleEndDate}
-              min="18/02/2022"
-              max="31/12/2025"
-              onChange={handleOnChange}
-            />
+            {update.onSale === "true" ? (
+              <>
+                <label>Sale Price</label>
+                <input
+                  name="salePrice"
+                  type="number"
+                  value={update.salePrice}
+                  onChange={handleOnChange}
+                  placeholder="123"
+                />
+                <label>Sale End Date</label>
+                <input
+                  type="date"
+                  name="saleEndDate"
+                  value={update.saleEndDate}
+                  min="18/02/2022"
+                  max="31/12/2025"
+                  onChange={handleOnChange}
+                />{" "}
+              </>
+            ) : null}
           </div>
           <div className="productFormRight">
             <div className="productUpload">

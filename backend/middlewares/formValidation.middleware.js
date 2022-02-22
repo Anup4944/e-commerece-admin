@@ -62,23 +62,13 @@ export const updateProductValidation = (req, res, next) => {
   req.body.saleEndDate =
     req.body.saleEndDate === "null" ? null : req.body.saleEndDate;
 
-  const categories = req.body.categories.length
-    ? req.body.categories.split(",")
-    : [];
-
-  req.body.categories = categories;
-
   const schema = Joi.object({
-    name: shortStr.required(),
-    qty: num.required(),
     isAvailable: boolean.required(),
-    onSale: boolean.required(),
     price: num.required(),
+    quantity: num.required(),
+    onSale: boolean.required(),
     salePrice: num,
     saleEndDate: date,
-    description: longStr.required(),
-    images: args,
-    categories: args,
   });
 
   //validation
