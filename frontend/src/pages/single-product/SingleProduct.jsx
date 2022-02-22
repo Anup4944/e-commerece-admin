@@ -10,17 +10,17 @@ import {
 } from "../new-product/productAction";
 import { useSelector, useDispatch } from "react-redux";
 
-const initialState = {
-  isAvailable: "",
-  price: "",
-  quantity: "",
-  onSale: "",
-  salePrice: "",
-  saleEndDate: "",
-};
-
 export const SingleProduct = () => {
   const { singleProd } = useSelector((state) => state.product);
+
+  const initialState = {
+    isAvailable: `${singleProd.isAvailable}`,
+    price: `${singleProd.price}`,
+    quantity: `${singleProd.quantity}`,
+    onSale: `${singleProd.onSale}`,
+    salePrice: `${singleProd.salePrice}`,
+    saleEndDate: `${singleProd.saleEndDate}`,
+  };
 
   const [update, setUpdate] = useState(initialState);
 

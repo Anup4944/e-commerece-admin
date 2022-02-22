@@ -44,7 +44,7 @@ export const Sidebar = () => {
                 <PlusOneOutlined className="sidebarIcon" /> Add new product
               </li>
             </Link>
-            <Link to="/newProduct" className="link">
+            <Link to="/newCategory" className="link">
               <li className="sidebarListItem">
                 <CategorySharp className="sidebarIcon" /> Add new category
               </li>
