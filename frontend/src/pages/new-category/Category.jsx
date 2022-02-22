@@ -9,10 +9,11 @@ const initialState = {
 };
 
 export const Category = () => {
-  const [category, setCategory] = useState(initialState);
+  const [categoryInfo, setCategoryInfo] = useState(initialState);
   const dispatch = useDispatch();
 
-  const { status, message } = useSelector((state) => state.product);
+  const { categories } = useSelector((state) => state.category);
+  console.log(categories);
 
   useEffect(() => {
     dispatch(getAllCategoryAction());
@@ -28,17 +29,24 @@ export const Category = () => {
           <input
             type="text"
             name="newCategory"
-            value={category.newCategory}
+            value={categoryInfo.newCategory}
             required
           />
         </div>
 
         <div className="addCategoryItem">
           <label>Select Parent Category</label>
-          <select name="parentCategory" value={category.parentCategory}>
+          <select name="parentCategory">
             <option>Please choose an option</option>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
+            {categories &&
+              categories.map((item) => {
+                <option value={item} key={item}>
+                  {item.name}
+                  {/* {console.log(i)} */}
+                </option>;
+              })}
+            {/* <option value="true">Yes</option>
+            <option value="false">No</option> */}
           </select>
         </div>
 
