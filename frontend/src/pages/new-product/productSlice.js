@@ -22,6 +22,7 @@ const productSlice = createSlice({
       state.products = payload.result;
     },
     getAllProductSuccess: (state, { payload }) => {
+      console.log(payload);
       state.isLoading = false;
       state.status = payload.status;
       state.message = payload.message;

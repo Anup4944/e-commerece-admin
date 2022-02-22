@@ -6,11 +6,7 @@ const CategorySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    slug: {
-      type: String,
-      require: true,
-      default: "",
-    },
+
     parentCat: {
       type: mongoose.Schema.ObjectId,
       default: null,

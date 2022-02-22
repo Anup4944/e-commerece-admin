@@ -8,6 +8,7 @@ import slugify from "slugify";
 import {
   createCategory,
   deleteCategory,
+  getAllCategory,
   updateCategory,
 } from "../models/category/category.model.js";
 
@@ -17,7 +18,6 @@ router.post("/", addCategoryValidation, async (req, res) => {
     const { name, parentCat } = req.body;
     const newCat = {
       name,
-      slug: slugify(name, { lower: true }),
       parentCat,
     };
 
@@ -26,6 +26,21 @@ router.post("/", addCategoryValidation, async (req, res) => {
       status: "success",
       message: "New Category saved",
       result,
+    });
+  } catch (error) {
+    console.log(error);
+    throw new Error(error.message);
+  }
+});
+
+// GET ALL CATEGORY
+router.get("/", async (req, res) => {
+  try {
+    const allCategories = await getAllCategory();
+    res.send({
+      status: "success",
+      message: "Here are all categories",
+      allCategories,
     });
   } catch (error) {
     console.log(error);

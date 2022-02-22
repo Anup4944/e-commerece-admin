@@ -123,9 +123,12 @@ POST http://localhost:5000/api/v1/category
 Content-Type: application/json
 
 {
-  "name": "Electronics",
-  "parentCat": ""
+  "name": "Household",
+  "parentCat": null
 }
+
+### GET ALL CATEGORY
+GET http://localHost:5000/api/v1/category
 
 ### UDPATE CATEGORY
 PUT http://localhost:5000/api/v1/category

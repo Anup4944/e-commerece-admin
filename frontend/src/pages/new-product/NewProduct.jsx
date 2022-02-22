@@ -43,7 +43,6 @@ export const NewProduct = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     dispatch(saveProductAction(product));
-    console.log(product);
   };
 
   return (

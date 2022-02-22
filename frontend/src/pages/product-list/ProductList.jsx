@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@material-ui/icons";
-import { productRows } from "../user-list/dummyData";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
