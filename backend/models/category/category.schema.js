@@ -4,9 +4,8 @@ const CategorySchema = new mongoose.Schema(
   {
     newCategory: {
       type: String,
-      required: true,
+      unique: true,
     },
-
     parentCategory: {
       type: mongoose.Schema.ObjectId,
       required: false,

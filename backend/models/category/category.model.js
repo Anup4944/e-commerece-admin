@@ -1,7 +1,6 @@
 import CategorySchema from "./category.schema.js";
 
-export const createCategory = ({ catObj }) => {
-  console.log(catObj);
+export const createCategory = (catObj) => {
   return CategorySchema(catObj).save();
 };
 

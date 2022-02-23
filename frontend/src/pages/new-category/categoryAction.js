@@ -26,14 +26,14 @@ export const saveCategoryAction = (frmDt) => async (dispatch) => {
 
     const result = await addCategoryApi(frmDt);
 
-    result.status === "success"
-      ? dispatch(addCategorySuccess(result))
+    result.status === "successfull"
+      ? dispatch(addCategorySuccess(result)) && dispatch(getAllCategoryAction())
       : dispatch(requestFail());
   } catch (error) {
     const err = {
       status: "error",
       message: error.message,
     };
-    dispatch(requestPending(err));
+    dispatch(requestFail(err));
   }
 };

@@ -123,8 +123,8 @@ POST http://localhost:5000/api/v1/category
 Content-Type: application/json
 
 {
-  "name": "Household",
-  "parentCat": null
+  "newCategory": "Footwear",
+  "parentCategory": null
 }
 
 ### GET ALL CATEGORY

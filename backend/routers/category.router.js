@@ -4,7 +4,7 @@ import {
   updateCategoryValidation,
 } from "../middlewares/formValidation.middleware.js";
 const router = express.Router();
-import slugify from "slugify";
+
 import {
   createCategory,
   deleteCategory,
@@ -23,9 +23,9 @@ router.post("/", addCategoryValidation, async (req, res) => {
     };
 
     const result = await createCategory(newCat);
-    console.log(result);
-    res.json({
-      status: "success",
+
+    res.send({
+      status: "successfull",
       message: "New Category saved",
       result,
     });

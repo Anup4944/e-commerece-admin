@@ -1,56 +1,79 @@
 import React, { useState, useEffect } from "react";
 import "./category.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCategoryAction } from "./categoryAction";
+import { getAllCategoryAction, saveCategoryAction } from "./categoryAction";
 
 const initialState = {
   newCategory: "",
-  parentCategory: "",
+  parentCategory: null,
 };
 
 export const Category = () => {
   const [categoryInfo, setCategoryInfo] = useState(initialState);
   const dispatch = useDispatch();
 
-  const { categories } = useSelector((state) => state.category);
-  console.log(categories);
+  const { categories, status, message } = useSelector(
+    (state) => state.category
+  );
 
   useEffect(() => {
     dispatch(getAllCategoryAction());
   }, [dispatch]);
 
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+
+    setCategoryInfo({
+      ...categoryInfo,
+      [name]: value,
+    });
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    dispatch(saveCategoryAction(categoryInfo));
+  };
   return (
     <div className="category">
+      {status === "successfull"
+        ? message && <span style={{ color: "green" }}>{message}</span>
+        : null}
       <h1 className="addCatgeoryTitle">Add new Category</h1>
 
-      <form className="addCategoryForm">
+      <form className="addCategoryForm" onSubmit={handleOnSubmit}>
         <div className="addCategoryItem">
           <label>New Category</label>
           <input
             type="text"
             name="newCategory"
             value={categoryInfo.newCategory}
+            onChange={handleOnChange}
             required
           />
         </div>
 
         <div className="addCategoryItem">
           <label>Select Parent Category</label>
-          <select name="parentCategory">
+          <select
+            name="parentCategory"
+            value={categoryInfo.parentCategory}
+            onChange={handleOnChange}
+          >
             <option>Please choose an option</option>
-            {categories &&
-              categories.map((item) => {
-                <option value={item} key={item}>
-                  {item.name}
-                  {/* {console.log(i)} */}
-                </option>;
+            {categories.length &&
+              categories.map((item, i) => {
+                return (
+                  <option value={item.newCategory} key={(item, i)}>
+                    {item.newCategory}
+                  </option>
+                );
               })}
-            {/* <option value="true">Yes</option>
-            <option value="false">No</option> */}
           </select>
         </div>
 
-        <button className="addCategoryButton">Publish</button>
+        <button type="submit" className="addCategoryButton">
+          Publish
+        </button>
       </form>
     </div>
   );
