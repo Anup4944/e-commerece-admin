@@ -5,17 +5,15 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import "./productList.css";
-import { getAllProductAction } from "../new-product/productAction";
+import {
+  deleteProductAction,
+  getAllProductAction,
+} from "../new-product/productAction";
 
 export const ProductList = () => {
   const { products } = useSelector((state) => state.product);
-  // const [data, setData] = useState(products);
 
   const dispatch = useDispatch();
-
-  // const handleOnDelete = (id) => {
-  //   setData(data.filter((item) => item.id !== id));
-  // };
 
   useEffect(() => {
     dispatch(getAllProductAction());
@@ -28,12 +26,7 @@ export const ProductList = () => {
       headerName: "Product Name ",
       width: 180,
       renderCell: (params) => {
-        return (
-          <div className="productListItem">
-            {/* <img className="productListImg" src={params.row.img} alt="" /> */}
-            {params.row.title}
-          </div>
-        );
+        return <div className="productListItem">{params.row.title}</div>;
       },
     },
     { field: "isAvailable", headerName: "is Available", width: 110 },
@@ -75,9 +68,9 @@ export const ProductList = () => {
             </Link>
             <DeleteOutline
               className="productListDelete"
-              // onClick={() => {
-              //   handleOnDelete(params.products._id);
-              // }}
+              onClick={() => {
+                dispatch(deleteProductAction(params.row._id));
+              }}
             />
           </>
         );

@@ -44,7 +44,6 @@ router.post("/", newProductValidation, async (req, res) => {
 // GET PRODUCT BY ID
 router.get("/:_id", async (req, res) => {
   const { _id } = req.params;
-  console.log(_id);
   try {
     const singleProduct = await getProductById(_id);
 

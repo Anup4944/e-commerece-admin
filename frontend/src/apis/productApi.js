@@ -44,3 +44,14 @@ export const updateProductApi = (_id, frmDt) => {
     }
   });
 };
+
+export const deleteProductApi = async (_id) => {
+  try {
+    const { data } = await axios.delete(
+      `http://localhost:5000/api/v1/product/${_id}`
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
