@@ -15,6 +15,7 @@ import {
   AddIcCallTwoTone,
   PlusOneOutlined,
   CategorySharp,
+  CategoryOutlined,
 } from "@material-ui/icons";
 import { Link, useHistory } from "react-router-dom";
 import { logoutAction } from "../../pages/login/loginAction";
@@ -34,7 +35,7 @@ export const Sidebar = () => {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
-            <Link to="/" className="link">
+            <Link to="/home" className="link">
               <li className="sidebarListItem">
                 <LineStyle className="sidebarIcon" /> Home
               </li>
@@ -46,7 +47,7 @@ export const Sidebar = () => {
             </Link>
             <Link to="/newCategory" className="link">
               <li className="sidebarListItem">
-                <CategorySharp className="sidebarIcon" /> Add new category
+                <CategoryOutlined className="sidebarIcon" /> Add new category
               </li>
             </Link>
             <li className="sidebarListItem">

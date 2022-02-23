@@ -67,7 +67,7 @@ router.get("/", async (req, res) => {
   try {
     const result = await getAllProducts();
     res.json({
-      status: "success",
+      status: "successfull",
       message: "Here are all  products",
       result,
     });

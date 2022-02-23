@@ -113,7 +113,7 @@ GET http://localhost:5000/api/v1/product/62119eec2bbb48a70af18210
 GET http://localhost:5000/api/v1/product
 
 ### DELETE PRODUCT BY ID
-DELETE http://localhost:5000/api/v1/product/620328b6daa542f9bbc72c7f
+DELETE http://localhost:5000/api/v1/product/6212dd1ff33d4356f09e3406
 
 
 ################## CATEGORY ####################

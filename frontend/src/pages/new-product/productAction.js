@@ -39,7 +39,7 @@ export const saveProductAction = (frmDt) => async (dispatch) => {
     const result = await addProductApi(frmDt);
 
     result.status === "success"
-      ? dispatch(addProductSuccess(result)) && dispatch(getAllProductAction())
+      ? dispatch(addProductSuccess(result))
       : dispatch(requestFail(result));
   } catch (error) {
     const err = {

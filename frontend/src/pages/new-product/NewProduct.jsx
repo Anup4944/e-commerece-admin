@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./newProduct.css";
 import { useDispatch, useSelector } from "react-redux";
 import { saveProductAction } from "./productAction";
+import { getAllCategoryAction } from "../new-category/categoryAction";
 
 const initalState = {
   isAvailable: true,
@@ -20,16 +21,9 @@ export const NewProduct = () => {
   const [product, setProduct] = useState(initalState);
 
   const { status, message } = useSelector((state) => state.product);
+  const { categories } = useSelector((state) => state.category);
 
   const dispatch = useDispatch();
-
-  const categories = [
-    "Household",
-    "Electronice",
-    "Phones",
-    "Car parts",
-    "Ps5 Accessories",
-  ];
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -45,12 +39,21 @@ export const NewProduct = () => {
     dispatch(saveProductAction(product));
   };
 
+  useEffect(() => {
+    dispatch(getAllCategoryAction());
+  }, [dispatch]);
+
   return (
     <div className="newProduct">
       <h1 className="addProductTitle">New Product</h1>
       {status === "error"
         ? message && <span style={{ color: "tomato" }}>{message}</span>
         : null}
+
+      {status === "success"
+        ? message && <span style={{ color: "green" }}>{message}</span>
+        : null}
+
       <form className="addProductForm" onSubmit={handleOnSubmit}>
         <div className="addProductItem">
           <div className="addProductItem">
@@ -97,15 +100,14 @@ export const NewProduct = () => {
             required
           >
             <option>Please choose an categories</option>
-            {categories &&
-              categories.map((item) => (
-                <>
-                  <option value={item} key={item}>
-                    {" "}
-                    {item}
+            {categories.length &&
+              categories.map((item, i) => {
+                return (
+                  <option value={item.newCategory} key={(item, i)}>
+                    {item.newCategory}
                   </option>
-                </>
-              ))}
+                );
+              })}
           </select>
         </div>
 

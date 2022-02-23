@@ -22,7 +22,7 @@ function App() {
     <>
       <Router>
         <Switch>
-          {/* <Route exact path="/">
+          <Route exact path="/">
             <Login />
           </Route>
           <Route exact path="/enter-email">
@@ -31,41 +31,41 @@ function App() {
           <Route exact path="/update-password">
             <UpdatePass />
           </Route>
-          {isAuth && ( */}
-          <>
-            <Topbar />
-            <div className="container">
-              <Sidebar />
+          {isAuth && (
+            <>
+              <Topbar />
+              <div className="container">
+                <Sidebar />
 
-              <Route exact path="/">
-                <Home />
-              </Route>
+                <Route exact path="/home">
+                  <Home />
+                </Route>
 
-              <Route exact path="/users">
-                <UserList />
-              </Route>
-              <Route exact path="/user/:userId">
-                <SingleUser />
-              </Route>
-              <Route exact path="/newUser">
-                <NewUser />
-              </Route>
-              <Route exact path="/newProduct">
-                <NewProduct />
-              </Route>
-              <Route exact path="/newCategory">
-                <Category />
-              </Route>
-              <Route exact path="/products">
-                <ProductList />
-              </Route>
+                <Route exact path="/users">
+                  <UserList />
+                </Route>
+                <Route exact path="/user/:userId">
+                  <SingleUser />
+                </Route>
+                <Route exact path="/newUser">
+                  <NewUser />
+                </Route>
+                <Route exact path="/newProduct">
+                  <NewProduct />
+                </Route>
+                <Route exact path="/newCategory">
+                  <Category />
+                </Route>
+                <Route exact path="/products">
+                  <ProductList />
+                </Route>
 
-              <Route exact path="/product/:id">
-                <SingleProduct />
-              </Route>
-            </div>
-          </>
-          {/* )} */}
+                <Route exact path="/product/:id">
+                  <SingleProduct />
+                </Route>
+              </div>
+            </>
+          )}
         </Switch>
       </Router>
     </>
