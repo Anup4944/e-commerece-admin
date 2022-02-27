@@ -19,6 +19,7 @@ const initalState = {
 
 export const NewProduct = () => {
   const [product, setProduct] = useState(initalState);
+  const [images, setImages] = useState([]);
 
   const { status, message } = useSelector((state) => state.product);
   const { categories } = useSelector((state) => state.category);
@@ -34,9 +35,27 @@ export const NewProduct = () => {
     });
   };
 
+  const handleOnImgSelect = (e) => {
+    const { files } = e.target;
+    setImages(files);
+  };
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    dispatch(saveProductAction(product));
+    const formData = new FormData();
+
+    Object.keys(product).map((key) => {
+      key !== "images" && formData.append(key, product[key]);
+    });
+
+    images.length &&
+      [...images].map((image) => {
+        formData.append("images", image);
+      });
+
+    console.log(formData);
+
+    // dispatch(saveProductAction(formData));
   };
 
   useEffect(() => {
@@ -54,7 +73,11 @@ export const NewProduct = () => {
         ? message && <span style={{ color: "green" }}>{message}</span>
         : null}
 
-      <form className="addProductForm" onSubmit={handleOnSubmit}>
+      <form
+        className="addProductForm"
+        onSubmit={handleOnSubmit}
+        encType="multipart/form-data"
+      >
         <div className="addProductItem">
           <div className="addProductItem">
             <label>Is available</label>
@@ -70,12 +93,14 @@ export const NewProduct = () => {
             </select>
           </div>
 
-          <label>Image</label>
+          <label>Upload Image</label>
           <input
             type="file"
             name="images"
             value={product.images}
-            onChange={handleOnChange}
+            onChange={handleOnImgSelect}
+            multiple
+            accept="image/*"
           />
         </div>
 

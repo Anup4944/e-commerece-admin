@@ -4,7 +4,11 @@ const rootUrl = "http://localhost:5000/api/v1/product";
 
 export const addProductApi = async (productInfo) => {
   try {
-    const { data } = await axios.post(rootUrl, productInfo);
+    const { data } = await axios.post(rootUrl, productInfo, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     return data;
   } catch (error) {
     console.log(error);
