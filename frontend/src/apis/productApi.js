@@ -14,6 +14,7 @@ export const addProductApi = async (productInfo) => {
 export const getAllProductApi = async () => {
   try {
     const { data } = await axios.get(rootUrl);
+
     return data;
   } catch (error) {
     console.log(error);

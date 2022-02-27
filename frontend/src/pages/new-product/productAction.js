@@ -21,7 +21,7 @@ export const getAllProductAction = () => async (dispatch) => {
 
     const result = await getAllProductApi();
 
-    result.status === "success"
+    result.status === "successfull"
       ? dispatch(getAllProductSuccess(result))
       : dispatch(requestFail(result));
   } catch (error) {
