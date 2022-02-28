@@ -19,7 +19,7 @@ const initalState = {
 
 export const NewProduct = () => {
   const [product, setProduct] = useState(initalState);
-  const [pic, setPic] = useState([]);
+  const [images, setImages] = useState([]);
 
   const { status, message } = useSelector((state) => state.product);
   const { categories } = useSelector((state) => state.category);
@@ -44,12 +44,18 @@ export const NewProduct = () => {
       key !== "images" && formData.append(key, product[key]);
     });
 
-    pic.length &&
-      [...pic].map((item) => {
-        formData.append("images", item);
-      });
+    images.length &&
+      [...images].map((image) => {
+        formData.append("images", image);
+        console.log(formData.getAll("images"));
 
-    console.log(formData);
+        for (var value of formData.values()) {
+          console.log(value);
+        }
+        for (var pair of formData.entries()) {
+          console.log(pair[0] + ", " + pair[1]);
+        }
+      });
 
     // dispatch(saveProductAction(formData));
   };
@@ -57,10 +63,7 @@ export const NewProduct = () => {
   const handleOnImgSelect = (e) => {
     const { files } = e.target;
 
-    setPic(files);
-
-    console.log(files);
-    console.log(pic);
+    setImages(files);
   };
 
   useEffect(() => {
@@ -100,6 +103,7 @@ export const NewProduct = () => {
 
           <label>Upload Image</label>
           <input
+            name="images"
             type="file"
             onChange={handleOnImgSelect}
             multiple
