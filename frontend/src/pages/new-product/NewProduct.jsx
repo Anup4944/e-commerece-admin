@@ -48,16 +48,15 @@ export const NewProduct = () => {
       [...images].map((image) => {
         formData.append("images", image);
         console.log(formData.getAll("images"));
+        dispatch(saveProductAction(formData));
 
-        for (var value of formData.values()) {
-          console.log(value);
-        }
-        for (var pair of formData.entries()) {
-          console.log(pair[0] + ", " + pair[1]);
-        }
+        // for (var value of formData.values()) {
+        //   console.log(value);
+        // }
+        // for (var pair of formData.entries()) {
+        //   console.log(pair[0] + ", " + pair[1]);
+        // }
       });
-
-    // dispatch(saveProductAction(formData));
   };
 
   const handleOnImgSelect = (e) => {

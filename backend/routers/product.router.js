@@ -78,7 +78,10 @@ router.post(
       });
     } catch (error) {
       console.log(error);
-      throw error;
+      res.send({
+        status: "error",
+        message: error.message,
+      });
     }
   }
 );
