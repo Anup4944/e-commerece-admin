@@ -19,7 +19,7 @@ const initalState = {
 
 export const NewProduct = () => {
   const [product, setProduct] = useState(initalState);
-  const [images, setImages] = useState([]);
+  const [pic, setPic] = useState([]);
 
   const { status, message } = useSelector((state) => state.product);
   const { categories } = useSelector((state) => state.category);
@@ -35,27 +35,32 @@ export const NewProduct = () => {
     });
   };
 
-  const handleOnImgSelect = (e) => {
-    const { files } = e.target;
-    setImages(files);
-  };
-
   const handleOnSubmit = (e) => {
     e.preventDefault();
+
     const formData = new FormData();
 
     Object.keys(product).map((key) => {
       key !== "images" && formData.append(key, product[key]);
     });
 
-    images.length &&
-      [...images].map((image) => {
-        formData.append("images", image);
+    pic.length &&
+      [...pic].map((item) => {
+        formData.append("images", item);
       });
 
     console.log(formData);
 
     // dispatch(saveProductAction(formData));
+  };
+
+  const handleOnImgSelect = (e) => {
+    const { files } = e.target;
+
+    setPic(files);
+
+    console.log(files);
+    console.log(pic);
   };
 
   useEffect(() => {
@@ -96,8 +101,6 @@ export const NewProduct = () => {
           <label>Upload Image</label>
           <input
             type="file"
-            name="images"
-            value={product.images}
             onChange={handleOnImgSelect}
             multiple
             accept="image/*"
