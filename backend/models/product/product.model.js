@@ -9,7 +9,6 @@ export const getAllProducts = () => {
 };
 
 export const getProductById = (_id) => {
-  console.log(_id);
   return ProductSchema.findById(_id);
 };
 

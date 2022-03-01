@@ -13,6 +13,10 @@ import { useSelector, useDispatch } from "react-redux";
 export const SingleProduct = () => {
   const { singleProd } = useSelector((state) => state.product);
 
+  const imgData = new Array(singleProd?.images);
+
+  console.log(imgData);
+
   const initialState = {
     isAvailable: `${singleProd.isAvailable}`,
     price: `${singleProd.price}`,
@@ -62,11 +66,10 @@ export const SingleProduct = () => {
         </div>
         <div className="productTopRight">
           <div className="productInfoTop">
-            <img
-              src="https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-              alt=""
-              className="productInfoImg"
-            />
+            {imgData.length &&
+              imgData.map((item) => {
+                return <img src={`${item}`} className="productInfoImg" />;
+              })}
             <div className="productName">Apple Airpods</div>{" "}
           </div>
           <div className="productInfoBottom">

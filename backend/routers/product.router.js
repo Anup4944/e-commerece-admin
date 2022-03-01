@@ -55,7 +55,6 @@ router.post(
   upload.array("images", 5),
   newProductValidation,
   async (req, res) => {
-    console.log(req.body);
     try {
       const newProd = {
         ...req.body,
