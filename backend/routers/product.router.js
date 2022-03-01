@@ -23,19 +23,19 @@ const ALLOW_FILE_TYPE = {
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    let err = null;
+    let error = null;
 
     const isAllowed = ALLOW_FILE_TYPE[file.mimetype];
 
     if (!isAllowed) {
-      err = new Error(
+      error = new erroror(
         "Some of the file types are not allowed, Only images are allowed"
       );
 
-      err.status = 400;
+      error.status = 400;
     }
 
-    cb(err, "public/product-images");
+    cb(error, "public/img/product");
   },
   filename: function (req, file, cb) {
     const fileName = slugify(file.originalname.split(".")[0]);
@@ -61,20 +61,21 @@ router.post(
         date: new Date(req.body.saleEndDate),
       };
 
-      const basePath = `${req.protocol}://${req.get("host")}/product-images/`;
+      const basePath = `${req.protocol}://${req.get("host")}/img/product/`;
       const files = req.files;
-      console.log(files);
 
       const images = [];
 
+      console.log(files);
+
       files.map((file) => {
         const imgFullPath = basePath + file.filename;
-
+        console.log(imgFullPath);
         images.push(imgFullPath);
       });
-
+      console.log(images);
       const result = await insertProduct({ ...newProd, images });
-
+      console.log(result);
       if (result?._id) {
         return res.send({
           status: "success",
@@ -102,7 +103,7 @@ router.get("/:_id", async (req, res) => {
   const { _id } = req.params;
   try {
     const singleProduct = await getProductById(_id);
-
+    console.log(singleProduct);
     singleProduct
       ? res.json({
           status: "success",

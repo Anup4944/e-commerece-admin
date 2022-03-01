@@ -15,8 +15,6 @@ export const SingleProduct = () => {
 
   const imgData = new Array(singleProd?.images);
 
-  console.log(imgData);
-
   const initialState = {
     isAvailable: `${singleProd.isAvailable}`,
     price: `${singleProd.price}`,
@@ -43,7 +41,6 @@ export const SingleProduct = () => {
       ...update,
       [name]: value,
     });
-    console.log(name, value);
   };
 
   const handleOnSubmit = (e) => {
@@ -68,7 +65,8 @@ export const SingleProduct = () => {
           <div className="productInfoTop">
             {imgData.length &&
               imgData.map((item) => {
-                return <img src={`${item}`} className="productInfoImg" />;
+                console.log(item);
+                return <img src={item} className="productInfoImg" />;
               })}
             <div className="productName">Apple Airpods</div>{" "}
           </div>

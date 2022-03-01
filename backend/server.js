@@ -46,6 +46,8 @@ app.use((req, res, next) => {
   next(error);
 });
 
+app.use("/uploads", express.static("uploads"));
+
 //handle error
 import { handleError } from "./utils/errorHandler.js";
 app.use((error, req, res, next) => {
