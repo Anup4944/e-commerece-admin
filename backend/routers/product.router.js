@@ -62,7 +62,19 @@ router.post(
         date: new Date(req.body.saleEndDate),
       };
 
-      const result = await insertProduct(newProd);
+      const basePath = `${req.protocol}://${req.get("host")}/product-images/`;
+      const files = req.files;
+      console.log(files);
+
+      const images = [];
+
+      files.map((file) => {
+        const imgFullPath = basePath + file.filename;
+
+        images.push(imgFullPath);
+      });
+
+      const result = await insertProduct({ ...newProd, images });
 
       if (result?._id) {
         return res.send({

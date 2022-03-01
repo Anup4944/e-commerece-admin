@@ -3,6 +3,7 @@ import axios from "axios";
 const rootUrl = "http://localhost:5000/api/v1/product";
 
 export const addProductApi = async (productInfo) => {
+  console.log(productInfo);
   try {
     const { data } = await axios.post(rootUrl, productInfo, {
       headers: {
@@ -10,6 +11,7 @@ export const addProductApi = async (productInfo) => {
       },
     });
     return data;
+    console.log(data);
   } catch (error) {
     console.log(error);
   }
