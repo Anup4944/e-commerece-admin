@@ -35,7 +35,7 @@ const storage = multer.diskStorage({
       error.status = 400;
     }
 
-    cb(error, "./public/img/product");
+    cb(error, "public/img/product");
   },
   filename: function (req, file, cb) {
     const fileName = slugify(file.originalname.split(".")[0]);
@@ -55,7 +55,7 @@ router.all("*", (req, res, next) => {
 // ADD PRODUCT
 router.post(
   "/",
-  upload.array("images"),
+  upload.array("images", 5),
   newProductValidation,
   async (req, res) => {
     try {
@@ -64,26 +64,17 @@ router.post(
         date: new Date(req.body.saleEndDate),
       };
 
-      const basePath = `${req.protocol}://${req.get(
-        "host"
-      )}/public/img/product/`;
-
-      console.log(basePath);
+      const basePath = `${req.protocol}://${req.get("host")}/img/product/`;
 
       const files = req.files;
 
       const images = [];
 
-      console.log(files);
-
       files.map((file) => {
         const imgFullPath = basePath + file.filename;
-        console.log(imgFullPath);
         images.push(imgFullPath);
       });
-      console.log(images);
       const result = await insertProduct({ ...newProd, images });
-      console.log(result);
       if (result?._id) {
         return res.send({
           status: "success",
