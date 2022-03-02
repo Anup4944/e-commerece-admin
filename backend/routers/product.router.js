@@ -28,14 +28,14 @@ const storage = multer.diskStorage({
     const isAllowed = ALLOW_FILE_TYPE[file.mimetype];
 
     if (!isAllowed) {
-      error = new erroror(
+      error = new Error(
         "Some of the file types are not allowed, Only images are allowed"
       );
 
       error.status = 400;
     }
 
-    cb(error, "public/img/product");
+    cb(error, "./public/img/product");
   },
   filename: function (req, file, cb) {
     const fileName = slugify(file.originalname.split(".")[0]);
@@ -49,10 +49,13 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+router.all("*", (req, res, next) => {
+  next();
+});
 // ADD PRODUCT
 router.post(
   "/",
-  upload.array("images", 5),
+  upload.array("images"),
   newProductValidation,
   async (req, res) => {
     try {
@@ -61,7 +64,12 @@ router.post(
         date: new Date(req.body.saleEndDate),
       };
 
-      const basePath = `${req.protocol}://${req.get("host")}/img/product/`;
+      const basePath = `${req.protocol}://${req.get(
+        "host"
+      )}/public/img/product/`;
+
+      console.log(basePath);
+
       const files = req.files;
 
       const images = [];
@@ -101,9 +109,11 @@ router.post(
 // GET PRODUCT BY ID
 router.get("/:_id", async (req, res) => {
   const { _id } = req.params;
+
   try {
     const singleProduct = await getProductById(_id);
     console.log(singleProduct);
+
     singleProduct
       ? res.json({
           status: "success",
