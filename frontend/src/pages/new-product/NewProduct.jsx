@@ -47,13 +47,6 @@ export const NewProduct = () => {
     images.length &&
       [...images].map((image) => {
         formData.append("images", image);
-
-        // for (var value of formData.values()) {
-        //   console.log(value);
-        // }
-        // for (var pair of formData.entries()) {
-        //   console.log(pair[0] + ", " + pair[1]);
-        // }
       });
 
     dispatch(saveProductAction(formData));
@@ -107,6 +100,7 @@ export const NewProduct = () => {
             onChange={handleOnImgSelect}
             multiple
             accept="image/*"
+            required
           />
         </div>
 

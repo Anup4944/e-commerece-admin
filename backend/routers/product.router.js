@@ -103,7 +103,6 @@ router.get("/:_id", async (req, res) => {
 
   try {
     const singleProduct = await getProductById(_id);
-    console.log(singleProduct);
 
     singleProduct
       ? res.json({

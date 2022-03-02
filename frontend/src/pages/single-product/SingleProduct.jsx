@@ -62,13 +62,12 @@ export const SingleProduct = () => {
           <Chart data={productData} dataKey="Sales" title="Sales Performance" />
         </div>
         <div className="productTopRight">
+          <div className="productName">{singleProd.title}</div>{" "}
           <div className="productInfoTop">
             {imgData.length &&
               imgData.map((item) => {
-                console.log(item);
                 return <img src={item} className="productInfoImg" />;
               })}
-            <div className="productName">Apple Airpods</div>{" "}
           </div>
           <div className="productInfoBottom">
             <div className="productInfoItem">
@@ -180,11 +179,10 @@ export const SingleProduct = () => {
           </div>
           <div className="productFormRight">
             <div className="productUpload">
-              <img
-                src="https://images.pexels.com/photos/7156886/pexels-photo-7156886.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                alt=""
-                className="productUploadImg"
-              />
+              {imgData.length &&
+                imgData.map((item) => {
+                  return <img src={item} className="productUploadImg" />;
+                })}
 
               <label for="file">
                 <PublishOutlined />
