@@ -11,6 +11,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 
 export const SingleProduct = () => {
+  const [images, setImages] = useState([]);
   const { singleProd } = useSelector((state) => state.product);
 
   const imgData = new Array(singleProd?.images);
@@ -22,6 +23,7 @@ export const SingleProduct = () => {
     onSale: `${singleProd.onSale}`,
     salePrice: `${singleProd.salePrice}`,
     saleEndDate: `${singleProd.saleEndDate}`,
+    images: [],
   };
 
   const [update, setUpdate] = useState(initialState);
@@ -45,7 +47,24 @@ export const SingleProduct = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateProductAction(id, update));
+
+    const formData = new FormData();
+
+    Object.keys(update).map((key) => {
+      key !== "images" && formData.append(key, update[key]);
+    });
+
+    images.length &&
+      [...images].map((image) => {
+        formData.append("images", image);
+      });
+
+    dispatch(updateProductAction(id, formData));
+  };
+
+  const handleOnImgSelect = (e) => {
+    const { files } = e.target;
+    setImages(files);
   };
 
   return (
@@ -57,10 +76,12 @@ export const SingleProduct = () => {
           <button className="productAddButton">Add </button>
         </Link>
       </div>
+
       <div className="productTop">
         <div className="productTopLeft">
           <Chart data={productData} dataKey="Sales" title="Sales Performance" />
         </div>
+
         <div className="productTopRight">
           <div className="productName">{singleProd.title}</div>{" "}
           <div className="productInfoTop">
@@ -112,7 +133,11 @@ export const SingleProduct = () => {
       </div>
 
       <div className="productBotton">
-        <form className="productForm" onSubmit={handleOnSubmit}>
+        <form
+          className="productForm"
+          onSubmit={handleOnSubmit}
+          encType="multipart/form-data"
+        >
           <div className="productFormLeft">
             <label>Is available</label>
             <select
@@ -178,16 +203,23 @@ export const SingleProduct = () => {
             ) : null}
           </div>
           <div className="productFormRight">
+            Change image from here
             <div className="productUpload">
               {imgData.length &&
                 imgData.map((item) => {
                   return <img src={item} className="productUploadImg" />;
                 })}
-
               <label for="file">
+                {" "}
                 <PublishOutlined />
               </label>
-              <input type="file" id="file" />
+
+              <input
+                type="file"
+                name="images"
+                onChange={handleOnImgSelect}
+                accept="image/*"
+              />
             </div>
             <button className="productButton">Update</button>
           </div>

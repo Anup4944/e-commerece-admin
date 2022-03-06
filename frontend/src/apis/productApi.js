@@ -3,7 +3,6 @@ import axios from "axios";
 const rootUrl = "http://localhost:5000/api/v1/product";
 
 export const addProductApi = async (productInfo) => {
-  console.log(productInfo);
   try {
     const { data } = await axios.post(rootUrl, productInfo, {
       headers: {
@@ -11,7 +10,6 @@ export const addProductApi = async (productInfo) => {
       },
     });
     return data;
-    console.log(data);
   } catch (error) {
     console.log(error);
   }
@@ -39,13 +37,21 @@ export const getSingleProductApi = async (_id) => {
 };
 
 export const updateProductApi = (_id, frmDt) => {
+  console.log(...frmDt);
   return new Promise(async (resolve, reject) => {
     try {
       const { data } = await axios.put(
         `http://localhost:5000/api/v1/product/${_id}`,
-        frmDt
+        frmDt,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
       resolve(data);
+
+      console.log(data);
     } catch (error) {
       reject(error);
     }

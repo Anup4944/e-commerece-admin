@@ -74,6 +74,7 @@ router.post(
         const imgFullPath = basePath + file.filename;
         images.push(imgFullPath);
       });
+
       const result = await insertProduct({ ...newProd, images });
       if (result?._id) {
         return res.send({
@@ -134,23 +135,45 @@ router.get("/", async (req, res) => {
 });
 
 // UPDATE PRODUCT BY ID
-router.put("/:_id", async (req, res) => {
+router.put("/:_id", upload.array("images", 5), async (req, res) => {
   try {
     const { _id } = req.params;
 
-    const newProduct = {
-      ...req.body,
-    };
-    const prod = await getProductById(_id);
+    const files = req.files;
 
-    if (!prod?._id) {
-      return res.send({
-        status: "error",
-        message: "No product found",
-      });
+    const images = [];
+
+    const basePath = `${req.protocol}://${req.get("host")}/img/product/`;
+
+    files.map((file) => {
+      const imgFullPath = basePath + file.filename;
+      images.push(imgFullPath);
+    });
+
+    if (images.length) {
+      const prod = await getProductById(_id);
+
+      console.log("find prod by id", prod);
+
+      if (!prod?._id) {
+        return res.send({
+          status: "error",
+          message: "No product found",
+        });
+      }
     }
 
-    const updatedProduct = await updateProductById({ _id, newProduct });
+    const newProduct = {
+      ...req.body,
+      images,
+    };
+
+    const updatedProduct = await updateProductById({
+      _id,
+      newProduct,
+    });
+
+    console.log("update products", updatedProduct);
 
     res.status(200).send({
       status: "success",

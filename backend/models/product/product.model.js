@@ -17,10 +17,19 @@ export const deleteProductById = (_id) => {
 };
 
 export const updateProductById = ({ _id, newProduct }) => {
+  console.log(_id, newProduct);
   return ProductSchema.findByIdAndUpdate(
     { _id },
     {
-      $set: newProduct,
+      $set: {
+        isAvailable: newProduct.isAvailable,
+        price: newProduct.price,
+        quantity: newProduct.quantity,
+        onSale: newProduct.onSale,
+        salePrice: newProduct.salePrice,
+        saleEndDate: newProduct.saleEndDate,
+        images: newProduct.images,
+      },
     },
     { new: true }
   );
