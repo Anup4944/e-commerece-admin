@@ -5,15 +5,15 @@ import { saveProductAction } from "./productAction";
 import { getAllCategoryAction } from "../new-category/categoryAction";
 
 const initalState = {
-  isAvailable: true,
+  isAvailable: Boolean,
   images: [],
-  title: "Apple Airpods Gen 13",
-  categories: "Phones",
-  price: "1500",
-  quantity: "10",
-  description: "New generation applea airpods",
-  onSale: true,
-  salePrice: "999.99",
+  title: "",
+  categories: "",
+  price: "",
+  quantity: "",
+  description: "",
+  onSale: Boolean,
+  salePrice: "0.00",
   saleEndDate: "",
 };
 
@@ -110,7 +110,7 @@ export const NewProduct = () => {
             type="text"
             name="title"
             value={product.title}
-            placeholder="Apple Airpods"
+            placeholder="Product title...."
             onChange={handleOnChange}
             required
           />
@@ -143,7 +143,7 @@ export const NewProduct = () => {
             type="number"
             value={product.price}
             onChange={handleOnChange}
-            placeholder="123"
+            placeholder="Example: $400"
             required
           />
         </div>
@@ -155,8 +155,8 @@ export const NewProduct = () => {
             name="quantity"
             value={product.quantity}
             onChange={handleOnChange}
-            placeholder="123"
             required
+            placeholder="Example: 10"
           />
         </div>
 
@@ -168,7 +168,7 @@ export const NewProduct = () => {
             name="description"
             value={product.description}
             onChange={handleOnChange}
-            placeholder="123"
+            placeholder="Product description....."
             required
           />
         </div>
@@ -196,8 +196,7 @@ export const NewProduct = () => {
               name="salePrice"
               value={product.salePrice}
               onChange={handleOnChange}
-              placeholder="123"
-              required
+              placeholder="Example: $300"
             />
           </div>
         ) : null}

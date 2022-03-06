@@ -108,7 +108,7 @@ router.get("/:_id", async (req, res) => {
     singleProduct
       ? res.json({
           status: "success",
-          message: "Here is single products",
+          message: "Here is single product",
           singleProduct,
         })
       : res.json({
@@ -135,58 +135,76 @@ router.get("/", async (req, res) => {
 });
 
 // UPDATE PRODUCT BY ID
-router.put("/:_id", upload.array("images", 5), async (req, res) => {
-  try {
-    const { _id } = req.params;
+router.put(
+  "/:_id",
+  upload.array("images", 5),
+  updateProductValidation,
+  async (req, res) => {
+    try {
+      const { _id } = req.params;
 
-    const files = req.files;
+      const files = req.files;
 
-    const images = [];
+      const images = [];
 
-    const basePath = `${req.protocol}://${req.get("host")}/img/product/`;
+      const { imgToDelete } = req.body;
 
-    files.map((file) => {
-      const imgFullPath = basePath + file.filename;
-      images.push(imgFullPath);
-    });
+      const basePath = `${req.protocol}://${req.get("host")}/img/product/`;
 
-    if (images.length) {
-      const prod = await getProductById(_id);
+      files.map((file) => {
+        const imgFullPath = basePath + file.filename;
+        images.push(imgFullPath);
+      });
 
-      console.log("find prod by id", prod);
+      if (imgToDelete?.length) {
+        const deleteImgSource = imgToDelete.split(",");
 
-      if (!prod?._id) {
-        return res.send({
-          status: "error",
-          message: "No product found",
-        });
+        const prod = await getProductById(_id);
+
+        console.log("find prod by id", prod);
+
+        if (!prod?._id) {
+          return res.send({
+            status: "error",
+            message: "No product found",
+          });
+        }
+
+        if (prod.images.length) {
+          const updatingImages = prod.images.filter(
+            (img) => !deleteImgSource.includes(img)
+          );
+          images = [...images, ...updatingImages];
+        }
       }
+
+      const newProduct = {
+        ...req.body,
+        date: new Date(req.body.saleEndDate),
+        images,
+      };
+
+      console.log(newProduct);
+
+      const updatedProduct = await updateProductById({
+        _id,
+        newProduct,
+      });
+
+      res.status(200).send({
+        status: "success",
+        message: "Your product has been updated",
+        updatedProduct,
+      });
+    } catch (error) {
+      console.log(error);
+      res.send({
+        status: "error",
+        message: "Unable please try again later",
+      });
     }
-
-    const newProduct = {
-      ...req.body,
-      images,
-    };
-
-    const updatedProduct = await updateProductById({
-      _id,
-      newProduct,
-    });
-
-    console.log("update products", updatedProduct);
-
-    res.status(200).send({
-      status: "success",
-      message: "Your product has been updated",
-      updatedProduct,
-    });
-  } catch (error) {
-    res.send({
-      status: "error",
-      message: "Unable please try again later",
-    });
   }
-});
+);
 
 router.delete("/:_id", async (req, res) => {
   try {

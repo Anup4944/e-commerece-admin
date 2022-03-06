@@ -56,8 +56,7 @@ export const updateProductAction = (_id, frmDt) => async (dispatch) => {
     const result = await updateProductApi(_id, frmDt);
 
     result.status === "success"
-      ? dispatch(updateProductSuccess(result)) &&
-        dispatch(getAllProductAction())
+      ? dispatch(updateProductSuccess(result))
       : dispatch(requestFail(result));
   } catch (error) {
     const err = {

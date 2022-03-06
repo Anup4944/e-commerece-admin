@@ -17,7 +17,6 @@ export const deleteProductById = (_id) => {
 };
 
 export const updateProductById = ({ _id, newProduct }) => {
-  console.log(_id, newProduct);
   return ProductSchema.findByIdAndUpdate(
     { _id },
     {

@@ -12,7 +12,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 export const SingleProduct = () => {
   const [images, setImages] = useState([]);
-  const { singleProd } = useSelector((state) => state.product);
+  const [imgToDelete, setImgToDelete] = useState([]);
+  const { singleProd, status, message } = useSelector((state) => state.product);
 
   const imgData = new Array(singleProd?.images);
 
@@ -23,7 +24,7 @@ export const SingleProduct = () => {
     onSale: `${singleProd.onSale}`,
     salePrice: `${singleProd.salePrice}`,
     saleEndDate: `${singleProd.saleEndDate}`,
-    images: [],
+    images: `${singleProd?.images}`,
   };
 
   const [update, setUpdate] = useState(initialState);
@@ -45,6 +46,16 @@ export const SingleProduct = () => {
     });
   };
 
+  const handleOnImgDelete = (e) => {
+    const { checked, value } = e.target;
+    if (checked) {
+      setImgToDelete([...imgToDelete, value]);
+    } else {
+      const updatedImgToDelete = imgToDelete.filter((path) => path !== value);
+      setImgToDelete(updatedImgToDelete);
+    }
+  };
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
 
@@ -59,6 +70,8 @@ export const SingleProduct = () => {
         formData.append("images", image);
       });
 
+    imgToDelete.length && formData.append("imgToDelete", imgToDelete);
+
     dispatch(updateProductAction(id, formData));
   };
 
@@ -70,6 +83,9 @@ export const SingleProduct = () => {
   return (
     <div className="product">
       <div className="productTitleContainer">
+        {status === "success"
+          ? message && <span style={{ color: "green" }}>{message}</span>
+          : null}
         <h1 className="productTitle">Product</h1>
         <Link to="/newProduct">
           {" "}
@@ -193,10 +209,10 @@ export const SingleProduct = () => {
                 <label>Sale End Date</label>
                 <input
                   type="date"
+                  min="2022-02-20"
+                  max="2032-02-20"
                   name="saleEndDate"
                   value={update.saleEndDate}
-                  min="18/02/2022"
-                  max="31/12/2025"
                   onChange={handleOnChange}
                 />{" "}
               </>
@@ -205,10 +221,26 @@ export const SingleProduct = () => {
           <div className="productFormRight">
             Change image from here
             <div className="productUpload">
-              {imgData.length &&
-                imgData.map((item) => {
-                  return <img src={item} className="productUploadImg" />;
-                })}
+              <div className="imgCont">
+                {imgData.length &&
+                  imgData.map((item) => {
+                    return (
+                      <>
+                        <img src={item} className="productUploadImg" />
+
+                        <input
+                          type="checkbox"
+                          className="checkBox"
+                          defaultValue={item}
+                          onChange={handleOnImgDelete}
+                          checked={imgToDelete?.includes(item)}
+                        />
+                        <label for="horns">Select images to delete</label>
+                      </>
+                    );
+                  })}
+              </div>
+
               <label for="file">
                 {" "}
                 <PublishOutlined />
