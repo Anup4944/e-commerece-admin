@@ -18,15 +18,16 @@ export const SingleProduct = () => {
   const imgData = new Array(singleProd?.images);
 
   const initialState = {
-    isAvailable: `${singleProd?.isAvailable}`,
-    price: `${singleProd?.price}`,
-    quantity: `${singleProd?.quantity}`,
-    onSale: `${singleProd?.onSale}`,
-    salePrice: `${singleProd?.salePrice}`,
-    saleEndDate: `${singleProd?.saleEndDate}`,
-    images: `${singleProd?.images}`,
+    isAvailable: ``,
+    price: ``,
+    quantity: ``,
+    onSale: ``,
+    salePrice: ``,
+    saleEndDate: ``,
+    images: ``,
   };
   const [update, setUpdate] = useState(initialState);
+
   console.log(update);
 
   const dispatch = useDispatch();
@@ -34,8 +35,9 @@ export const SingleProduct = () => {
   let { id } = useParams();
 
   useEffect(() => {
-    id && dispatch(getSingleProductAction(id));
-  }, [id]);
+    dispatch(getSingleProductAction(id));
+    setUpdate(singleProd);
+  }, [id, dispatch]);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -47,13 +49,13 @@ export const SingleProduct = () => {
   };
 
   const handleOnImgDelete = (e) => {
-    console.log(e);
     const { checked, value } = e.target;
 
     console.log(checked, value);
 
     if (checked) {
       setImgToDelete([...imgToDelete, value]);
+      console.log(imgToDelete);
     } else {
       const updatedImgToDelete = imgToDelete.filter((path) => path !== value);
       setImgToDelete(updatedImgToDelete);

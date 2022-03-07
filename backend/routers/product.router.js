@@ -144,6 +144,8 @@ router.put(
       const { _id } = req.params;
       const { imgToDelete } = req.body;
 
+      console.log(req.body);
+
       const basePath = `${req.protocol}://${req.get("host")}/img/product/`;
 
       const files = req.files;

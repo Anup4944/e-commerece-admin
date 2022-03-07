@@ -37,6 +37,7 @@ export const getSingleProductApi = async (_id) => {
 };
 
 export const updateProductApi = (_id, frmDt) => {
+  console.log(...frmDt, _id);
   return new Promise(async (resolve, reject) => {
     try {
       const { data } = await axios.put(
@@ -49,6 +50,7 @@ export const updateProductApi = (_id, frmDt) => {
         }
       );
       resolve(data);
+      console.log(data);
     } catch (error) {
       reject(error);
     }
