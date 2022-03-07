@@ -142,14 +142,13 @@ router.put(
   async (req, res) => {
     try {
       const { _id } = req.params;
+      const { imgToDelete } = req.body;
+
+      const basePath = `${req.protocol}://${req.get("host")}/img/product/`;
 
       const files = req.files;
 
       const images = [];
-
-      const { imgToDelete } = req.body;
-
-      const basePath = `${req.protocol}://${req.get("host")}/img/product/`;
 
       files.map((file) => {
         const imgFullPath = basePath + file.filename;
@@ -160,8 +159,6 @@ router.put(
         const deleteImgSource = imgToDelete.split(",");
 
         const prod = await getProductById(_id);
-
-        console.log("find prod by id", prod);
 
         if (!prod?._id) {
           return res.send({
@@ -175,7 +172,6 @@ router.put(
             (img) => !deleteImgSource.includes(img)
           );
           images = [...images, ...updatingImages];
-          console.log(images);
         }
       }
 
@@ -184,8 +180,6 @@ router.put(
         date: new Date(req.body.saleEndDate),
         images,
       };
-
-      console.log(newProduct);
 
       const updatedProduct = await updateProductById({
         _id,

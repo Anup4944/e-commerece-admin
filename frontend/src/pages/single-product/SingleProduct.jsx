@@ -26,8 +26,8 @@ export const SingleProduct = () => {
     saleEndDate: `${singleProd?.saleEndDate}`,
     images: `${singleProd?.images}`,
   };
-
   const [update, setUpdate] = useState(initialState);
+  console.log(update);
 
   const dispatch = useDispatch();
 
@@ -47,14 +47,17 @@ export const SingleProduct = () => {
   };
 
   const handleOnImgDelete = (e) => {
+    console.log(e);
     const { checked, value } = e.target;
-    console.log("got hit");
+
+    console.log(checked, value);
 
     if (checked) {
       setImgToDelete([...imgToDelete, value]);
     } else {
       const updatedImgToDelete = imgToDelete.filter((path) => path !== value);
       setImgToDelete(updatedImgToDelete);
+      console.log(imgToDelete);
     }
   };
 
@@ -236,11 +239,13 @@ export const SingleProduct = () => {
                         <input
                           type="checkbox"
                           className="checkbox"
+                          name="Delete"
+                          id="Delete"
                           defaultValue={item}
                           onChange={handleOnImgDelete}
                           checked={imgToDelete?.includes(item)}
                         />
-                        <label for="imgToDelete">Delete</label>
+                        <label for="Delete">Delete</label>
                       </>
                     );
                   })}
