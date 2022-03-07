@@ -18,12 +18,12 @@ export const SingleProduct = () => {
   const imgData = new Array(singleProd?.images);
 
   const initialState = {
-    isAvailable: `${singleProd.isAvailable}`,
-    price: `${singleProd.price}`,
-    quantity: `${singleProd.quantity}`,
-    onSale: `${singleProd.onSale}`,
-    salePrice: `${singleProd.salePrice}`,
-    saleEndDate: `${singleProd.saleEndDate}`,
+    isAvailable: `${singleProd?.isAvailable}`,
+    price: `${singleProd?.price}`,
+    quantity: `${singleProd?.quantity}`,
+    onSale: `${singleProd?.onSale}`,
+    salePrice: `${singleProd?.salePrice}`,
+    saleEndDate: `${singleProd?.saleEndDate}`,
     images: `${singleProd?.images}`,
   };
 
@@ -48,6 +48,8 @@ export const SingleProduct = () => {
 
   const handleOnImgDelete = (e) => {
     const { checked, value } = e.target;
+    console.log("got hit");
+
     if (checked) {
       setImgToDelete([...imgToDelete, value]);
     } else {
@@ -85,6 +87,9 @@ export const SingleProduct = () => {
       <div className="productTitleContainer">
         {status === "success"
           ? message && <span style={{ color: "green" }}>{message}</span>
+          : null}
+        {status === "error"
+          ? message && <span style={{ color: "red" }}>{message}</span>
           : null}
         <h1 className="productTitle">Product</h1>
         <Link to="/newProduct">
@@ -230,12 +235,12 @@ export const SingleProduct = () => {
 
                         <input
                           type="checkbox"
-                          className="checkBox"
+                          className="checkbox"
                           defaultValue={item}
                           onChange={handleOnImgDelete}
                           checked={imgToDelete?.includes(item)}
                         />
-                        <label for="horns">Select images to delete</label>
+                        <label for="imgToDelete">Delete</label>
                       </>
                     );
                   })}

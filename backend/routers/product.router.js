@@ -175,6 +175,7 @@ router.put(
             (img) => !deleteImgSource.includes(img)
           );
           images = [...images, ...updatingImages];
+          console.log(images);
         }
       }
 
