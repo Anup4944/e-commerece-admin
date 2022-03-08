@@ -160,3 +160,6 @@ Content-Type: application/json
 
 ### GET ALL CLIENTS
 GET http://localhost:5000/api/v1/client
+
+### GET CLIENTS BY ID
+GET http://localhost:5000/api/v1/client/62274da7bfc6939716a4fcdd
