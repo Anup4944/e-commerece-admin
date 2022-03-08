@@ -5,14 +5,14 @@ import { saveProductAction } from "./productAction";
 import { getAllCategoryAction } from "../new-category/categoryAction";
 
 const initalState = {
-  isAvailable: Boolean,
+  isAvailable: "",
   images: [],
   title: "",
   categories: "",
   price: "",
   quantity: "",
   description: "",
-  onSale: Boolean,
+  onSale: "",
   salePrice: "0.00",
   saleEndDate: "",
 };

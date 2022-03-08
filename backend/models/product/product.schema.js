@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const ProductSchema = new mongoose.Schema(
+const ProductSchema = mongoose.Schema(
   {
     isAvailable: {
       type: Boolean,
@@ -44,7 +44,9 @@ const ProductSchema = new mongoose.Schema(
       default: undefined,
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 
 export default mongoose.model("Product", ProductSchema);

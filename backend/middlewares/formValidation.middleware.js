@@ -67,6 +67,7 @@ export const updateProductValidation = (req, res, next) => {
     : [];
 
   req.body.categories = categories;
+
   const schema = Joi.object({
     _id: shortStr,
     title: shortStr,

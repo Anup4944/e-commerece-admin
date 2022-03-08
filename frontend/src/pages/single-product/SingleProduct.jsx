@@ -18,13 +18,16 @@ export const SingleProduct = () => {
   const imgData = new Array(singleProd?.images);
 
   const initialState = {
-    isAvailable: ``,
-    price: ``,
-    quantity: ``,
-    onSale: ``,
-    salePrice: ``,
-    saleEndDate: ``,
-    images: ``,
+    isAvailable: "",
+    images: [],
+    title: "",
+    categories: "",
+    price: "",
+    quantity: "",
+    description: "",
+    onSale: "",
+    salePrice: "",
+    saleEndDate: "",
   };
   const [update, setUpdate] = useState(initialState);
 
@@ -35,8 +38,10 @@ export const SingleProduct = () => {
   let { id } = useParams();
 
   useEffect(() => {
-    dispatch(getSingleProductAction(id));
-    setUpdate(singleProd);
+    if (!update._id || update._id !== singleProd._id) {
+      dispatch(getSingleProductAction(id));
+      setUpdate(singleProd);
+    }
   }, [id, dispatch]);
 
   const handleOnChange = (e) => {
@@ -51,25 +56,23 @@ export const SingleProduct = () => {
   const handleOnImgDelete = (e) => {
     const { checked, value } = e.target;
 
-    console.log(checked, value);
-
     if (checked) {
       setImgToDelete([...imgToDelete, value]);
-      console.log(imgToDelete);
     } else {
       const updatedImgToDelete = imgToDelete.filter((path) => path !== value);
       setImgToDelete(updatedImgToDelete);
-      console.log(imgToDelete);
     }
   };
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
 
+    const { __v, createdAt, updatedAt, ...newProduct } = update;
+
     const formData = new FormData();
 
-    Object.keys(update).map((key) => {
-      key !== "images" && formData.append(key, update[key]);
+    Object.keys(newProduct).map((key) => {
+      key !== "images" && formData.append(key, newProduct[key]);
     });
 
     images.length &&
@@ -229,7 +232,7 @@ export const SingleProduct = () => {
             ) : null}
           </div>
           <div className="productFormRight">
-            Change image from here
+            Edit and change images
             <div className="productUpload">
               <div className="imgCont">
                 {imgData.length &&

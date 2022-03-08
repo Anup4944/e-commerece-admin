@@ -105,7 +105,7 @@ router.get("/:_id", async (req, res) => {
   try {
     const singleProduct = await getProductById(_id);
 
-    singleProduct
+    singleProduct?._id
       ? res.json({
           status: "success",
           message: "Here is single product",
@@ -124,6 +124,7 @@ router.get("/:_id", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const result = await getAllProducts();
+
     res.json({
       status: "successfull",
       message: "Here are all  products",
@@ -142,7 +143,7 @@ router.put(
   async (req, res) => {
     try {
       const { _id } = req.params;
-      const { imgToDelete } = req.body;
+      const { imgToDelete, ...formDt } = req.body;
 
       console.log(req.body);
 
@@ -178,7 +179,7 @@ router.put(
       }
 
       const newProduct = {
-        ...req.body,
+        ...formDt,
         date: new Date(req.body.saleEndDate),
         images,
       };
