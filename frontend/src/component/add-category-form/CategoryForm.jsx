@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./category.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCategoryAction, saveCategoryAction } from "./categoryAction";
+import {
+  getAllCategoryAction,
+  saveCategoryAction,
+} from "../../pages/new-category/categoryAction";
 
 const initialState = {
   newCategory: "",
 };
 
-export const Category = () => {
+export const CategoryForm = () => {
   const [categoryInfo, setCategoryInfo] = useState(initialState);
   const dispatch = useDispatch();
 

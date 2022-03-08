@@ -242,7 +242,6 @@ export const SingleProduct = () => {
                   update.images.map((item) => {
                     return (
                       <>
-                        {console.log(item)}
                         <img src={item} className="productUploadImg" />
 
                         <input
