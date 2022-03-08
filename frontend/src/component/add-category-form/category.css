@@ -19,6 +19,12 @@
   margin-bottom: 10px;
 }
 
+.textField {
+  color: gray;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
 .addCategoryItem > input {
   padding: 10px;
 }
