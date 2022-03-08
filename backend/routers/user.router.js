@@ -7,7 +7,7 @@ import {
 } from "../models/user/user.model.js";
 const router = express.Router();
 
-// REGISTER USER
+// REGISTER USER / ADMIN
 router.post("/register", async (req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body;

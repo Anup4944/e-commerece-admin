@@ -1,13 +1,13 @@
 import ClientSchema from "./client.schema.js";
 
-export const getUsers = () => {
+export const getAllClient = () => {
   return ClientSchema.find();
 };
 
-export const getUserByEmail = (email) => {
+export const getClientByEmail = (email) => {
   return ClientSchema.findOne({ email });
 };
 
-export const getUserById = (_id) => {
+export const getClientById = (_id) => {
   return ClientSchema.findById(_id);
 };

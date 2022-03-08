@@ -153,3 +153,10 @@ Content-Type: application/json
   "name" : "Technology",
   "parentCat" : null
 }
+
+
+################## CLIENT ENDPOINT ####################
+
+
+### GET ALL CLIENTS
+GET http://localhost:5000/api/v1/client
