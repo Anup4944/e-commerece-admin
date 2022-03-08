@@ -149,7 +149,7 @@ router.put(
 
       const files = req.files;
 
-      const images = [];
+      let images = [];
 
       files.map((file) => {
         const imgFullPath = basePath + file.filename;

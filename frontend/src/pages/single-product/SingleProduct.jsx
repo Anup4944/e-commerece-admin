@@ -264,6 +264,7 @@ export const SingleProduct = () => {
                 name="images"
                 onChange={handleOnImgSelect}
                 accept="image/*"
+                multiple
               />
             </div>
             <button className="productButton">Update</button>

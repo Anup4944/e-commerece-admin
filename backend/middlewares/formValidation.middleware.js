@@ -79,6 +79,7 @@ export const updateProductValidation = (req, res, next) => {
     saleEndDate: date,
     description: longStr,
     images: args,
+    imgToDelete: longStr,
     categories: args,
   });
 
@@ -98,7 +99,7 @@ export const updateProductValidation = (req, res, next) => {
 export const addCategoryValidation = (req, res, next) => {
   const schema = Joi.object({
     newCategory: shortStr,
-    parentCategory: shortStr.allow(null).allow(""),
+    parentCategory: shortStr.allow(null).allow("").optional(),
   });
 
   //validation

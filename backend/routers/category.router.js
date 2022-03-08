@@ -9,11 +9,13 @@ import {
   createCategory,
   deleteCategory,
   getAllCategory,
+  getSingleCategory,
   updateCategory,
 } from "../models/category/category.model.js";
 
 // ADD CATEGORY
 router.post("/", addCategoryValidation, async (req, res) => {
+  console.log(req.body);
   try {
     const { newCategory, parentCategory } = req.body;
 
@@ -43,6 +45,23 @@ router.get("/", async (req, res) => {
       status: "success",
       message: "Here are all categories",
       allCategories,
+    });
+  } catch (error) {
+    console.log(error);
+    throw new Error(error.message);
+  }
+});
+
+// GET SIINGLE CATEGORY
+router.get("/:_id", async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const singleCat = await getSingleCategory(_id);
+
+    res.send({
+      status: "success",
+      message: "Here is single categories",
+      singleCat,
     });
   } catch (error) {
     console.log(error);

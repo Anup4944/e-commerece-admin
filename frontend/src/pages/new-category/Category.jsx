@@ -5,7 +5,6 @@ import { getAllCategoryAction, saveCategoryAction } from "./categoryAction";
 
 const initialState = {
   newCategory: "",
-  parentCategory: null,
 };
 
 export const Category = () => {
@@ -35,7 +34,7 @@ export const Category = () => {
   };
   return (
     <div className="category">
-      {status === "successfull"
+      {status === "success"
         ? message && <span style={{ color: "green" }}>{message}</span>
         : null}
       <h1 className="addCatgeoryTitle">Add new Category</h1>
@@ -46,6 +45,7 @@ export const Category = () => {
           <input
             type="text"
             name="newCategory"
+            placeholder="New category name...."
             value={categoryInfo.newCategory}
             onChange={handleOnChange}
             required
@@ -54,16 +54,12 @@ export const Category = () => {
 
         <div className="addCategoryItem">
           <label>Select Parent Category</label>
-          <select
-            name="parentCategory"
-            value={categoryInfo.parentCategory}
-            onChange={handleOnChange}
-          >
+          <select name="parentCategory" onChange={handleOnChange}>
             <option>Please choose an option</option>
             {categories.length &&
               categories.map((item, i) => {
                 return (
-                  <option value={item.newCategory} key={(item, i)}>
+                  <option value={item._id} key={(item, i)}>
                     {item.newCategory}
                   </option>
                 );
