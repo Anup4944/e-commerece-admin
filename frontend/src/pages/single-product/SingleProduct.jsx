@@ -15,7 +15,7 @@ export const SingleProduct = () => {
   const [imgToDelete, setImgToDelete] = useState([]);
   const { singleProd, status, message } = useSelector((state) => state.product);
 
-  const imgData = new Array(singleProd?.images);
+  // const imgData = new Array(singleProd?.images);
 
   const initialState = {
     isAvailable: "",
@@ -112,9 +112,14 @@ export const SingleProduct = () => {
         <div className="productTopRight">
           <div className="productName">{singleProd.title}</div>{" "}
           <div className="productInfoTop">
-            {imgData.length &&
+            {/* {imgData.length &&
               imgData.map((item) => {
                 return <img src={item} className="productInfoImg" />;
+              })} */}
+
+            {update?.images?.length &&
+              update.images.map((item) => {
+                return <img src={item} className="productUploadImg" />;
               })}
           </div>
           <div className="productInfoBottom">
@@ -233,10 +238,11 @@ export const SingleProduct = () => {
             Edit and change images
             <div className="productUpload">
               <div className="imgCont">
-                {imgData.length &&
-                  imgData.map((item) => {
+                {update?.images?.length &&
+                  update.images.map((item) => {
                     return (
                       <>
+                        {console.log(item)}
                         <img src={item} className="productUploadImg" />
 
                         <input
