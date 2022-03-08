@@ -31,8 +31,6 @@ export const SingleProduct = () => {
   };
   const [update, setUpdate] = useState(initialState);
 
-  console.log(update);
-
   const dispatch = useDispatch();
 
   let { id } = useParams();
