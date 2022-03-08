@@ -25,6 +25,7 @@ export const ProductList = () => {
       field: "title",
       headerName: "Product Name ",
       width: 180,
+
       renderCell: (params) => {
         return <div className="productListItem">{params.row.title}</div>;
       },
