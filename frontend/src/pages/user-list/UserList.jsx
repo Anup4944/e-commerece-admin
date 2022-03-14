@@ -1,16 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import "./userList.css";
 import { userRows } from "./dummyData";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getAllUserAction } from "../client-list/clientAction";
 
 export const UserList = () => {
   const [data, setData] = useState(userRows);
+  const dispatch = useDispatch();
 
   const handleOnDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
   };
+
+  useEffect(() => {
+    dispatch(getAllUserAction());
+  }, [dispatch]);
 
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
