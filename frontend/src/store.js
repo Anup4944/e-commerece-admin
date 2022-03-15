@@ -3,7 +3,7 @@ import loginReducer from "./pages/login/loginSlice";
 import passReducer from "./pages/pass-reset/passSlice";
 import productReducer from "./pages/new-product/productSlice";
 import categoryReducer from "./pages/new-category/categorySlice";
-import clientReducer from "./pages/client-list/clientSlice";
+import clientReducer from "./pages/user-list/clientSlice";
 
 const store = configureStore({
   reducer: {

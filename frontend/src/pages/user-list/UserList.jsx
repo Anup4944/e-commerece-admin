@@ -5,22 +5,12 @@ import "./userList.css";
 import { userRows } from "./dummyData";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllUserAction } from "../client-list/clientAction";
+import { getAllUserAction } from "./clientAction";
 
 export const UserList = () => {
   const dispatch = useDispatch();
 
   const { allUsers } = useSelector((state) => state.users);
-
-  // const {
-  //   createdAt,
-  //   firstName,
-  //   lastName,
-  //   password,
-  //   refreshJWT,
-  //   updatedAt,
-  //   ...newData
-  // } = allUsers;
 
   useEffect(() => {
     dispatch(getAllUserAction());
