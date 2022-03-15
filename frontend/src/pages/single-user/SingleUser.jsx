@@ -33,11 +33,11 @@ export const SingleUser = () => {
       <div className="userContainer">
         <div className="userShow">
           <div className="userShowTop">
-            <img
+            {/* <img
               src="https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
               alt=""
               className="userShowImg"
-            />
+            /> */}
             <div className="userShowTopTitle">
               <div className="userShowUserName">{singleUser?.firstName} </div>
             </div>
@@ -54,7 +54,7 @@ export const SingleUser = () => {
             <div className="userShowInfo">
               {" "}
               <CalendarToday className="userShowIcon" />
-              <div className="userShowTitle"> 10.22.1999</div>
+              <div className="userShowTitle"> {singleUser?.createdAt}</div>
             </div>
 
             <div className="accDetails">Contact Details</div>

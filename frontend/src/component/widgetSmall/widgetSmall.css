@@ -37,7 +37,15 @@
   margin: 0px 20px;
 }
 .widgetSmUserName {
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 15px;
+  color: rgb(14, 79, 14);
+}
+
+.widgetSmUserEmail {
+  font-weight: 400;
+  font-size: 13px;
+  color: rgb(14, 79, 14);
 }
 .widgetSmUserTitle {
   font-weight: 400;
@@ -50,7 +58,7 @@
   border-radius: 10px;
   padding: 7px 10px;
   background-color: #eeeef7;
-  color: grey;
+  color: rgb(99, 88, 88);
   cursor: pointer;
 }
 
