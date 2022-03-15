@@ -62,7 +62,6 @@ export const ProductList = () => {
       headerName: "Action",
       width: 100,
       renderCell: (params) => {
-        console.log(params);
         return (
           <>
             <Link to={"/product/" + params.row._id}>

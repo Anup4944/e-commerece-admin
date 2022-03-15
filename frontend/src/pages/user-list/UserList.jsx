@@ -12,7 +12,15 @@ export const UserList = () => {
 
   const { allUsers } = useSelector((state) => state.users);
 
-  console.log(allUsers);
+  // const {
+  //   createdAt,
+  //   firstName,
+  //   lastName,
+  //   password,
+  //   refreshJWT,
+  //   updatedAt,
+  //   ...newData
+  // } = allUsers;
 
   useEffect(() => {
     dispatch(getAllUserAction());
@@ -20,36 +28,21 @@ export const UserList = () => {
 
   const columns = [
     { field: "_id", headerName: "ID", width: 200 },
+    { field: "firstName", headerName: "First Name", width: 120 },
+    { field: "lastName", headerName: "Last Name", width: 120 },
+    { field: "createdAt", headerName: "Joined At", width: 200 },
     {
-      field: "username",
+      field: "userName",
       headerName: "Username",
-      width: 200,
-      renderCell: (params) => {
-        return (
-          <div className="userListUser">
-            {/* <img className="userListUser" src={params.row.avatar} alt="" /> */}
-            {params.row.username}
-          </div>
-        );
-      },
+      width: 130,
     },
     { field: "email", headerName: "Email", width: 200 },
-    // {
-    //   field: "status",
-    //   headerName: "Status",
-    //   width: 120,
-    // },
-    // {
-    //   field: "transaction",
-    //   headerName: "transaction",
-    //   width: 160,
-    // },
+
     {
       field: "action",
       headerName: "Action",
       width: 160,
       renderCell: (params) => {
-        console.log(params);
         return (
           <>
             <Link to={"/user/" + params.row._id}>
@@ -58,7 +51,7 @@ export const UserList = () => {
             <DeleteOutline
               className="userListDelete"
               // onClick={() => {
-              //   handleOnDelete(params.row.id);
+              //   handleOnDelete(params.row._id);
               // }}
             />
           </>
@@ -68,10 +61,11 @@ export const UserList = () => {
   ];
 
   return (
-    <div className="userList" style={{ height: 400, width: "100%" }}>
+    <div className="userList">
       <DataGrid
         rows={allUsers}
         columns={columns}
+        getRowId={(row) => row._id}
         pageSize={8}
         checkboxSelection
         disableSelectionOnClick
