@@ -15,8 +15,6 @@ export const SingleProduct = () => {
   const [imgToDelete, setImgToDelete] = useState([]);
   const { singleProd, status, message } = useSelector((state) => state.product);
 
-  // const imgData = new Array(singleProd?.images);
-
   const initialState = {
     isAvailable: "",
     images: [],
@@ -40,7 +38,7 @@ export const SingleProduct = () => {
       dispatch(getSingleProductAction(id));
       setUpdate(singleProd);
     }
-  }, [id, dispatch]);
+  }, [id, update, singleProd, dispatch]);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;

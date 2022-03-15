@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./singleUser.css";
 import {
   CalendarToday,
@@ -8,9 +8,20 @@ import {
   PermIdentity,
   PhoneAndroidOutlined,
 } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getSingleUserAction } from "../user-list/clientAction";
 
 export const SingleUser = () => {
+  const dispatch = useDispatch();
+
+  const { singleUser } = useSelector((state) => state.users);
+
+  let { userId } = useParams();
+
+  useEffect(() => {
+    dispatch(getSingleUserAction(userId));
+  }, [userId, dispatch]);
   return (
     <div className="SingleUser">
       <div className="userTitleCon">
@@ -28,8 +39,7 @@ export const SingleUser = () => {
               className="userShowImg"
             />
             <div className="userShowTopTitle">
-              <div className="userShowUserName">Anna Becker</div>
-              <div className="userShowUserTitle">Software Engineer </div>
+              <div className="userShowUserName">{singleUser?.firstName} </div>
             </div>
           </div>
 
@@ -38,7 +48,7 @@ export const SingleUser = () => {
             <div className="userShowInfo">
               {" "}
               <PermIdentity className="userShowIcon" />
-              <div className="userShowTitle">annabeck99</div>
+              <div className="userShowTitle">{singleUser?.userName}</div>
             </div>
 
             <div className="userShowInfo">
@@ -58,7 +68,7 @@ export const SingleUser = () => {
             <div className="userShowInfo">
               {" "}
               <Email className="userShowIcon" />
-              <div className="userShowTitle">annabeck@gmail.com</div>
+              <div className="userShowTitle">{singleUser?.email}</div>
             </div>
 
             <div className="userShowInfo">
