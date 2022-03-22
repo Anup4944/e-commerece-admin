@@ -2,3 +2,44 @@
   height: 500px;
   margin-top: 20px;
 }
+
+.editCatTable {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.editCatTable th,
+.editCatTable td {
+  padding: 12px 15px;
+}
+
+.editCatTable tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.editCatTable tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.editCatTable tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.categoryListButton {
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background-color: #3bb077;
+  color: white;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.categoryListDelete {
+  color: red;
+  cursor: pointer;
+}
