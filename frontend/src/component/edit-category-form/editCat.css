@@ -1,9 +1,12 @@
 .editCategory {
-  height: 500px;
+  height: 100vh;
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .editCatTable {
+  width: 100%;
   border-collapse: collapse;
   margin: 25px 0;
   font-size: 0.9em;
@@ -15,6 +18,12 @@
 .editCatTable th,
 .editCatTable td {
   padding: 12px 15px;
+}
+
+.editCatTable thead tr {
+  background-color: darkblue;
+  color: #ffffff;
+  text-align: left;
 }
 
 .editCatTable tbody tr {

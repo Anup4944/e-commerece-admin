@@ -9,29 +9,42 @@ const EditCategory = () => {
   const { categories } = useSelector((state) => state.category);
 
   return (
-    <div className="editCategory">
+    <>
       <h1 className="editCatTitle">Edit Category</h1>
-      <table className="editCatTable">
-        <tr>
-          <th>Catgeory Name</th>
-          <th>Parent Catgeory Name</th>
-        </tr>
-        <tbody>
-          {categories.length &&
-            categories.map((item, index) => {
-              return (
-                <>
-                  <tr>
-                    <td> {item.newCategory}</td>
-                    <td> {item.parentCategory}</td>
-                  </tr>
-                  <tr></tr>
-                </>
-              );
-            })}
-        </tbody>
-      </table>
-    </div>
+      <div className="editCategory">
+        <table className="editCatTable">
+          <thead>
+            <tr>
+              <th>Catgeory Name</th>
+              <th>Parent Catgeory Name</th>
+              <th>Created At</th>
+              <th>Updated At</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {categories.length &&
+              categories.map((item, index) => {
+                return (
+                  <>
+                    <tr>
+                      <td> {item.newCategory}</td>
+                      <td> {item.parentCategory}</td>
+                      <td> {item.createdAt}</td>
+                      <td> {item.updatedAt}</td>
+                      <td>
+                        <button className="categoryListButton">Edit</button>
+                        <DeleteOutline />
+                      </td>
+                    </tr>
+                  </>
+                );
+              })}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
 
