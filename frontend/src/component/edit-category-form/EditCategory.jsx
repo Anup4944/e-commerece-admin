@@ -31,69 +31,12 @@ const EditCategory = () => {
     <>
       <h1 className="editCatTitle">Edit Category</h1>
       <div className="editCategory">
-        {/* <table className="editCatTable">
-          <thead>
-            <tr>
-              <th>Catgeory Name</th>
-              <th>Parent Catgeory Name</th>
-
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {parentCat.map((item) => {
-              return (
-                <>
-                  <tr key={item._id}>
-                    <td> {item.newCategory}</td>
-                    <td> {item.parentCategory}</td>
-
-                    <td>
-                      <button
-                        className="categoryListButton"
-                        onClick={() => handleOnEdit(item._id)}
-                      >
-                        Edit
-                      </button>
-                      <DeleteOutline />
-                    </td>
-                  </tr>
-                </>
-              );
+        <ul className="listCategory">
+          {parentCat.length &&
+            parentCat.map((cat) => {
+              return <li className="singleCategory">{cat.newCategory}</li>;
             })}
-          </tbody>
-
-          <thead>
-            <tr>
-              <th>Child Catgeory Name</th>
-              <th>Parent Catgeory Name</th>
-
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {childCat.map((item) => {
-              return (
-                <>
-                  <tr key={item._id}>
-                    <td> {item.newCategory}</td>
-                    <td> {item.parentCategory}</td>
-
-                    <td>
-                      <button
-                        className="categoryListButton"
-                        onClick={() => handleOnEdit(item._id)}
-                      >
-                        Edit
-                      </button>
-                      <DeleteOutline />
-                    </td>
-                  </tr>
-                </>
-              );
-            })}
-          </tbody>
-        </table> */}
+        </ul>
       </div>
     </>
   );
