@@ -5,6 +5,8 @@ const initialState = {
   status: "",
   message: "",
   categories: [],
+  updateCategory: {},
+  show: false,
 };
 
 const productSlice = createSlice({
@@ -26,6 +28,12 @@ const productSlice = createSlice({
       state.message = payload.message;
       state.categories = payload.allCategories;
     },
+    toggleCategoryEditModal: (state) => {
+      state.show = !state.show;
+      if (!state.show) {
+        state.updateCatResponse = {};
+      }
+    },
     requestFail: (state, { payload }) => {
       state.isLoading = false;
       state.status = payload.status;
@@ -39,6 +47,7 @@ export const {
   requestPending,
   addCategorySuccess,
   getAllCategorySuccess,
+  toggleCategoryEditModal,
   requestFail,
 } = actions;
 
