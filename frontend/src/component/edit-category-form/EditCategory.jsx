@@ -3,7 +3,7 @@ import "./editCat.css";
 import { useSelector, useDispatch } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
-import { DeleteOutline } from "@material-ui/icons";
+import { ArrowRightAltOutlined, DeleteOutline } from "@material-ui/icons";
 import {
   selectACategory,
   toggleCategoryEditModal,
@@ -34,7 +34,32 @@ const EditCategory = () => {
         <ul className="listCategory">
           {parentCat.length &&
             parentCat.map((cat) => {
-              return <li className="singleCategory">{cat.newCategory}</li>;
+              return (
+                <>
+                  <div className="singleCatWrapper">
+                    <li className="singleCategory">{cat.newCategory}</li>
+                    <div className="iconContainer">
+                      <button className="editBtn">Edit</button>
+                      <DeleteOutline />
+                    </div>
+                  </div>
+                  {childCat.length &&
+                    childCat.map(
+                      (child) =>
+                        child.parentCategory === cat._id && (
+                          <div className="singleCatWrapper">
+                            <li className="singleCategory">
+                              <ArrowRightAltOutlined /> {child.parentCategory}
+                            </li>
+                            <div className="iconContainer">
+                              <button className="editBtn">Edit</button>
+                              <DeleteOutline />
+                            </div>
+                          </div>
+                        )
+                    )}
+                </>
+              );
             })}
         </ul>
       </div>
