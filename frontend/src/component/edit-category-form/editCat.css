@@ -5,7 +5,7 @@
   justify-content: center;
 }
 
-.editCatTable {
+/* .editCatTable {
   width: 100%;
   border-collapse: collapse;
   margin: 25px 0;
@@ -51,4 +51,4 @@
 .categoryListDelete {
   color: red;
   cursor: pointer;
-}
+} */

@@ -6,6 +6,7 @@ const initialState = {
   message: "",
   categories: [],
   updateCategory: {},
+  selectedCategory: {},
   show: false,
 };
 
@@ -31,8 +32,11 @@ const productSlice = createSlice({
     toggleCategoryEditModal: (state) => {
       state.show = !state.show;
       if (!state.show) {
-        state.updateCatResponse = {};
+        state.updateCategory = {};
       }
+    },
+    selectACategory: (state, { payload }) => {
+      state.selectedCategory = payload;
     },
     requestFail: (state, { payload }) => {
       state.isLoading = false;
@@ -48,6 +52,7 @@ export const {
   addCategorySuccess,
   getAllCategorySuccess,
   toggleCategoryEditModal,
+  selectACategory,
   requestFail,
 } = actions;
 
