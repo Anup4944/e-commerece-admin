@@ -32,7 +32,7 @@ const EditCategory = () => {
       <h1 className="editCatTitle">Edit Category</h1>
       <div className="editCategory">
         <ul className="listCategory">
-          {parentCat.length &&
+          {parentCat?.length &&
             parentCat.map((cat) => {
               return (
                 <>
@@ -43,13 +43,13 @@ const EditCategory = () => {
                       <DeleteOutline />
                     </div>
                   </div>
-                  {childCat.length &&
+                  {childCat?.length &&
                     childCat.map(
                       (child) =>
                         child.parentCategory === cat._id && (
-                          <div className="singleCatWrapper">
+                          <div key={child._id} className="singleCatWrapper">
                             <li className="singleCategory">
-                              <ArrowRightAltOutlined /> {child.parentCategory}
+                              <ArrowRightAltOutlined /> {child.newCategory}
                             </li>
                             <div className="iconContainer">
                               <button className="editBtn">Edit</button>
