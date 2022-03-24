@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./listCat.css";
 import { useSelector, useDispatch } from "react-redux";
-import { DataGrid } from "@mui/x-data-grid";
-import { Link } from "react-router-dom";
+
 import { ArrowRightAltOutlined, DeleteOutline } from "@material-ui/icons";
 import {
   selectACategory,
@@ -13,7 +12,7 @@ import EditCategoryForm from "../edit-category-form/EditCategoryForm";
 
 const ListCategory = () => {
   const dispatch = useDispatch();
-  const { categories } = useSelector((state) => state.category);
+  const { categories, updateCategory } = useSelector((state) => state.category);
 
   const handleOnEdit = (_id) => {
     dispatch(toggleCategoryEditModal());
@@ -46,6 +45,7 @@ const ListCategory = () => {
   return (
     <>
       <h1 className="editCatTitle">Edit Category</h1>
+
       <EditCategoryForm />
 
       <div className="editCategory">

@@ -13,7 +13,7 @@ const initialState = {
 const EditCategoryForm = () => {
   const [category, setCategory] = useState(initialState);
 
-  const { isLoading, show, selectedCategory, categories } = useSelector(
+  const { updateCategory, show, selectedCategory, categories } = useSelector(
     (state) => state.category
   );
 
@@ -50,6 +50,11 @@ const EditCategoryForm = () => {
 
   return (
     <ModalBox show={show} toggleModal={toggleModal}>
+      {updateCategory.status === "success"
+        ? updateCategory.message && (
+            <span style={{ color: "green" }}>{updateCategory.message}</span>
+          )
+        : null}
       <form className="editCatForm" onSubmit={handleOnSubmit}>
         <div className="fromWrapper">
           <input
@@ -69,17 +74,18 @@ const EditCategoryForm = () => {
           >
             <option value={null}></option>
 
-            {categories.map((item, i) => {
-              return (
-                <option
-                  key={i}
-                  value={item._id}
-                  selected={item._id === category.parentCategory}
-                >
-                  {item.newCategory}
-                </option>
-              );
-            })}
+            {categories?.length &&
+              categories.map((item, i) => {
+                return (
+                  <option
+                    key={i}
+                    value={item._id}
+                    selected={item._id === category.parentCategory}
+                  >
+                    {item.newCategory}
+                  </option>
+                );
+              })}
           </select>
 
           <button className="formBtn">Submit</button>
