@@ -6,6 +6,7 @@ import {
 import {
   deleteProductById,
   getAllProducts,
+  getProductByCategory,
   getProductById,
   insertProduct,
   updateProductById,
@@ -123,11 +124,17 @@ router.get("/:_id", async (req, res) => {
 //GET ALL PRODUCTS
 router.get("/", async (req, res) => {
   try {
-    const result = await getAllProducts();
+    let result;
+
+    const categoryName = req.query.category;
+
+    categoryName
+      ? (result = await getProductByCategory(categoryName))
+      : (result = await getAllProducts());
 
     res.json({
       status: "successfull",
-      message: "Here are all  products",
+      message: "Here are all products",
       result,
     });
   } catch (error) {

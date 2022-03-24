@@ -116,6 +116,7 @@ GET http://localhost:5000/api/v1/product
 DELETE http://localhost:5000/api/v1/product/6212dd1ff33d4356f09e3406
 
 
+
 ################## CATEGORY ####################
 
 ### CREATE CATEGORY
