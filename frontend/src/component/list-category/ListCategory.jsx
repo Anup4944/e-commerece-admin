@@ -9,6 +9,7 @@ import {
   toggleCategoryEditModal,
 } from "../../pages/new-category/categorySlice";
 import { deleteCategoryAction } from "../../pages/new-category/categoryAction";
+import EditCategoryForm from "../edit-category-form/EditCategoryForm";
 
 const ListCategory = () => {
   const dispatch = useDispatch();
@@ -45,6 +46,8 @@ const ListCategory = () => {
   return (
     <>
       <h1 className="editCatTitle">Edit Category</h1>
+      <EditCategoryForm />
+
       <div className="editCategory">
         <ul className="listCategory">
           {parentCat?.length &&
@@ -54,7 +57,12 @@ const ListCategory = () => {
                   <div className="singleCatWrapper">
                     <li className="singleCategory">{cat.newCategory}</li>
                     <div className="iconContainer">
-                      <button className="editBtn">Edit</button>
+                      <button
+                        className="editBtn"
+                        onClick={() => handleOnEdit(cat._id)}
+                      >
+                        Edit
+                      </button>
                       <DeleteOutline
                         style={{ cursor: "pointer" }}
                         onClick={() => {
@@ -72,7 +80,12 @@ const ListCategory = () => {
                               <ArrowRightAltOutlined /> {child.newCategory}
                             </li>
                             <div className="iconContainer">
-                              <button className="editBtn">Edit</button>
+                              <button
+                                className="editBtn"
+                                onClick={() => handleOnEdit(child._id)}
+                              >
+                                Edit
+                              </button>
                               <DeleteOutline
                                 style={{ cursor: "pointer" }}
                                 onClick={() => {
