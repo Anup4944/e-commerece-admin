@@ -15,7 +15,6 @@ import {
 
 // ADD CATEGORY
 router.post("/", addCategoryValidation, async (req, res) => {
-  console.log(req.body);
   try {
     const { newCategory, parentCategory } = req.body;
 

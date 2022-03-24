@@ -118,8 +118,8 @@ export const addCategoryValidation = (req, res, next) => {
 export const updateCategoryValidation = (req, res, next) => {
   const schema = Joi.object({
     _id: shortStr.required(),
-    name: shortStr.required(),
-    parentCat: shortStr.allow(null).allow(""),
+    newCategory: shortStr.required(),
+    parentCategory: shortStr.allow(null).allow(""),
   });
 
   //validation

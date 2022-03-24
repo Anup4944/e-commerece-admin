@@ -42,6 +42,10 @@ const productSlice = createSlice({
     selectACategory: (state, { payload }) => {
       state.selectedCategory = payload;
     },
+    updateCategorySuccess: (state, { payload }) => {
+      state.isLoading = false;
+      state.updateCategory = payload;
+    },
     requestFail: (state, { payload }) => {
       state.isLoading = false;
       state.status = payload.status;
@@ -57,6 +61,7 @@ export const {
   getAllCategorySuccess,
   toggleCategoryEditModal,
   deleteCategorySuccess,
+  updateCategorySuccess,
   selectACategory,
   requestFail,
 } = actions;

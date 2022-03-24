@@ -3,6 +3,7 @@ import ModalBox from "../modal-box/ModalBox";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleCategoryEditModal } from "../../pages/new-category/categorySlice";
 import "./editCatForm.css";
+import { updateCategoryAction } from "../../pages/new-category/categoryAction";
 
 const initialState = {
   newCategory: "",
@@ -26,9 +27,30 @@ const EditCategoryForm = () => {
     dispatch(toggleCategoryEditModal());
   };
 
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value);
+
+    setCategory({
+      ...category,
+      [name]: value,
+    });
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+
+    const updateCat = {
+      _id: category._id,
+      newCategory: category.newCategory,
+      parentCategory: category.parentCategory ? category.parentCategory : null,
+    };
+    dispatch(updateCategoryAction(updateCat));
+  };
+
   return (
     <ModalBox show={show} toggleModal={toggleModal}>
-      <form className="editCatForm">
+      <form className="editCatForm" onSubmit={handleOnSubmit}>
         <div className="fromWrapper">
           <input
             className="formInput"
@@ -36,9 +58,15 @@ const EditCategoryForm = () => {
             name="newCategory"
             value={category.newCategory}
             required
+            onChange={handleOnChange}
             placeholder="New Category"
           />
-          <select className="formInput" defaultValue={null}>
+          <select
+            className="formInput"
+            name="parentCategory"
+            defaultValue={null}
+            onChange={handleOnChange}
+          >
             <option value={null}></option>
 
             {categories.map((item, i) => {

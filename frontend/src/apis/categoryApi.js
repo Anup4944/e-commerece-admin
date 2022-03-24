@@ -30,3 +30,13 @@ export const deleteCatgeoryApi = async (idArg) => {
     console.log(error);
   }
 };
+
+export const updateCategoryApi = async (frmDt) => {
+  try {
+    const { data } = await axios.put(rootUrl, frmDt);
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
