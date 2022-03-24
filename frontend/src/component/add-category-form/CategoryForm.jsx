@@ -40,6 +40,9 @@ export const CategoryForm = () => {
       {status === "successfull"
         ? message && <span style={{ color: "green" }}>{message}</span>
         : null}
+      {status === "success"
+        ? message && <span style={{ color: "green" }}>{message}</span>
+        : null}
       <h1 className="addCatgeoryTitle">Add new Category</h1>
 
       <form className="addCategoryForm" onSubmit={handleOnSubmit}>

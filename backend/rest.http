@@ -132,7 +132,7 @@ GET http://localHost:5000/api/v1/category
 
 
 ### GET SINGLE CATEGORY
-GET http://localHost:5000/api/v1/category/6226b61e586723b411d041d9
+GET http://localHost:5000/api/v1/category/623a8cea92388753ec0b9c03
 
 ### UDPATE CATEGORY
 PUT http://localhost:5000/api/v1/category

@@ -8,6 +8,7 @@ import {
   selectACategory,
   toggleCategoryEditModal,
 } from "../../pages/new-category/categorySlice";
+import { deleteCategoryAction } from "../../pages/new-category/categoryAction";
 
 const EditCategory = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,20 @@ const EditCategory = () => {
     const catItem = categories.filter((row) => row._id === _id)[0];
 
     dispatch(selectACategory(catItem));
+  };
+
+  const handleOnDelete = (_id) => {
+    if (window.confirm("Are you sure you want to delete the category?")) {
+      const childIds = categories.map((row) => {
+        if (row.parentCategory === _id) {
+          return row._id;
+        }
+      });
+
+      const idsToDelete = childIds.filter((row) => row);
+
+      dispatch(deleteCategoryAction([...idsToDelete, _id]));
+    }
   };
 
   const parentCat =
@@ -40,7 +55,12 @@ const EditCategory = () => {
                     <li className="singleCategory">{cat.newCategory}</li>
                     <div className="iconContainer">
                       <button className="editBtn">Edit</button>
-                      <DeleteOutline />
+                      <DeleteOutline
+                        style={{ cursor: "pointer" }}
+                        onClick={() => {
+                          handleOnDelete(cat._id);
+                        }}
+                      />
                     </div>
                   </div>
                   {childCat?.length &&
@@ -53,7 +73,12 @@ const EditCategory = () => {
                             </li>
                             <div className="iconContainer">
                               <button className="editBtn">Edit</button>
-                              <DeleteOutline />
+                              <DeleteOutline
+                                style={{ cursor: "pointer" }}
+                                onClick={() => {
+                                  handleOnDelete(child._id);
+                                }}
+                              />
                             </div>
                           </div>
                         )

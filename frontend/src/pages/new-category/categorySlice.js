@@ -25,10 +25,16 @@ const productSlice = createSlice({
     },
     getAllCategorySuccess: (state, { payload }) => {
       state.isLoading = false;
-      state.status = payload.status;
-      state.message = payload.message;
+      // state.status = payload.status;
+      // state.message = payload.message;
       state.categories = payload.allCategories;
     },
+    deleteCategorySuccess: (state, { payload }) => {
+      state.isLoading = false;
+      state.status = payload.status;
+      state.message = payload.message;
+    },
+
     toggleCategoryEditModal: (state) => {
       state.show = !state.show;
       if (!state.show) {
@@ -52,6 +58,7 @@ export const {
   addCategorySuccess,
   getAllCategorySuccess,
   toggleCategoryEditModal,
+  deleteCategorySuccess,
   selectACategory,
   requestFail,
 } = actions;

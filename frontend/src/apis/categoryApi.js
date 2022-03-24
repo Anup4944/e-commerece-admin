@@ -21,3 +21,12 @@ export const getAllCategoryApi = async () => {
     console.log(error);
   }
 };
+
+export const deleteCatgeoryApi = async (idArg) => {
+  try {
+    const { data } = await axios.delete(rootUrl, { data: idArg });
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};

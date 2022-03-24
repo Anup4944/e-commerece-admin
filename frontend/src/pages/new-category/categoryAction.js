@@ -1,5 +1,13 @@
-import { addCategoryApi, getAllCategoryApi } from "../../apis/categoryApi";
-import { addCategorySuccess, getAllCategorySuccess } from "./categorySlice";
+import {
+  addCategoryApi,
+  deleteCatgeoryApi,
+  getAllCategoryApi,
+} from "../../apis/categoryApi";
+import {
+  addCategorySuccess,
+  deleteCategorySuccess,
+  getAllCategorySuccess,
+} from "./categorySlice";
 import { requestFail, requestPending } from "./categorySlice";
 
 export const getAllCategoryAction = () => async (dispatch) => {
@@ -29,6 +37,24 @@ export const saveCategoryAction = (frmDt) => async (dispatch) => {
     result.status === "successfull"
       ? dispatch(addCategorySuccess(result)) && dispatch(getAllCategoryAction())
       : dispatch(requestFail());
+  } catch (error) {
+    const err = {
+      status: "error",
+      message: error.message,
+    };
+    dispatch(requestFail(err));
+  }
+};
+
+export const deleteCategoryAction = (idArgs) => async (dispatch) => {
+  try {
+    dispatch(requestPending());
+
+    const result = await deleteCatgeoryApi(idArgs);
+
+    dispatch(deleteCategorySuccess(result));
+
+    result.status === "success" && dispatch(getAllCategoryAction());
   } catch (error) {
     const err = {
       status: "error",
