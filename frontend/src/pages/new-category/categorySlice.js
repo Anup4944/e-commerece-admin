@@ -25,8 +25,6 @@ const productSlice = createSlice({
     },
     getAllCategorySuccess: (state, { payload }) => {
       state.isLoading = false;
-      // state.status = payload.status;
-      // state.message = payload.message;
       state.categories = payload.allCategories;
     },
     deleteCategorySuccess: (state, { payload }) => {

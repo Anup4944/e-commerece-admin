@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./editCat.css";
+import "./listCat.css";
 import { useSelector, useDispatch } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ import {
 } from "../../pages/new-category/categorySlice";
 import { deleteCategoryAction } from "../../pages/new-category/categoryAction";
 
-const EditCategory = () => {
+const ListCategory = () => {
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.category);
 
@@ -68,7 +68,7 @@ const EditCategory = () => {
                       (child) =>
                         child.parentCategory === cat._id && (
                           <div key={child._id} className="singleCatWrapper">
-                            <li className="singleCategory">
+                            <li className="childCategory">
                               <ArrowRightAltOutlined /> {child.newCategory}
                             </li>
                             <div className="iconContainer">
@@ -92,4 +92,4 @@ const EditCategory = () => {
   );
 };
 
-export default EditCategory;
+export default ListCategory;

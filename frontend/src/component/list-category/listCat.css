@@ -26,6 +26,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 700;
+}
+.childCategory {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
 }
 
 .iconContainer {
