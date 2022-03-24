@@ -1,0 +1,23 @@
+.editCatForm {
+  margin-top: 10px;
+}
+
+.fromWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.fromWrapper * {
+  margin: 10px 10px;
+}
+
+.formInput {
+  height: 30px;
+}
+
+.formBtn {
+  height: 50px;
+  width: 80px;
+  border-radius: 10%;
+  cursor: pointer;
+}

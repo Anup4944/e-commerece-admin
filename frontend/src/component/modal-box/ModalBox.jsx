@@ -25,7 +25,7 @@ const ModalBox = ({ show, children, toggleModal }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={{ ...style, width: 300, height: 200 }}>
           {children}
           <button onClick={toggleModal}>Close</button>
         </Box>

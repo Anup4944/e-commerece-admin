@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ModalBox from "../modal-box/ModalBox";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleCategoryEditModal } from "../../pages/new-category/categorySlice";
+import "./editCatForm.css";
 
 const initialState = {
   newCategory: "",
@@ -22,12 +23,15 @@ const EditCategoryForm = () => {
   const toggleModal = (e) => {
     dispatch(toggleCategoryEditModal());
   };
+
   return (
     <ModalBox show={show} toggleModal={toggleModal}>
-      <form>
-        <input placeholder="New Category" />
-        <input placeholder="New category" />
-        <button>Submit</button>
+      <form className="editCatForm">
+        <div className="fromWrapper">
+          <input className="formInput" placeholder="New Category" />
+          <input className="formInput" placeholder="New category" />
+          <button className="formBtn">Submit</button>
+        </div>
       </form>
     </ModalBox>
   );
