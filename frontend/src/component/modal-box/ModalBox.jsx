@@ -16,21 +16,19 @@ const style = {
   p: 4,
 };
 
-const ModalBox = ({ children }) => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
+const ModalBox = ({ show, children, toggleModal }) => {
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={show}
+        onHide={toggleModal}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>{children}</Box>
+        <Box sx={style}>
+          {children}
+          <button onClick={toggleModal}>Close</button>
+        </Box>
       </Modal>
     </div>
   );
