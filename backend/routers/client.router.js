@@ -21,11 +21,12 @@ router.get("/", async (req, res) => {
   }
 });
 
+// GET USER STATS
 router.get("/clientInfo", async (req, res) => {
   try {
     const date = new Date();
     const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
-    const data = await ClientSchema.aggregate([
+    const clientStats = await ClientSchema.aggregate([
       {
         $match: { createdAt: { $gte: lastYear } },
       },
@@ -43,8 +44,9 @@ router.get("/clientInfo", async (req, res) => {
     ]);
     res.send({
       status: "success",
-      message: "Here is user stats",
-      data,
+      message:
+        "Here is user stats, _id = month number and total = number of user registered that month",
+      clientStats,
     });
   } catch (error) {
     res.send({

@@ -22,3 +22,15 @@ export const getSingleClientApi = async (_id) => {
     console.log(error);
   }
 };
+
+// export const getClientStatsApi = async () => {
+//   try {
+//     const { data } = await axios.get(
+//       `http://localhost:5000/api/v1/client/clientInfo`
+//     );
+//     console.log(data);
+//     return data;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };

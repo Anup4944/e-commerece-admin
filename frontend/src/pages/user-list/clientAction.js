@@ -1,4 +1,8 @@
-import { getAllClientApi, getSingleClientApi } from "../../apis/clientApi";
+import {
+  getAllClientApi,
+  getClientStatsApi,
+  getSingleClientApi,
+} from "../../apis/clientApi";
 import {
   requestPending,
   getAllUserSuccess,
@@ -39,3 +43,18 @@ export const getSingleUserAction = (_id) => async (dispatch) => {
     dispatch(requestFail(err));
   }
 };
+// export const getUserStatsAction = () => async (dispatch) => {
+//   try {
+//     dispatch(requestPending());
+
+//     const result = await getClientStatsApi();
+
+//     result.status === "success" && dispatch(getSingleUserSuccess(result));
+//   } catch (error) {
+//     const err = {
+//       status: "error",
+//       message: error.message,
+//     };
+//     dispatch(requestFail(err));
+//   }
+// };
