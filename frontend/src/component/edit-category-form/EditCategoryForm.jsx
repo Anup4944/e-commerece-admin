@@ -29,7 +29,6 @@ const EditCategoryForm = () => {
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
 
     setCategory({
       ...category,
