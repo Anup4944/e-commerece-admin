@@ -1,26 +1,31 @@
 import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Chart } from "../../component/chart/Chart";
 import { FeaturedInfo } from "../../component/featuredInfo/FeaturedInfo";
 import "./home.css";
 import { WidgetSmall } from "../../component/widgetSmall/WidgetSmall";
 import { WidgetLarge } from "../../component/widgetLarge/WidgetLarge";
 import { userData } from "../user-list/dummyData";
-import axios from "axios";
+import { getUserStatsAction } from "../user-list/clientAction";
 
 export const Home = () => {
+  const dispatch = useDispatch();
+
+  const { userStat } = useSelector((state) => state.users);
+
+  console.log(userStat);
+
+  const sortedData = userStat.map((item) => {});
+
+  console.log(sortedData);
+
   useEffect(() => {
-    const makeReq = async () => {
-      const { data } = await axios.get(
-        "http://localhost:5000/api/v1/client/clientInfo"
-      );
-      console.log(data);
-    };
-    makeReq();
-  }, []);
+    dispatch(getUserStatsAction());
+  }, [dispatch]);
   return (
     <div className="home">
       <FeaturedInfo />
-      <Chart data={userData} title="User Analytics" dataKey="Active" />
+      <Chart data={userStat} title="User Analytics" dataKey="total" />
       <div className="homeWidgets">
         <WidgetSmall />
         <WidgetLarge />

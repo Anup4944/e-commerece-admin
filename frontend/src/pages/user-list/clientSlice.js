@@ -6,6 +6,7 @@ const initialState = {
   message: "",
   allUsers: [],
   singleUser: {},
+  userStat: [],
 };
 
 const clientSlice = createSlice({
@@ -27,6 +28,12 @@ const clientSlice = createSlice({
       state.message = payload.message;
       state.singleUser = payload.singleUser;
     },
+    getUserStatSuccess: (state, { payload }) => {
+      state.isLoading = false;
+      state.status = payload.status;
+      state.message = payload.message;
+      state.userStat = payload.clientStats;
+    },
     requestFail: (state, { payload }) => {
       state.isLoading = false;
       state.status = payload.status;
@@ -40,6 +47,7 @@ export const {
   requestPending,
   getAllUserSuccess,
   getSingleUserSuccess,
+  getUserStatSuccess,
   requestFail,
 } = actions;
 
