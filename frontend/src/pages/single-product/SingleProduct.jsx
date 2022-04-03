@@ -110,11 +110,6 @@ export const SingleProduct = () => {
         <div className="productTopRight">
           <div className="productName">{singleProd.title}</div>{" "}
           <div className="productInfoTop">
-            {/* {imgData.length &&
-              imgData.map((item) => {
-                return <img src={item} className="productInfoImg" />;
-              })} */}
-
             {update?.images?.length &&
               update.images.map((item) => {
                 return <img src={item} className="productUploadImg" />;
