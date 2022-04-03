@@ -13,11 +13,7 @@ export const Home = () => {
 
   const { userStat } = useSelector((state) => state.users);
 
-  console.log(userStat);
-
-  const sortedData = userStat.map((item) => {});
-
-  console.log(sortedData);
+  const sortedData = userStat.slice().sort((a, b) => a._id - b._id);
 
   useEffect(() => {
     dispatch(getUserStatsAction());
@@ -25,7 +21,7 @@ export const Home = () => {
   return (
     <div className="home">
       <FeaturedInfo />
-      <Chart data={userStat} title="User Analytics" dataKey="total" />
+      <Chart data={sortedData} title="User Analytics" dataKey="total" />
       <div className="homeWidgets">
         <WidgetSmall />
         <WidgetLarge />
