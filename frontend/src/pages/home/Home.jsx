@@ -5,7 +5,6 @@ import { FeaturedInfo } from "../../component/featuredInfo/FeaturedInfo";
 import "./home.css";
 import { WidgetSmall } from "../../component/widgetSmall/WidgetSmall";
 import { WidgetLarge } from "../../component/widgetLarge/WidgetLarge";
-import { userData } from "../user-list/dummyData";
 import { getUserStatsAction } from "../user-list/clientAction";
 
 export const Home = () => {

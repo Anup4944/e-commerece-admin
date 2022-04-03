@@ -9,6 +9,13 @@ export const WidgetSmall = () => {
 
   const { allUsers } = useSelector((state) => state.users);
 
+  const sortByCreated = allUsers.slice().sort((a, b) => {
+    const dateA = new Date(a.createdAt);
+    const dateB = new Date(b.createdAt);
+
+    return dateB - dateA;
+  });
+
   useEffect(() => {
     dispatch(getAllUserAction());
   }, []);
@@ -16,7 +23,7 @@ export const WidgetSmall = () => {
     <div className="widgetSm">
       <div className="widgetSmTitle">New join members</div>
       <ul className="widgetSmList">
-        {allUsers.map((user, i) => {
+        {sortByCreated.map((user, i) => {
           return (
             <>
               <li className="widgetSmListItem">
