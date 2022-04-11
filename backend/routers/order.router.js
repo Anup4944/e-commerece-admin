@@ -43,12 +43,9 @@ router.get("/income", async (req, res) => {
   }
 });
 
-// GET MONTHLY INCOME
+// GET OVERALL INCOME
 
 router.get("/overall", async (req, res) => {
-  const date = new Date();
-  const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
-  const prevMonth = new Date(new Date().setMonth(lastMonth.getMonth() - 1));
   try {
     const income = await OrderSchema.aggregate([
       {
