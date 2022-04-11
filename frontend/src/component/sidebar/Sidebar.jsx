@@ -50,9 +50,6 @@ export const Sidebar = () => {
                 <CategoryOutlined className="sidebarIcon" /> Add new category
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <TrendingUp className="sidebarIcon" /> Sales
-            </li>
           </ul>
         </div>
         <div className="sidebarMenu">
@@ -73,28 +70,12 @@ export const Sidebar = () => {
             </li>
           </ul>
         </div>
-        <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Notifications</h3>
-          <ul className="sidebarList">
-            <li className="sidebarListItem">
-              <MailOutline className="sidebarIcon" /> Mail
-            </li>
-            <li className="sidebarListItem">
-              <Feedback className="sidebarIcon" /> Feedbacks
-            </li>
-          </ul>
-        </div>
+        <div className="sidebarMenu"></div>
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Staff</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem">
-              <Settings className="sidebarIcon" /> Manage
-            </li>
-            <li className="sidebarListItem">
               <Timeline className="sidebarIcon" /> Analytics
-            </li>
-            <li className="sidebarListItem">
-              <TrendingUp className="sidebarIcon" /> Report
             </li>
 
             <li className="sidebarListItem" onClick={logMeOut}>

@@ -7,18 +7,24 @@ import {
   ArrowUpward,
   ArrowUpwardOutlined,
 } from "@material-ui/icons";
-import { revenueAction } from "./orderAction";
+import { revenueAction, revenueSumAction } from "./orderAction";
 
 export const FeaturedInfo = () => {
   const dispatch = useDispatch();
-  const { revenueDt } = useSelector((state) => state.revenue);
+  const { revenueDt, totalIncome } = useSelector((state) => state.revenue);
 
-  const onlyTot = revenueDt?.map((item) => item.total);
+  const sortByCreated = revenueDt?.slice().sort((a, b) => {
+    return b._id - a._id;
+  });
+
+  const onlyTot = sortByCreated?.map((item) => item.total);
 
   const arrSum = onlyTot[0] > onlyTot[1];
 
+  const income = totalIncome?.map((item) => item.total).toString();
+
   useEffect(() => {
-    dispatch(revenueAction());
+    dispatch(revenueAction()) && dispatch(revenueSumAction());
   }, [dispatch]);
 
   return (
@@ -46,21 +52,10 @@ export const FeaturedInfo = () => {
       <div className="featuredItem">
         <div className="featuredTitle">Revenue </div>
         <div className="featuredMoneyContainer">
-          <div className="featureMoney">$2,475</div>
+          <div className="featureMoney">${income}</div>
         </div>
         <div className="featuredSub">Total revenue</div>
       </div>
-
-      {/* <div className="featuredItem">
-        <div className="featuredTitle">Cost </div>
-        <div className="featuredMoneyContainer">
-          <div className="featureMoney">$2,475</div>
-          <div className="featuredMoneyRate">
-            11.5 <ArrowUpward className="featuredIcon" />{" "}
-          </div>
-        </div>
-        <div className="featuredSub">Compared to last month</div>
-      </div> */}
     </div>
   );
 };

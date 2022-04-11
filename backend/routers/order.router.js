@@ -47,7 +47,7 @@ router.get("/income", async (req, res) => {
 
 router.get("/overall", async (req, res) => {
   try {
-    const income = await OrderSchema.aggregate([
+    const overAll = await OrderSchema.aggregate([
       {
         $group: {
           _id: "$status",
@@ -56,11 +56,11 @@ router.get("/overall", async (req, res) => {
       },
     ]);
 
-    income.length
+    overAll.length
       ? res.send({
           status: "success",
-          message: "Here is monthly income",
-          income,
+          message: "Here is overall income",
+          overAll,
         })
       : res.send({
           status: "error",

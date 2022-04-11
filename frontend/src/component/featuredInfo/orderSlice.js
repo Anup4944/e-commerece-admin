@@ -5,6 +5,7 @@ const initialState = {
   status: "",
   message: "",
   revenueDt: [],
+  totalIncome: [],
 };
 
 const loginSlice = createSlice({
@@ -20,6 +21,12 @@ const loginSlice = createSlice({
       state.message = payload.message;
       state.revenueDt = payload.income;
     },
+    getSumRevenueSuccess: (state, { payload }) => {
+      state.isLoading = false;
+      state.status = payload.status;
+      state.message = payload.message;
+      state.totalIncome = payload.overAll;
+    },
     requestFail: (state, { payload }) => {
       state.isLoading = false;
       state.status = payload.status;
@@ -29,6 +36,11 @@ const loginSlice = createSlice({
 });
 
 const { reducer, actions } = loginSlice;
-export const { requestPending, getRevenueSuccess, requestFail } = actions;
+export const {
+  requestPending,
+  getRevenueSuccess,
+  getSumRevenueSuccess,
+  requestFail,
+} = actions;
 
 export default reducer;
