@@ -169,7 +169,6 @@ GET http://localhost:5000/api/v1/client/62274da7bfc6939716a4fcdd
 GET http://localhost:5000/api/v1/client/clientInfo
 
 
-
 // GET MONTHLY INCOME
 ###
 GET http://localHost:5000/api/v1/order/income
