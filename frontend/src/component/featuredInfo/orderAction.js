@@ -1,5 +1,10 @@
-import { getOrderApi, getSumOfOrdersApi } from "../../apis/orderApi";
 import {
+  getAllOrderApi,
+  getOrderApi,
+  getSumOfOrdersApi,
+} from "../../apis/orderApi";
+import {
+  getAllOrderSuccess,
   getRevenueSuccess,
   getSumRevenueSuccess,
   requestFail,
@@ -32,6 +37,23 @@ export const revenueSumAction = () => async (dispatch) => {
 
     result.status === "success"
       ? dispatch(getSumRevenueSuccess(result))
+      : dispatch(requestFail(result));
+  } catch (error) {
+    const err = {
+      status: "error",
+      message: error.message,
+    };
+    dispatch(requestFail(err));
+  }
+};
+export const allOrderAction = () => async (dispatch) => {
+  try {
+    dispatch(requestPending());
+
+    const result = await getAllOrderApi();
+
+    result.status === "success"
+      ? dispatch(getAllOrderSuccess(result))
       : dispatch(requestFail(result));
   } catch (error) {
     const err = {

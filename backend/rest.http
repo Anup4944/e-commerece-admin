@@ -168,8 +168,15 @@ GET http://localhost:5000/api/v1/client/62274da7bfc6939716a4fcdd
 ### GET CLIENT STATS
 GET http://localhost:5000/api/v1/client/clientInfo
 
+
+################## ORDERS ####################
+
+
 ### GET MONTHLY INCOME
 GET http://localHost:5000/api/v1/order/income
 
 ### GET OVERALL INCOME
 GET http://localHost:5000/api/v1/order/overall
+
+### GET OVERALL INCOME
+GET http://localHost:5000/api/v1/order

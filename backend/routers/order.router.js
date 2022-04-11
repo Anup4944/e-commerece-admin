@@ -1,4 +1,5 @@
 import express from "express";
+import { getAllOrder } from "../models/orders/order.model.js";
 const router = express.Router();
 import OrderSchema from "../models/orders/order.schema.js";
 
@@ -65,6 +66,29 @@ router.get("/overall", async (req, res) => {
       : res.send({
           status: "error",
           message: "No income found",
+        });
+  } catch (error) {
+    res.send({
+      status: "error",
+      message: "Unable to get order , please try again later",
+    });
+  }
+});
+
+// GET ALL ORDERS
+router.get("/", async (req, res) => {
+  try {
+    const result = await getAllOrder();
+
+    result
+      ? res.send({
+          status: "success",
+          message: "Here are all the orders",
+          result,
+        })
+      : res.send({
+          status: "error",
+          message: "Unable to get order , please try again later",
         });
   } catch (error) {
     res.send({

@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { allOrderAction } from "../featuredInfo/orderAction";
 import "./widgetLarge.css";
 
 export const WidgetLarge = () => {
+  const dispatch = useDispatch();
+
+  const { allOrders } = useSelector((state) => state.revenue);
+
+  const sortByCreated = allOrders?.slice().sort((a, b) => {
+    return b.createdAt - a.createdAt;
+  });
+
   const Button = ({ type }) => {
     return <button className={"widgetLgButton " + type}>{type}</button>;
   };
+
+  useEffect(() => {
+    dispatch(allOrderAction());
+  }, [dispatch]);
   return (
     <div className="widgetLg">
-      <h3 className="widgetLgTitle">Latest Transactions</h3>
+      <h3 className="widgetLgTitle">Latest Order placed</h3>
       <table className="widgetLgTable">
         <tr className="widgetLgTr">
           <th className="widgetLfTh">Cutomers</th>
@@ -16,53 +30,23 @@ export const WidgetLarge = () => {
           <th className="widgetLfTh">Status</th>
         </tr>
 
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/3992656/pexels-photo-3992656.png?auto=compress&cs=tinysrgb&dpr=2&w=500"
-              alt=""
-              className="widgetLgImg"
-            />
-            <div className="widgetLgName">Suzan Carrol</div>
-          </td>
-          <td className="widgetLgDate">2 June 2021</td>
-          <td className="widgetLgAmonut">$200.00</td>
-          <td className="widgetLgStatus">
-            <Button type="Approved" />
-          </td>
-        </tr>
-
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Marcus_Padley_Photo.jpg"
-              alt=""
-              className="widgetLgImg"
-            />
-            <div className="widgetLgName">Marcus Rashord</div>
-          </td>
-          <td className="widgetLgDate">2 June 2021</td>
-          <td className="widgetLgAmonut">$200.00</td>
-          <td className="widgetLgStatus">
-            <Button type="Declined" />
-          </td>
-        </tr>
-
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img
-              src="https://assets.teenvogue.com/photos/5a01d0b76a66c92585b50f3b/3:2/w_1080,h_720,c_limit/james%20charles.png"
-              alt=""
-              className="widgetLgImg"
-            />
-            <div className="widgetLgName">Suzan Carrol</div>
-          </td>
-          <td className="widgetLgDate">12 October 2021</td>
-          <td className="widgetLgAmonut">$500.00</td>
-          <td className="widgetLgStatus">
-            <Button type="Pending" />
-          </td>
-        </tr>
+        {sortByCreated.length &&
+          sortByCreated.map((item) => {
+            return (
+              <>
+                <tr className="widgetLgTr">
+                  <td className="widgetLgUser">
+                    <div className="widgetLgName">{item.clientId}</div>
+                  </td>
+                  <td className="widgetLgDate">{item.createdAt}</td>
+                  <td className="widgetLgAmonut">${item.amount}</td>
+                  <td className="widgetLgStatus">
+                    <Button type="Approved" />
+                  </td>
+                </tr>
+              </>
+            );
+          })}
       </table>
     </div>
   );

@@ -12,6 +12,14 @@ export const getOrderApi = async () => {
     console.log(error);
   }
 };
+export const getAllOrderApi = async () => {
+  try {
+    const { data } = await axios.get("http://localHost:5000/api/v1/order");
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const getSumOfOrdersApi = async () => {
   try {
