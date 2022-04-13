@@ -38,11 +38,22 @@
   color: green;
 }
 
+.amountCon {
+  font-size: 30px;
+  font-weight: 700;
+}
+
 .featuredIcon.negative {
   color: red;
+}
+
+h3 {
+  margin-left: 20px;
 }
 
 .featuredSub {
   font-size: 15;
   color: grey;
+  display: flex;
+  align-items: center;
 }

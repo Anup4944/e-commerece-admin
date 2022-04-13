@@ -6,6 +6,12 @@ import {
   ArrowDownwardSharp,
   ArrowUpward,
   ArrowUpwardOutlined,
+  AttachMoneyOutlined,
+  CalendarToday,
+  CalendarTodayOutlined,
+  DoneAllSharp,
+  Money,
+  MoneyOutlined,
 } from "@material-ui/icons";
 import { revenueAction, revenueSumAction } from "./orderAction";
 
@@ -37,24 +43,33 @@ export const FeaturedInfo = () => {
           {arrSum ? (
             <div className="featuredMoneyRate">
               <ArrowUpwardOutlined className="featuredIcon" />
-              {onlyTot[0] - onlyTot[1]}
+              <span className="amountCon"> {onlyTot[0] - onlyTot[1]}</span>
             </div>
           ) : (
             <div className="featuredMoneyRate">
               <ArrowDownwardSharp className="featuredIcon negative" />
-              {onlyTot[1] - onlyTot[0]}
+              <span className="amountCon"> {onlyTot[1] - onlyTot[0]}</span>
             </div>
           )}
         </div>
-        <div className="featuredSub">Compared to last month</div>
+        <div className="featuredSub">
+          {" "}
+          <CalendarToday /> <h3>Compared to last month</h3>
+        </div>
       </div>
 
       <div className="featuredItem">
-        <div className="featuredTitle">Revenue </div>
+        <div className="featuredTitle"> Revenue </div>
         <div className="featuredMoneyContainer">
-          <div className="featureMoney">${income}</div>
+          <div className="featureMoney">
+            {" "}
+            <Money /> <span className="amountCon"> ${income}</span>
+          </div>
         </div>
-        <div className="featuredSub">Total revenue</div>
+        <div className="featuredSub">
+          <AttachMoneyOutlined />
+          <h3> Total revenue</h3>
+        </div>
       </div>
     </div>
   );
