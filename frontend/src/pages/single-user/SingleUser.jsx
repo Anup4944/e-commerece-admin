@@ -11,11 +11,12 @@ import {
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleUserAction } from "../user-list/clientAction";
+import Spinner from "../../component/spinner/Spinner";
 
 export const SingleUser = () => {
   const dispatch = useDispatch();
 
-  const { singleUser } = useSelector((state) => state.users);
+  const { isLoading, singleUser } = useSelector((state) => state.users);
 
   let { userId } = useParams();
 
@@ -25,6 +26,7 @@ export const SingleUser = () => {
   return (
     <div className="SingleUser">
       <div className="userTitleCon">
+        {isLoading && <Spinner />}
         <h1 className="userTitle">Edit User</h1>
         <Link to="/newUser">
           <button className="userAddButton">Create </button>{" "}
@@ -33,11 +35,6 @@ export const SingleUser = () => {
       <div className="userContainer">
         <div className="userShow">
           <div className="userShowTop">
-            {/* <img
-              src="https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-              alt=""
-              className="userShowImg"
-            /> */}
             <div className="userShowTopTitle">
               <div className="userShowUserName">{singleUser?.firstName} </div>
             </div>

@@ -3,11 +3,14 @@ import Img from "../login/bg1.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getPassOtpAction } from "./passAction";
+import Spinner from "../../component/spinner/Spinner";
 
 export const EnterEmail = () => {
   const [email, setEmail] = useState("");
 
-  const { message, status } = useSelector((state) => state.passwordReset);
+  const { isLoading, message, status } = useSelector(
+    (state) => state.passwordReset
+  );
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -39,6 +42,7 @@ export const EnterEmail = () => {
         objectFit: "cover",
       }}
     >
+      {isLoading && <Spinner />}
       <form
         autoComplete="off"
         style={{ width: "25%" }}

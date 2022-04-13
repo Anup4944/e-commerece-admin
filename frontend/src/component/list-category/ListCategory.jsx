@@ -9,10 +9,13 @@ import {
 } from "../../pages/new-category/categorySlice";
 import { deleteCategoryAction } from "../../pages/new-category/categoryAction";
 import EditCategoryForm from "../edit-category-form/EditCategoryForm";
+import Spinner from "../spinner/Spinner";
 
 const ListCategory = () => {
   const dispatch = useDispatch();
-  const { categories, updateCategory } = useSelector((state) => state.category);
+  const { isLoading, categories, updateCategory } = useSelector(
+    (state) => state.category
+  );
 
   const handleOnEdit = (_id) => {
     dispatch(toggleCategoryEditModal());
@@ -45,6 +48,8 @@ const ListCategory = () => {
   return (
     <>
       <h1 className="editCatTitle">Edit Category</h1>
+
+      {isLoading && <Spinner />}
 
       <EditCategoryForm />
 

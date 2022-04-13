@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./product.css";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { productData } from "../user-list/dummyData";
 import { Chart } from "../../component/chart/Chart";
 import { PublishOutlined } from "@material-ui/icons";
@@ -9,11 +9,14 @@ import {
   updateProductAction,
 } from "../new-product/productAction";
 import { useSelector, useDispatch } from "react-redux";
+import Spinner from "../../component/spinner/Spinner";
 
 export const SingleProduct = () => {
   const [images, setImages] = useState([]);
   const [imgToDelete, setImgToDelete] = useState([]);
-  const { singleProd, status, message } = useSelector((state) => state.product);
+  const { isLoading, singleProd, status, message } = useSelector(
+    (state) => state.product
+  );
 
   const initialState = {
     isAvailable: "",
@@ -101,6 +104,7 @@ export const SingleProduct = () => {
           <button className="productAddButton">Add </button>
         </Link>
       </div>
+      {isLoading && <Spinner />}
 
       <div className="productTop">
         <div className="productTopLeft">

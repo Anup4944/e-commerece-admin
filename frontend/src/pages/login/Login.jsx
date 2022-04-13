@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom";
 import { loginAction } from "./loginAction";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Spinner from "../../component/spinner/Spinner";
 
 const initialState = {
   email: "aj@w.com",
@@ -19,7 +20,9 @@ const initialState = {
 export const Login = () => {
   const [loginInfo, setLoginInfo] = useState(initialState);
   const [show, setShow] = useState(true);
-  const { isAuth, status, message } = useSelector((state) => state.login);
+  const { isLoading, isAuth, status, message } = useSelector(
+    (state) => state.login
+  );
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -49,6 +52,8 @@ export const Login = () => {
             ? message && <span style={{ color: "tomato" }}>{message}</span>
             : null}
           <h1 className="header">Log In</h1>
+
+          {isLoading && <Spinner />}
 
           <div className="box">
             <MailOutlined className="icon" />

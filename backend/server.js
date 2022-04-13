@@ -37,6 +37,7 @@ import productRouter from "./routers/product.router.js";
 import categoryRouter from "./routers/category.router.js";
 import clientRouter from "./routers/client.router.js";
 import orderRouter from "./routers/order.router.js";
+import transactionsRouter from "./routers/stripe.router.js";
 
 // Use API
 app.use("/api/v1/user", userRouter);
@@ -45,6 +46,7 @@ app.use("/api/v1/product", productRouter);
 app.use("/api/v1/category", categoryRouter);
 app.use("/api/v1/client", clientRouter);
 app.use("/api/v1/order", orderRouter);
+app.use("/api/v1/transactions", transactionsRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello World");

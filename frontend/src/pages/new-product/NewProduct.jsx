@@ -3,6 +3,7 @@ import "./newProduct.css";
 import { useDispatch, useSelector } from "react-redux";
 import { saveProductAction } from "./productAction";
 import { getAllCategoryAction } from "../new-category/categoryAction";
+import Spinner from "../../component/spinner/Spinner";
 
 const initalState = {
   isAvailable: "",
@@ -21,7 +22,7 @@ export const NewProduct = () => {
   const [product, setProduct] = useState(initalState);
   const [images, setImages] = useState([]);
 
-  const { status, message } = useSelector((state) => state.product);
+  const { isLoading, status, message } = useSelector((state) => state.product);
   const { categories } = useSelector((state) => state.category);
 
   const dispatch = useDispatch();
@@ -64,6 +65,7 @@ export const NewProduct = () => {
 
   return (
     <div className="newProduct">
+      {isLoading && <Spinner />}
       <h1 className="addProductTitle">New Product</h1>
       {status === "error"
         ? message && <span style={{ color: "tomato" }}>{message}</span>

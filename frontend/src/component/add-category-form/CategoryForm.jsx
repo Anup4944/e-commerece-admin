@@ -5,6 +5,7 @@ import {
   getAllCategoryAction,
   saveCategoryAction,
 } from "../../pages/new-category/categoryAction";
+import Spinner from "../spinner/Spinner";
 
 const initialState = {
   newCategory: "",
@@ -14,7 +15,7 @@ export const CategoryForm = () => {
   const [categoryInfo, setCategoryInfo] = useState(initialState);
   const dispatch = useDispatch();
 
-  const { categories, status, message } = useSelector(
+  const { isLoading, categories, status, message } = useSelector(
     (state) => state.category
   );
 
@@ -43,6 +44,8 @@ export const CategoryForm = () => {
       {status === "success"
         ? message && <span style={{ color: "green" }}>{message}</span>
         : null}
+
+      {isLoading && <Spinner />}
       <h1 className="addCatgeoryTitle">Add new Category</h1>
 
       <form className="addCategoryForm" onSubmit={handleOnSubmit}>

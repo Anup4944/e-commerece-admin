@@ -8,8 +8,11 @@ export const WidgetLarge = () => {
 
   const { allOrders } = useSelector((state) => state.revenue);
 
-  const sortByCreated = allOrders?.slice().sort((a, b) => {
-    return b.createdAt - a.createdAt;
+  const sortByCreated = allOrders.slice().sort((a, b) => {
+    const dateA = new Date(a.createdAt);
+    const dateB = new Date(b.createdAt);
+
+    return dateB - dateA;
   });
 
   const Button = ({ type }) => {
@@ -24,7 +27,7 @@ export const WidgetLarge = () => {
       <h3 className="widgetLgTitle">Latest Order placed</h3>
       <table className="widgetLgTable">
         <tr className="widgetLgTr">
-          <th className="widgetLfTh">Cutomers</th>
+          <th className="widgetLfTh">Cutomers email</th>
           <th className="widgetLfTh">Date</th>
           <th className="widgetLfTh">Amount</th>
           <th className="widgetLfTh">Status</th>
@@ -36,7 +39,7 @@ export const WidgetLarge = () => {
               <>
                 <tr className="widgetLgTr">
                   <td className="widgetLgUser">
-                    <div className="widgetLgName">{item.clientId}</div>
+                    <div className="widgetLgName">{item.email}</div>
                   </td>
                   <td className="widgetLgDate">{item.createdAt}</td>
                   <td className="widgetLgAmonut">${item.amount}</td>

@@ -5,11 +5,12 @@ import "./userList.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllUserAction } from "./clientAction";
+import Spinner from "../../component/spinner/Spinner";
 
 export const UserList = () => {
   const dispatch = useDispatch();
 
-  const { allUsers } = useSelector((state) => state.users);
+  const { isLoading, allUsers } = useSelector((state) => state.users);
 
   useEffect(() => {
     dispatch(getAllUserAction());
@@ -51,6 +52,7 @@ export const UserList = () => {
 
   return (
     <div className="userList">
+      {isLoading && <Spinner />}
       <DataGrid
         rows={allUsers}
         columns={columns}

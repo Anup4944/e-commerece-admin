@@ -3,6 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import Spinner from "../../component/spinner/Spinner";
 
 import "./productList.css";
 import {
@@ -11,7 +12,7 @@ import {
 } from "../new-product/productAction";
 
 export const ProductList = () => {
-  const { products } = useSelector((state) => state.product);
+  const { isLoading, products } = useSelector((state) => state.product);
 
   const dispatch = useDispatch();
 
@@ -81,6 +82,7 @@ export const ProductList = () => {
 
   return (
     <div className="productList">
+      {isLoading && <Spinner />}
       <DataGrid
         rows={products}
         columns={columns}
