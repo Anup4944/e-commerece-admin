@@ -65,18 +65,16 @@ export const Sidebar = () => {
                 <Timeline className="sidebarIcon" /> Products
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <AttachMoney className="sidebarIcon" /> Transactions
-            </li>
           </ul>
         </div>
-        <div className="sidebarMenu"></div>
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Staff</h3>
           <ul className="sidebarList">
-            <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" /> Analytics
-            </li>
+            <Link to="/analysis" className="link">
+              <li className="sidebarListItem">
+                <Timeline className="sidebarIcon" /> Analytics
+              </li>
+            </Link>
 
             <li className="sidebarListItem" onClick={logMeOut}>
               {/* <Link to="/" className="link"> */}

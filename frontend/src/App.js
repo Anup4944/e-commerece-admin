@@ -15,6 +15,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { EnterEmail } from "./pages/pass-reset/EnterEmail";
 import { UpdatePass } from "./pages/pass-reset/UpdatePass";
 import Categories from "./pages/new-category/Categories";
+import Analysis from "./pages/analysis/Analysis";
 
 function App() {
   const { isAuth } = useSelector((state) => state.login);
@@ -55,6 +56,9 @@ function App() {
               </Route>
               <Route exact path="/newCategory">
                 <Categories />
+              </Route>
+              <Route exact path="/analysis">
+                <Analysis />
               </Route>
               <Route exact path="/products">
                 <ProductList />

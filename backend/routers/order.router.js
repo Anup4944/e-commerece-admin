@@ -98,4 +98,34 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/prod-stats/:_id", async (req, res) => {
+  const date = new Date();
+  const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
+  const prevMonth = new Date(new Date().setMonth(lastMonth.getMonth() - 1));
+  try {
+    const { _id } = req.params;
+
+    const income = await OrderSchema.aggregate([
+      { $match: { createdAt: { $gte: prevMonth } } },
+      {
+        $project: {
+          month: { $month: "$createdAt" },
+          sales: "$amount",
+        },
+      },
+      {
+        $group: {
+          _id: "$month",
+          total: { $sum: "$sales" },
+        },
+      },
+    ]);
+  } catch (error) {
+    res.send({
+      status: "error",
+      message: "Unable to get order , please try again later",
+    });
+  }
+});
+
 export default router;

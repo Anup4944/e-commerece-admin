@@ -6,7 +6,6 @@ import "./home.css";
 import { WidgetSmall } from "../../component/widgetSmall/WidgetSmall";
 import { WidgetLarge } from "../../component/widgetLarge/WidgetLarge";
 import { getUserStatsAction } from "../user-list/clientAction";
-import Spinner from "../../component/spinner/Spinner";
 
 export const Home = () => {
   const dispatch = useDispatch();
