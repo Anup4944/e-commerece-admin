@@ -4,9 +4,10 @@ const initialState = {
   isLoading: false,
   status: "",
   message: "",
-  revenueDt: [],
+  monthlyRev: [],
   totalIncome: [],
   allOrders: [],
+  monthlyInc: [],
 };
 
 const loginSlice = createSlice({
@@ -16,7 +17,6 @@ const loginSlice = createSlice({
     requestPending: (state) => {
       state.isLoading = true;
     },
-
     getAllOrderSuccess: (state, { payload }) => {
       state.isLoading = false;
       state.status = payload.status;
@@ -27,7 +27,7 @@ const loginSlice = createSlice({
       state.isLoading = false;
       state.status = payload.status;
       state.message = payload.message;
-      state.revenueDt = payload.income;
+      state.monthlyRev = payload.monthInc;
     },
     getSumRevenueSuccess: (state, { payload }) => {
       state.isLoading = false;
@@ -48,6 +48,7 @@ export const {
   requestPending,
   getRevenueSuccess,
   getAllOrderSuccess,
+  getMonthlyIncomeSuccess,
   getSumRevenueSuccess,
   requestFail,
 } = actions;

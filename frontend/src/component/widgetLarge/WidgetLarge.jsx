@@ -41,7 +41,9 @@ export const WidgetLarge = () => {
                   <td className="widgetLgUser">
                     <div className="widgetLgName">{item.email}</div>
                   </td>
-                  <td className="widgetLgDate">{item.createdAt}</td>
+                  <td className="widgetLgDate">
+                    {new Date(item.createdAt).toDateString()}
+                  </td>
                   <td className="widgetLgAmonut">${item.amount}</td>
                   <td className="widgetLgStatus">
                     <Button type="Approved" />

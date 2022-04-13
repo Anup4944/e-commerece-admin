@@ -10,7 +10,7 @@ router.get("/income", async (req, res) => {
   const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
   const prevMonth = new Date(new Date().setMonth(lastMonth.getMonth() - 1));
   try {
-    const income = await OrderSchema.aggregate([
+    const monthInc = await OrderSchema.aggregate([
       { $match: { createdAt: { $gte: prevMonth } } },
       {
         $project: {
@@ -26,11 +26,11 @@ router.get("/income", async (req, res) => {
       },
     ]);
 
-    income.length
+    monthInc.length
       ? res.send({
           status: "success",
           message: "Here is monthly income",
-          income,
+          monthInc,
         })
       : res.send({
           status: "error",
