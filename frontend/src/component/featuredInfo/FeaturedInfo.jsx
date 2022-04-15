@@ -1,31 +1,25 @@
 import "./featuredInfo.css";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
   ArrowDownwardSharp,
-  ArrowUpward,
   ArrowUpwardOutlined,
   AttachMoneyOutlined,
   CalendarToday,
-  CalendarTodayOutlined,
-  DoneAllSharp,
   Money,
-  MoneyOutlined,
 } from "@material-ui/icons";
 import { revenueAction, revenueSumAction } from "./orderAction";
 
 export const FeaturedInfo = () => {
   const dispatch = useDispatch();
-  const { revenueDt, totalIncome } = useSelector((state) => state.revenue);
+  const { monthlyRev, totalIncome } = useSelector((state) => state.revenue);
 
-  const sortByCreated = revenueDt?.slice().sort((a, b) => {
+  const sortByCreated = monthlyRev?.slice().sort((a, b) => {
     return b._id - a._id;
   });
 
   const onlyTot = sortByCreated?.map((item) => item.total);
-
-  const arrSum = onlyTot[0] > onlyTot[1];
 
   const income = totalIncome?.map((item) => item.total).toString();
 
@@ -40,7 +34,7 @@ export const FeaturedInfo = () => {
         <div className="featuredMoneyContainer">
           <div className="featureMoney"></div>
 
-          {arrSum ? (
+          {onlyTot[0] > onlyTot[1] ? (
             <div className="featuredMoneyRate">
               <ArrowUpwardOutlined className="featuredIcon" />
               <span className="amountCon"> {onlyTot[0] - onlyTot[1]}</span>

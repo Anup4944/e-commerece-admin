@@ -71,12 +71,12 @@ export const SingleProduct = () => {
     const formData = new FormData();
 
     Object.keys(newProduct).map((key) => {
-      key !== "images" && formData.append(key, newProduct[key]);
+      return key !== "images" && formData.append(key, newProduct[key]);
     });
 
     images.length &&
       [...images].map((image) => {
-        formData.append("images", image);
+        return formData.append("images", image);
       });
 
     imgToDelete.length && formData.append("imgToDelete", imgToDelete);
@@ -116,7 +116,13 @@ export const SingleProduct = () => {
           <div className="productInfoTop">
             {update?.images?.length &&
               update.images.map((item) => {
-                return <img src={item} className="productUploadImg" />;
+                return (
+                  <img
+                    src={item}
+                    className="productUploadImg"
+                    alt="product img"
+                  />
+                );
               })}
           </div>
           <div className="productInfoBottom">
@@ -239,7 +245,11 @@ export const SingleProduct = () => {
                   update.images.map((item) => {
                     return (
                       <>
-                        <img src={item} className="productUploadImg" />
+                        <img
+                          src={item}
+                          className="productUploadImg"
+                          alt="upload"
+                        />
 
                         <input
                           type="checkbox"

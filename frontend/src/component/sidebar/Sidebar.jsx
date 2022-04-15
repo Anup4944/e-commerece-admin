@@ -3,18 +3,9 @@ import "./sidebar.css";
 import {
   LineStyle,
   Timeline,
-  TrendingUp,
   Person,
-  AttachMoney,
-  Feedback,
-  MailOutline,
-  Settings,
-  Assessment,
   PowerSettingsNew,
-  AddIcCallOutlined,
-  AddIcCallTwoTone,
   PlusOneOutlined,
-  CategorySharp,
   CategoryOutlined,
 } from "@material-ui/icons";
 import { Link, useHistory } from "react-router-dom";

@@ -42,12 +42,12 @@ export const NewProduct = () => {
     const formData = new FormData();
 
     Object.keys(product).map((key) => {
-      key !== "images" && formData.append(key, product[key]);
+      return key !== "images" && formData.append(key, product[key]);
     });
 
     images.length &&
       [...images].map((image) => {
-        formData.append("images", image);
+        return formData.append("images", image);
       });
 
     dispatch(saveProductAction(formData));

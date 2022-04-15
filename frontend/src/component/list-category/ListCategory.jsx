@@ -13,9 +13,7 @@ import Spinner from "../spinner/Spinner";
 
 const ListCategory = () => {
   const dispatch = useDispatch();
-  const { isLoading, categories, updateCategory } = useSelector(
-    (state) => state.category
-  );
+  const { isLoading, categories } = useSelector((state) => state.category);
 
   const handleOnEdit = (_id) => {
     dispatch(toggleCategoryEditModal());
@@ -28,9 +26,7 @@ const ListCategory = () => {
   const handleOnDelete = (_id) => {
     if (window.confirm("Are you sure you want to delete the category?")) {
       const childIds = categories.map((row) => {
-        if (row.parentCategory === _id) {
-          return row._id;
-        }
+        return row.parentCategory === _id && row._id;
       });
 
       const idsToDelete = childIds.filter((row) => row);

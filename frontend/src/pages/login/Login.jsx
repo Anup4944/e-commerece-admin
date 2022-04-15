@@ -43,7 +43,7 @@ export const Login = () => {
 
   useEffect(() => {
     if (isAuth) history.push("/home");
-  }, [isAuth]);
+  }, [isAuth, history]);
   return (
     <div className="page">
       <div className="wrapper">

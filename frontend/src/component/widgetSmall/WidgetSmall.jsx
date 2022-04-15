@@ -18,7 +18,7 @@ export const WidgetSmall = () => {
 
   useEffect(() => {
     dispatch(getAllUserAction());
-  }, []);
+  }, [dispatch]);
   return (
     <div className="widgetSm">
       <div className="widgetSmTitle">New join members</div>
