@@ -8,6 +8,7 @@ const initialState = {
   totalIncome: [],
   allOrders: [],
   monthlyInc: [],
+  userExp: [],
 };
 
 const loginSlice = createSlice({
@@ -35,6 +36,12 @@ const loginSlice = createSlice({
       state.message = payload.message;
       state.totalIncome = payload.overAll;
     },
+    getMoneyPerClientSuccess: (state, { payload }) => {
+      state.isLoading = false;
+      state.status = payload.status;
+      state.message = payload.message;
+      state.userExp = payload.stats;
+    },
     requestFail: (state, { payload }) => {
       state.isLoading = false;
       state.status = payload.status;
@@ -49,6 +56,7 @@ export const {
   getRevenueSuccess,
   getAllOrderSuccess,
   getMonthlyIncomeSuccess,
+  getMoneyPerClientSuccess,
   getSumRevenueSuccess,
   requestFail,
 } = actions;

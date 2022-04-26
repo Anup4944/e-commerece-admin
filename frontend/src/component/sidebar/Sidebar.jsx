@@ -7,6 +7,7 @@ import {
   PowerSettingsNew,
   PlusOneOutlined,
   CategoryOutlined,
+  MoneyTwoTone,
 } from "@material-ui/icons";
 import { Link, useHistory } from "react-router-dom";
 import { logoutAction } from "../../pages/login/loginAction";
@@ -54,6 +55,11 @@ export const Sidebar = () => {
             <Link to="/products" className="link">
               <li className="sidebarListItem">
                 <Timeline className="sidebarIcon" /> Products
+              </li>
+            </Link>
+            <Link to="/transaction" className="link">
+              <li className="sidebarListItem">
+                <MoneyTwoTone className="sidebarIcon" /> Transactions Per Client
               </li>
             </Link>
           </ul>

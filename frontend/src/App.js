@@ -16,6 +16,7 @@ import { EnterEmail } from "./pages/pass-reset/EnterEmail";
 import { UpdatePass } from "./pages/pass-reset/UpdatePass";
 import Categories from "./pages/new-category/Categories";
 import Analysis from "./pages/analysis/Analysis";
+import TransactionPage from "./pages/transactionPage/TransactionPage";
 
 function App() {
   const { isAuth } = useSelector((state) => state.login);
@@ -66,6 +67,9 @@ function App() {
 
               <Route exact path="/product/:id">
                 <SingleProduct />
+              </Route>
+              <Route exact path="/transaction">
+                <TransactionPage />
               </Route>
             </div>
           </>

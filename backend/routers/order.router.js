@@ -101,6 +101,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// FINDING MOST SOLD PRODUTCS
 router.get("/prod-stats/:_id", async (req, res) => {
   const date = new Date();
   const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
@@ -110,12 +111,11 @@ router.get("/prod-stats/:_id", async (req, res) => {
 
     const order = await getAllOrder();
 
-    const prodCount = order.map((item) =>
-      item.products
-        .map((prod) => prod._id)
-        .slice()
-        .toString()
-    );
+    // const prodCount = order.map((item) =>
+    //   item.products.map((prod) => prod._id === _id)
+    // );
+
+    const prodCount = await order.count({ products });
 
     console.log(prodCount);
 
@@ -142,6 +142,35 @@ router.get("/prod-stats/:_id", async (req, res) => {
     //   message: "Product Stat",
     //   prodStat,
     // });
+  } catch (error) {
+    res.send({
+      status: "error",
+      message: "Unable to get order , please try again later",
+    });
+  }
+});
+
+// TOTAL AMOUNT OF MONEY SPENT BY EACH CUSTOMERS
+router.get("/customer", async (req, res) => {
+  try {
+    const stats = await OrderSchema.aggregate([
+      {
+        $match: {},
+      },
+
+      { $group: { _id: "$email", total: { $sum: "$amount" } } },
+    ]);
+
+    stats.length
+      ? res.send({
+          status: "success",
+          message: "Total money spent by each customer",
+          stats,
+        })
+      : res.send({
+          status: "success",
+          message: "No purchase made yet",
+        });
   } catch (error) {
     res.send({
       status: "error",

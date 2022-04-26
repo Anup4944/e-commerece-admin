@@ -1,0 +1,16 @@
+.transactionHead {
+  flex: 5;
+}
+
+.transactionHeadTable {
+  width: 100%;
+  border-spacing: 20px;
+}
+.transTh {
+  text-align: left;
+  color: rgb(19, 99, 168);
+}
+.transAmt {
+  font-weight: 700;
+  color: green;
+}

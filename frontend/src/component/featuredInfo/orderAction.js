@@ -2,6 +2,7 @@ import {
   getAllOrderApi,
   getOrderApi,
   getSumOfOrdersApi,
+  transPerClientApi,
 } from "../../apis/orderApi";
 import {
   getAllOrderSuccess,
@@ -9,6 +10,7 @@ import {
   getSumRevenueSuccess,
   requestFail,
   requestPending,
+  getMoneyPerClientSuccess,
 } from "./orderSlice";
 
 export const revenueAction = () => async (dispatch) => {
@@ -46,6 +48,7 @@ export const revenueSumAction = () => async (dispatch) => {
     dispatch(requestFail(err));
   }
 };
+
 export const allOrderAction = () => async (dispatch) => {
   try {
     dispatch(requestPending());
@@ -54,6 +57,23 @@ export const allOrderAction = () => async (dispatch) => {
 
     result.status === "success"
       ? dispatch(getAllOrderSuccess(result))
+      : dispatch(requestFail(result));
+  } catch (error) {
+    const err = {
+      status: "error",
+      message: error.message,
+    };
+    dispatch(requestFail(err));
+  }
+};
+export const transactionAction = () => async (dispatch) => {
+  try {
+    dispatch(requestPending());
+
+    const result = await transPerClientApi();
+
+    result.status === "success"
+      ? dispatch(getMoneyPerClientSuccess(result))
       : dispatch(requestFail(result));
   } catch (error) {
     const err = {
