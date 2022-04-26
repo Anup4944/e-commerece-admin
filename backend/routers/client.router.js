@@ -1,5 +1,10 @@
 import express from "express";
-import { getAllClient, getClientById } from "../models/client/client.model.js";
+import { hashPassword } from "../helpers/bcrypt.helper.js";
+import {
+  getAllClient,
+  getClientById,
+  updateClientPass,
+} from "../models/client/client.model.js";
 import ClientSchema from "../models/client/client.schema.js";
 const router = express.Router();
 
@@ -77,6 +82,48 @@ router.get("/:_id", async (req, res) => {
     res.send({
       status: "error",
       message: "Invalid request!!!",
+    });
+  }
+});
+
+//UPDATE CLIENT PASSWORD VIA ADMIN PAGE
+router.patch("/:_id", async (req, res) => {
+  try {
+    const { _id } = req.params;
+
+    const { password } = req.body;
+
+    const { newPass } = password;
+
+    const hashPass = await hashPassword(newPass);
+
+    const user = await getClientById(_id);
+
+    if (!user._id) {
+      return res.send({
+        status: "error",
+        message: "No user found",
+      });
+    }
+
+    const result = await updateClientPass({ _id, hashPass });
+
+    console.log(result);
+
+    result._id
+      ? res.send({
+          status: "success",
+          message: `Password updated for ${user.email}`,
+        })
+      : res.send({
+          status: "error",
+          message: "No available right now",
+        });
+  } catch (error) {
+    res.send({
+      status: "error",
+      message:
+        "Error! There is some problem in our system, please try again later.",
     });
   }
 });

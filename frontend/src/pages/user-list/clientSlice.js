@@ -34,6 +34,11 @@ const clientSlice = createSlice({
       state.message = payload.message;
       state.userStat = payload.clientStats;
     },
+    updateClientPassSuccess: (state, { payload }) => {
+      state.isLoading = false;
+      state.status = payload.status;
+      state.message = payload.message;
+    },
     requestFail: (state, { payload }) => {
       state.isLoading = false;
       state.status = payload.status;
@@ -47,6 +52,7 @@ export const {
   requestPending,
   getAllUserSuccess,
   getSingleUserSuccess,
+  updateClientPassSuccess,
   getUserStatSuccess,
   requestFail,
 } = actions;

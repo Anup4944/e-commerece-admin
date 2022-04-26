@@ -183,7 +183,6 @@ router.patch("/password", async (req, res) => {
 router.patch("/update-password", async (req, res) => {
   try {
     const { newPassword, email } = req.body;
-    console.log(req.body);
 
     const hashedPassword = await hashPassword(newPassword);
 

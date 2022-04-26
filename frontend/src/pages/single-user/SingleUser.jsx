@@ -8,7 +8,10 @@ import {
 } from "@material-ui/icons";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleUserAction } from "../user-list/clientAction";
+import {
+  getSingleUserAction,
+  updateClientPassAction,
+} from "../user-list/clientAction";
 import Spinner from "../../component/spinner/Spinner";
 
 const initialState = {
@@ -27,7 +30,9 @@ export const SingleUser = () => {
 
   const dispatch = useDispatch();
 
-  const { isLoading, singleUser } = useSelector((state) => state.users);
+  const { isLoading, singleUser, status, message } = useSelector(
+    (state) => state.users
+  );
 
   let { userId } = useParams();
 
@@ -53,10 +58,14 @@ export const SingleUser = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    dispatch(updateClientPassAction(userId, password));
   };
   return (
     <div className="SingleUser">
       <div className="userTitleCon">
+        {status === "success"
+          ? message && <span style={{ color: "green" }}>{message}</span>
+          : null}
         {isLoading && <Spinner />}
         <h1 className="userTitle">Edit User</h1>
         <Link to="/newUser">

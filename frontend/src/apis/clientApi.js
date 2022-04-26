@@ -33,3 +33,16 @@ export const getClientStatsApi = async () => {
     console.log(error);
   }
 };
+export const updateClientPassApi = async (_id, password) => {
+  try {
+    const { data } = await axios.patch(
+      `http://localhost:5000/api/v1/client/${_id}`,
+      { password }
+    );
+
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
