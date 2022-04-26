@@ -2,6 +2,13 @@
   flex: 5;
 }
 
+.searchInput {
+  border: none;
+  cursor: pointer;
+  padding: 10px 10px 10px 5px;
+  border-bottom: 1px solid black;
+}
+
 .transactionHeadTable {
   width: 100%;
   border-spacing: 20px;
