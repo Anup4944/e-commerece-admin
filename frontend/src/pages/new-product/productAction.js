@@ -49,15 +49,14 @@ export const saveProductAction = (frmDt) => async (dispatch) => {
     dispatch(requestFail(err));
   }
 };
-export const updateProductAction = (_id, frmDt) => async (dispatch) => {
+
+export const getSingleProductAction = (_id) => async (dispatch) => {
   try {
     dispatch(requestPending());
 
-    const result = await updateProductApi(_id, frmDt);
+    const result = await getSingleProductApi(_id);
 
-    result.status === "success"
-      ? dispatch(updateProductSuccess(result))
-      : dispatch(requestFail(result));
+    result.status === "success" && dispatch(getSingleProductSuccess(result));
   } catch (error) {
     const err = {
       status: "error",
@@ -67,13 +66,15 @@ export const updateProductAction = (_id, frmDt) => async (dispatch) => {
   }
 };
 
-export const getSingleProductAction = (_id) => async (dispatch) => {
+export const updateProductAction = (_id, frmDt) => async (dispatch) => {
   try {
     dispatch(requestPending());
 
-    const result = await getSingleProductApi(_id);
+    const result = await updateProductApi(_id, frmDt);
 
-    result.status === "success" && dispatch(getSingleProductSuccess(result));
+    result.status === "success"
+      ? dispatch(updateProductSuccess(result))
+      : dispatch(requestFail(result));
   } catch (error) {
     const err = {
       status: "error",

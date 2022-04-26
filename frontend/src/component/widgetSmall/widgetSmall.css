@@ -8,8 +8,19 @@
 }
 
 .widgetSmTitle {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 15px;
+  font-weight: bolder;
+  color: darkblue;
+  display: flex;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  cursor: pointer;
 }
 .widgetSmImg {
   width: 40px;
@@ -39,13 +50,11 @@
 .widgetSmUserName {
   font-weight: 700;
   font-size: 15px;
-  color: rgb(14, 79, 14);
 }
 
 .widgetSmUserEmail {
   font-weight: 400;
   font-size: 13px;
-  color: rgb(14, 79, 14);
 }
 .widgetSmUserTitle {
   font-weight: 400;

@@ -17,6 +17,8 @@
 
 .featuredTitle {
   font-size: 20px;
+  font-weight: 700;
+  color: darkblue;
 }
 .featuredMoneyContainer {
   display: flex;
@@ -25,7 +27,7 @@
 }
 .featureMoney {
   font-size: 30px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .featuredMoneyRate {
@@ -39,7 +41,7 @@
 
 .amountCon {
   font-size: 30px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .featuredIcon.negative {

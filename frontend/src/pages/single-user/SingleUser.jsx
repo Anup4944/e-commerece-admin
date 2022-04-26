@@ -130,7 +130,7 @@ export const SingleUser = () => {
                 <label htmlFor="file">
                   <Publish className="userIcon" />
                 </label>
-                <input type="file" id="file" style={{ display: "none" }} />
+                <input type="file" id="file" />
               </div>
               <button className="userUpdateButton">Update</button>
             </div>

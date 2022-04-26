@@ -178,6 +178,9 @@ GET http://localHost:5000/api/v1/order/income
 ### GET OVERALL INCOME
 GET http://localHost:5000/api/v1/order/overall
 
+### GET PRODUCT STATS 
+GET http://localHost:5000/api/v1/order/prod-stats/623ed0d6118935ac9d43e920
+
 ### GET ALL ORDER
 GET http://localHost:5000/api/v1/order
 

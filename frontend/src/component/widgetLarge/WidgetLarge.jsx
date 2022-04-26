@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { allOrderAction } from "../featuredInfo/orderAction";
 import "./widgetLarge.css";
 
 export const WidgetLarge = () => {
+  const [search, setSearch] = useState("");
   const dispatch = useDispatch();
 
   const { allOrders } = useSelector((state) => state.revenue);
@@ -24,7 +25,15 @@ export const WidgetLarge = () => {
   }, [dispatch]);
   return (
     <div className="widgetLg">
-      <h3 className="widgetLgTitle">Latest Order placed</h3>
+      <div className="searchBar">
+        {" "}
+        <h3 className="widgetLgTitle">Latest Order placed</h3>
+        <input
+          className="searchInput"
+          placeholder="Search by email"
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
       <table className="widgetLgTable">
         <tr className="widgetLgTr">
           <th className="widgetLfTh">Cutomers email</th>
@@ -34,24 +43,32 @@ export const WidgetLarge = () => {
         </tr>
 
         {sortByCreated.length &&
-          sortByCreated.map((item) => {
-            return (
-              <>
-                <tr className="widgetLgTr">
-                  <td className="widgetLgUser">
-                    <div className="widgetLgName">{item.email}</div>
-                  </td>
-                  <td className="widgetLgDate">
-                    {new Date(item.createdAt).toDateString()}
-                  </td>
-                  <td className="widgetLgAmonut">${item.amount}</td>
-                  <td className="widgetLgStatus">
-                    <Button type="Approved" />
-                  </td>
-                </tr>
-              </>
-            );
-          })}
+          sortByCreated
+            .filter((item) => {
+              if (search === "") {
+                return item;
+              } else if (item.email.toLowerCase().includes(search)) {
+                return item;
+              }
+            })
+            .map((item, i) => {
+              return (
+                <>
+                  <tr className="widgetLgTr" key={i}>
+                    <td className="widgetLgUser">
+                      <div className="widgetLgName">{item.email}</div>
+                    </td>
+                    <td className="widgetLgDate">
+                      {new Date(item.createdAt).toDateString()}
+                    </td>
+                    <td className="widgetLgAmonut">${item.amount}</td>
+                    <td className="widgetLgStatus">
+                      <Button type="Approved" />
+                    </td>
+                  </tr>
+                </>
+              );
+            })}
       </table>
     </div>
   );

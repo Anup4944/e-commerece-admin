@@ -6,9 +6,14 @@
   width: fit-content;
   block-size: fit-content;
 }
+.searchBar {
+  display: flex;
+  justify-content: space-around;
+}
 
 .widgetLgTitle {
   font-size: 20px;
+  color: darkblue;
 }
 .widgetLgImg {
   width: 40px;

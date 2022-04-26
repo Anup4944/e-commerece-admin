@@ -1,5 +1,8 @@
 import express from "express";
-import { getAllOrder } from "../models/orders/order.model.js";
+import {
+  getAllOrder,
+  getProductInsideOrder,
+} from "../models/orders/order.model.js";
 const router = express.Router();
 import OrderSchema from "../models/orders/order.schema.js";
 
@@ -105,21 +108,40 @@ router.get("/prod-stats/:_id", async (req, res) => {
   try {
     const { _id } = req.params;
 
-    const income = await OrderSchema.aggregate([
-      { $match: { createdAt: { $gte: prevMonth } } },
-      {
-        $project: {
-          month: { $month: "$createdAt" },
-          sales: "$amount",
-        },
-      },
-      {
-        $group: {
-          _id: "$month",
-          total: { $sum: "$sales" },
-        },
-      },
-    ]);
+    const order = await getAllOrder();
+
+    const prodCount = order.map((item) =>
+      item.products
+        .map((prod) => prod._id)
+        .slice()
+        .toString()
+    );
+
+    console.log(prodCount);
+
+    // const prodStat = await order.aggregate([
+    //   { $match: { createdAt: { $gte: prevMonth } } },
+    //   {
+    //     $project: {
+    //       month: { $month: "$createdAt" },
+    //       sales: "$amount",
+    //     },
+    //   },
+    //   {
+    //     $group: {
+    //       _id: "$month",
+    //       total: { $sum: "$sales" },
+    //     },
+    //   },
+    // ]);
+
+    // console.log(prodStat);
+
+    // res.send({
+    //   status: "success",
+    //   message: "Product Stat",
+    //   prodStat,
+    // });
   } catch (error) {
     res.send({
       status: "error",

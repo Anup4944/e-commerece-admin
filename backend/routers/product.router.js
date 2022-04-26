@@ -152,6 +152,8 @@ router.put(
       const { _id } = req.params;
       const { imgToDelete, ...formDt } = req.body;
 
+      console.log(imgToDelete);
+
       const basePath = `${req.protocol}://${req.get("host")}/img/product/`;
 
       const files = req.files;
@@ -193,6 +195,8 @@ router.put(
         _id,
         newProduct,
       });
+
+      // console.log(updatedProduct);
 
       res.status(200).send({
         status: "success",
