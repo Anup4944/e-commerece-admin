@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./singleUser.css";
 import {
   CalendarToday,
   Email,
   PermIdentity,
-  MoodBadOutlined,
   MoodRounded,
 } from "@material-ui/icons";
 import { Link, useParams } from "react-router-dom";
@@ -12,18 +11,49 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSingleUserAction } from "../user-list/clientAction";
 import Spinner from "../../component/spinner/Spinner";
 
+const initialState = {
+  newPass: "",
+  confPass: "",
+};
+
+const passVerificationError = {
+  confPassword: false,
+};
+
 export const SingleUser = () => {
+  const [password, setPassword] = useState(initialState);
+
+  const [passwordError, setPasswordError] = useState(passVerificationError);
+
   const dispatch = useDispatch();
 
   const { isLoading, singleUser } = useSelector((state) => state.users);
-
-  console.log(singleUser);
 
   let { userId } = useParams();
 
   useEffect(() => {
     dispatch(getSingleUserAction(userId));
   }, [userId, dispatch]);
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+
+    setPassword({
+      ...password,
+      [name]: value,
+    });
+
+    if (name === "confPass") {
+      setPasswordError({
+        ...passwordError,
+        confPass: password.newPass === value,
+      });
+    }
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="SingleUser">
       <div className="userTitleCon">
@@ -70,12 +100,16 @@ export const SingleUser = () => {
           </div>
         </div>
         <div className="userUpdate">
-          <form className="userUpdateForm">
+          <form className="userUpdateForm" onSubmit={handleOnSubmit}>
             <label className="label">Password</label>
             <input
               type="password"
               placeholder="Enter new password"
               className="userUpdateInput"
+              name="newPass"
+              value={password.newPass}
+              onChange={handleOnChange}
+              required
             />
 
             <label className="label">Confirm Password</label>
@@ -84,7 +118,13 @@ export const SingleUser = () => {
               type="password"
               placeholder="Re-enter new password"
               className="userUpdateInput"
+              name="confPass"
+              value={password.confPass}
+              onChange={handleOnChange}
+              required
             />
+
+            {!passwordError.confPass && <div>Password doesnt match</div>}
 
             <button className="userUpdateButton">Update</button>
           </form>
