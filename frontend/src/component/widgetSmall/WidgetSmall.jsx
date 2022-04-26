@@ -3,10 +3,12 @@ import "./widgetSmall.css";
 import { Visibility, SearchOutlined } from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUserAction } from "../../pages/user-list/clientAction";
+import { useHistory } from "react-router-dom";
 
 export const WidgetSmall = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const { allUsers } = useSelector((state) => state.users);
 
@@ -57,7 +59,11 @@ export const WidgetSmall = () => {
                     <label className="widgetSmUserEmail">{user._id} </label>
                   </div>
                   <button className="widgetSmButton">
-                    <Visibility className="widgetSmIcon" /> Display
+                    <Visibility
+                      className="widgetSmIcon"
+                      onClick={() => history.push(`/user/${user._id}`)}
+                    />{" "}
+                    Display
                   </button>
                 </li>
               </>

@@ -38,11 +38,6 @@
   box-shadow: 5px 5px 0px 0px #289fed, 11px -12px 50px 0px rgba(0, 0, 0, 0);
 }
 
-.userShowTop {
-  display: flex;
-  align-items: center;
-}
-
 .accDetails {
   font-weight: 600;
   font-size: 15px;
@@ -104,54 +99,33 @@
   object-fit: cover;
   margin-right: 20px;
 }
-.userUpdateTitle {
-  font-size: 24px;
-  font-weight: 600;
-}
+
 .userUpdateForm {
   display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.label {
+  margin-top: 10px;
 }
 .userUpdateInput {
   border: none;
   width: 250px;
   border-bottom: 1px solid grey;
   height: 30px;
-}
-
-.userUpdateItem {
-  display: flex;
-  flex-direction: column;
-  margin-top: 12px;
-}
-
-.userUpdateItem > label {
-  margin-bottom: 5px;
-  font-size: 15px;
-}
-.userIcon {
-  cursor: pointer;
-}
-.userUpload {
-  display: flex;
-  align-items: center;
-}
-
-.userUpdateRight {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  margin-top: 10px;
 }
 
 .userUpdateButton {
   border-radius: 5px;
+  width: 100px;
   border: none;
   padding: 5px;
   background-color: darkblue;
   color: white;
   font-size: 600;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .userUpdateButton:hover {
