@@ -7,7 +7,6 @@ const router = express.Router();
 import OrderSchema from "../models/orders/order.schema.js";
 
 // GET MONTHLY INCOME
-
 router.get("/income", async (req, res) => {
   const date = new Date();
   const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
@@ -48,7 +47,6 @@ router.get("/income", async (req, res) => {
 });
 
 // GET OVERALL INCOME
-
 router.get("/overall", async (req, res) => {
   try {
     const overAll = await OrderSchema.aggregate([
@@ -101,47 +99,61 @@ router.get("/", async (req, res) => {
   }
 });
 
-// FINDING MOST SOLD PRODUTCS
-router.get("/prod-stats/:_id", async (req, res) => {
-  const date = new Date();
-  const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
-  const prevMonth = new Date(new Date().setMonth(lastMonth.getMonth() - 1));
+// PRODUCTS THAT HAVE BEEN SOLD WITHOUT DUBLICATE
+router.get("/prod-stats", async (req, res) => {
   try {
-    const { _id } = req.params;
+    const soldProd = await OrderSchema.distinct("products");
 
-    const order = await getAllOrder();
+    soldProd.length
+      ? res.send({
+          status: "success",
+          message: "Products that have been sold so far",
+          soldProd,
+        })
+      : res.send({
+          status: "error",
+          message: "No product sold so far",
+        });
+  } catch (error) {
+    res.send({
+      status: "error",
+      message: "Unable to get order , please try again later",
+    });
+  }
+});
 
-    // const prodCount = order.map((item) =>
-    //   item.products.map((prod) => prod._id === _id)
-    // );
+// FINDING MOST SOLD PRODUCTS
+router.get("/most-sold", async (req, res) => {
+  try {
+    const mostSold = await OrderSchema.aggregate([
+      {
+        $unwind: "$products",
+      },
+      {
+        $group: {
+          _id: "$products.title",
+          sum: {
+            $sum: "$products.buyingItem",
+          },
+        },
+      },
+      {
+        $sort: {
+          sum: -1,
+        },
+      },
+    ]);
 
-    const prodCount = await order.count({ products });
-
-    console.log(prodCount);
-
-    // const prodStat = await order.aggregate([
-    //   { $match: { createdAt: { $gte: prevMonth } } },
-    //   {
-    //     $project: {
-    //       month: { $month: "$createdAt" },
-    //       sales: "$amount",
-    //     },
-    //   },
-    //   {
-    //     $group: {
-    //       _id: "$month",
-    //       total: { $sum: "$sales" },
-    //     },
-    //   },
-    // ]);
-
-    // console.log(prodStat);
-
-    // res.send({
-    //   status: "success",
-    //   message: "Product Stat",
-    //   prodStat,
-    // });
+    mostSold.length
+      ? res.send({
+          status: "success",
+          message: "Your most sold products",
+          mostSold,
+        })
+      : res.send({
+          status: "error",
+          message: "Could not find most sold products",
+        });
   } catch (error) {
     res.send({
       status: "error",

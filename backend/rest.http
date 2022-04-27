@@ -181,15 +181,17 @@ Content-Type: application/json
 
 ################## ORDERS ####################
 
-
 ### GET MONTHLY INCOME
 GET http://localHost:5000/api/v1/order/income
 
 ### GET OVERALL INCOME
 GET http://localHost:5000/api/v1/order/overall
 
-### GET PRODUCT STATS 
-GET http://localHost:5000/api/v1/order/prod-stats/62247ae3d6d4c99ddcd5ce7f
+### PRODUCTS THAT HAVE BEEN SOLD WITHPUT DUBLICATE
+GET http://localHost:5000/api/v1/order/prod-stats
+
+### MOST SOLD PRODUCTS
+GET http://localHost:5000/api/v1/order/most-sold
 
 ### GET ALL ORDER
 GET http://localHost:5000/api/v1/order

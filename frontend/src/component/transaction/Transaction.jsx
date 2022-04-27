@@ -1,3 +1,4 @@
+import { EmailOutlined } from "@material-ui/icons";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { transactionAction } from "../../component/featuredInfo/orderAction";
@@ -23,8 +24,14 @@ const Transaction = () => {
       />
       <table className="transactionHeadTable">
         <tr>
-          <th className="transTh">Cutomers email</th>
-          <th className="transTh">Amount spent so far</th>
+          <th className="transTh">
+            {" "}
+            <h2>Cutomers email</h2>
+          </th>
+          <th className="transTh">
+            {" "}
+            <h2>Amount spent so far</h2>
+          </th>
         </tr>
 
         {userExp.length &&
@@ -42,7 +49,10 @@ const Transaction = () => {
               return (
                 <tr key={i}>
                   <td>
-                    <div className="transEmail">{item._id}</div>
+                    <div className="transEmail">
+                      {" "}
+                      <EmailOutlined /> <h3>{item._id}</h3>
+                    </div>
                   </td>
 
                   <td className="transAmt">${item.total}</td>

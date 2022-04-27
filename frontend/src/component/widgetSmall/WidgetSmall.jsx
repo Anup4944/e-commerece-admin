@@ -25,9 +25,8 @@ export const WidgetSmall = () => {
   return (
     <div className="widgetSm">
       <div className="widgetSmTitle">
-        New join members
+        New join members{" "}
         <div className="search">
-          {" "}
           <input
             className="searchInput"
             placeholder="Search by fullname"
@@ -63,7 +62,6 @@ export const WidgetSmall = () => {
                       className="widgetSmIcon"
                       onClick={() => history.push(`/user/${user._id}`)}
                     />{" "}
-                    Display
                   </button>
                 </li>
               </>

@@ -133,7 +133,11 @@ export const SingleUser = () => {
               required
             />
 
-            {!passwordError.confPass && <div>Password doesnt match</div>}
+            {!passwordError.confPass && (
+              <div style={{ marginTop: "20px", color: "tomato" }}>
+                Password doesnt match
+              </div>
+            )}
 
             <button className="userUpdateButton">Update</button>
           </form>

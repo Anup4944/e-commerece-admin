@@ -17,6 +17,10 @@
   text-align: left;
   color: rgb(19, 99, 168);
 }
+.transEmail {
+  display: flex;
+  align-items: center;
+}
 .transAmt {
   font-weight: 700;
   color: green;

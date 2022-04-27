@@ -1,0 +1,32 @@
+.mostSoldTop {
+  flex: 5;
+  margin: 20px;
+  padding: 20px;
+  -webkit-box-shadow: 5px 5px 0px 0px #289fed,
+    11px -12px 50px 0px rgba(0, 0, 0, 0);
+  box-shadow: 5px 5px 0px 0px #289fed, 11px -12px 50px 0px rgba(0, 0, 0, 0);
+}
+
+.mostSoldHeader {
+  font-size: 20px;
+  font-weight: 700;
+  color: darkblue;
+}
+
+.mostSoldTable {
+  width: 100%;
+  border-spacing: 20px;
+}
+
+.mostSoldTh {
+  text-align: center;
+  color: rgb(19, 99, 168);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.mostSoldTd {
+  text-align: center;
+  color: rgb(19, 99, 168);
+  font-weight: 500;
+}

@@ -6,6 +6,7 @@ import "./home.css";
 import { WidgetSmall } from "../../component/widgetSmall/WidgetSmall";
 import { WidgetLarge } from "../../component/widgetLarge/WidgetLarge";
 import { getUserStatsAction } from "../user-list/clientAction";
+import MostSold from "../../component/most-sold/MostSold";
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ export const Home = () => {
     <div className="home">
       <FeaturedInfo />
       <Chart data={sortedData} title="User Analytics" dataKey="total" />
+      <MostSold />
       <div className="homeWidgets">
         <WidgetSmall />
         <WidgetLarge />

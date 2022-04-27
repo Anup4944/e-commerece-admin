@@ -2,6 +2,7 @@ import {
   getAllOrderApi,
   getOrderApi,
   getSumOfOrdersApi,
+  mostSoldProdApi,
   transPerClientApi,
 } from "../../apis/orderApi";
 import {
@@ -11,6 +12,7 @@ import {
   requestFail,
   requestPending,
   getMoneyPerClientSuccess,
+  getMostSoldSuccess,
 } from "./orderSlice";
 
 export const revenueAction = () => async (dispatch) => {
@@ -66,6 +68,7 @@ export const allOrderAction = () => async (dispatch) => {
     dispatch(requestFail(err));
   }
 };
+
 export const transactionAction = () => async (dispatch) => {
   try {
     dispatch(requestPending());
@@ -74,6 +77,24 @@ export const transactionAction = () => async (dispatch) => {
 
     result.status === "success"
       ? dispatch(getMoneyPerClientSuccess(result))
+      : dispatch(requestFail(result));
+  } catch (error) {
+    const err = {
+      status: "error",
+      message: error.message,
+    };
+    dispatch(requestFail(err));
+  }
+};
+
+export const mostSoldAction = () => async (dispatch) => {
+  try {
+    dispatch(requestPending());
+
+    const result = await mostSoldProdApi();
+
+    result.status === "success"
+      ? dispatch(getMostSoldSuccess(result))
       : dispatch(requestFail(result));
   } catch (error) {
     const err = {

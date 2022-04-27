@@ -1,5 +1,5 @@
 .widgetSm {
-  flex: 1;
+  flex: 2;
   padding: 20px;
   margin-right: 20px;
   -webkit-box-shadow: 5px 5px 0px 0px #289fed,
@@ -17,6 +17,7 @@
 .search {
   display: flex;
   align-items: center;
+  margin-left: 150px;
 }
 
 .icon {
