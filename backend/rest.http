@@ -199,6 +199,9 @@ GET http://localHost:5000/api/v1/order
 ### TOTAL AMOUNT OF MONEY SPENT BY EACH CUSTOMERS
 GET http://localHost:5000/api/v1/order/customer
 
+### INDIVIDUAL PRODUCT STATS
+GET http://localHost:5000/api/v1/order/single-prod/622ffca3bd6e88b06b10dec6
+
 ################## TRANSACTIONS ####################
 
 ### GET ALL TRANSACTIONS INCOME

@@ -191,4 +191,54 @@ router.get("/customer", async (req, res) => {
   }
 });
 
+// GET MONTHLY STATS FROM INDIVIDUAL PRODUCT
+router.get("/single-prod/:_id", async (req, res) => {
+  const date = new Date();
+  const lastMonth = new Date(date.setMonth(date.getMonth() - 1));
+  const prevMonth = new Date(new Date().setMonth(lastMonth.getMonth() - 1));
+  try {
+    const { _id } = req.params;
+
+    const prodMonthlyStat = await OrderSchema.aggregate([
+      {
+        $match: {
+          createdAt: { $gte: prevMonth },
+          ...(_id && {
+            products: { $elemMatch: { _id } },
+          }),
+        },
+      },
+      {
+        $project: {
+          month: { $month: "$createdAt" },
+          sales: "$amount",
+        },
+      },
+
+      {
+        $group: {
+          _id: "$month",
+          total: { $sum: "$sales" },
+        },
+      },
+    ]);
+
+    prodMonthlyStat.length
+      ? res.send({
+          status: "success",
+          message: "Single product stats per month",
+          prodMonthlyStat,
+        })
+      : res.send({
+          status: "error",
+          message: "Unable to gte product stats",
+        });
+  } catch (error) {
+    res.send({
+      status: "error",
+      message: "Unable to get order , please try again later",
+    });
+  }
+});
+
 export default router;

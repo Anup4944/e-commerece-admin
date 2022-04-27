@@ -50,3 +50,13 @@ export const mostSoldProdApi = async () => {
     console.log(error);
   }
 };
+export const singleProdStatApi = async (_id) => {
+  try {
+    const { data } = await axios.get(
+      `http://localHost:5000/api/v1/order/single-prod/${_id}`
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};

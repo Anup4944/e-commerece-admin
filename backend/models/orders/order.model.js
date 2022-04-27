@@ -5,5 +5,5 @@ export const getAllOrder = () => {
 };
 
 export const getProductInsideOrder = (_id) => {
-  return OrderSchema.findOne({ $in: { products: _id } });
+  return OrderSchema.findById({ $in: { products: _id } });
 };

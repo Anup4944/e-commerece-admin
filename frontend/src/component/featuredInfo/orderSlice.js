@@ -10,6 +10,7 @@ const initialState = {
   monthlyInc: [],
   userExp: [],
   mostSoldProd: [],
+  singleProdStat: [],
 };
 
 const loginSlice = createSlice({
@@ -49,6 +50,12 @@ const loginSlice = createSlice({
       state.message = payload.message;
       state.mostSoldProd = payload.mostSold;
     },
+    getSingleProdStatSuccess: (state, { payload }) => {
+      state.isLoading = false;
+      state.status = payload.status;
+      state.message = payload.message;
+      state.singleProdStat = payload.prodMonthlyStat;
+    },
     requestFail: (state, { payload }) => {
       state.isLoading = false;
       state.status = payload.status;
@@ -66,6 +73,7 @@ export const {
   getMoneyPerClientSuccess,
   getMostSoldSuccess,
   getSumRevenueSuccess,
+  getSingleProdStatSuccess,
   requestFail,
 } = actions;
 

@@ -10,6 +10,7 @@ import {
 } from "../new-product/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../../component/spinner/Spinner";
+import { singleProdStatAction } from "../../component/featuredInfo/orderAction";
 
 export const SingleProduct = () => {
   const [images, setImages] = useState([]);
@@ -17,6 +18,9 @@ export const SingleProduct = () => {
   const { isLoading, singleProd, status, message } = useSelector(
     (state) => state.product
   );
+  const { singleProdStat } = useSelector((state) => state.revenue);
+
+  const sortedData = singleProdStat.slice().sort((a, b) => a._id - b._id);
 
   const initialState = {
     isAvailable: "",
@@ -41,6 +45,8 @@ export const SingleProduct = () => {
       dispatch(getSingleProductAction(id));
       setUpdate(singleProd);
     }
+
+    dispatch(singleProdStatAction(id));
   }, [id, update, singleProd, dispatch]);
 
   const handleOnChange = (e) => {
@@ -108,7 +114,11 @@ export const SingleProduct = () => {
 
       <div className="productTop">
         <div className="productTopLeft">
-          <Chart data={productData} dataKey="Sales" title="Sales Performance" />
+          <Chart
+            data={sortedData}
+            dataKey="total"
+            title="Sales performance compared to last month"
+          />
         </div>
 
         <div className="productTopRight">
