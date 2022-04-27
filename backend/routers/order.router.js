@@ -230,8 +230,8 @@ router.get("/single-prod/:_id", async (req, res) => {
           prodMonthlyStat,
         })
       : res.send({
-          status: "error",
-          message: "Unable to gte product stats",
+          status: "success",
+          message: "Not available",
         });
   } catch (error) {
     res.send({

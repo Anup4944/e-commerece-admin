@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./product.css";
 import { Link, useParams } from "react-router-dom";
-import { productData } from "../user-list/dummyData";
 import { Chart } from "../../component/chart/Chart";
 import { PublishOutlined } from "@material-ui/icons";
 import {
@@ -20,7 +19,7 @@ export const SingleProduct = () => {
   );
   const { singleProdStat } = useSelector((state) => state.revenue);
 
-  const sortedData = singleProdStat.slice().sort((a, b) => a._id - b._id);
+  const sortedData = singleProdStat?.slice().sort((a, b) => a._id - b._id);
 
   const initialState = {
     isAvailable: "",
@@ -43,10 +42,9 @@ export const SingleProduct = () => {
   useEffect(() => {
     if (!update._id || update._id !== singleProd._id) {
       dispatch(getSingleProductAction(id));
+      dispatch(singleProdStatAction(id));
       setUpdate(singleProd);
     }
-
-    dispatch(singleProdStatAction(id));
   }, [id, update, singleProd, dispatch]);
 
   const handleOnChange = (e) => {

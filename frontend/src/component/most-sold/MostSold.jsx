@@ -1,4 +1,3 @@
-import { Badge } from "@material-ui/core";
 import {
   Add,
   SportsBasketballOutlined,

@@ -54,7 +54,12 @@ const loginSlice = createSlice({
       state.isLoading = false;
       state.status = payload.status;
       state.message = payload.message;
-      state.singleProdStat = payload.prodMonthlyStat;
+
+      if (state.status === "error") {
+        state.singleProdStat = null;
+      } else {
+        state.singleProdStat = payload.prodMonthlyStat;
+      }
     },
     requestFail: (state, { payload }) => {
       state.isLoading = false;
