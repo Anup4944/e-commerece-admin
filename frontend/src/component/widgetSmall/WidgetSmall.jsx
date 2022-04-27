@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./widgetSmall.css";
-import { Visibility, SearchOutlined } from "@material-ui/icons";
+import {
+  Visibility,
+  SearchOutlined,
+  GroupAddRounded,
+} from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUserAction } from "../../pages/user-list/clientAction";
 import { useHistory } from "react-router-dom";
@@ -25,7 +29,7 @@ export const WidgetSmall = () => {
   return (
     <div className="widgetSm">
       <div className="widgetSmTitle">
-        New join members{" "}
+        <GroupAddRounded style={{ marginRight: "10px" }} /> New join members{" "}
         <div className="search">
           <input
             className="searchInput"

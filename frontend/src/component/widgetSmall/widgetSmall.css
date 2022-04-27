@@ -12,6 +12,7 @@
   font-weight: bolder;
   color: darkblue;
   display: flex;
+  align-items: center;
 }
 
 .search {

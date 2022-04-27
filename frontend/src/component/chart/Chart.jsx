@@ -9,11 +9,15 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { ChatRounded } from "@material-ui/icons";
 
 export const Chart = ({ title, data, dataKey, grid }) => {
   return (
     <div className="chart">
-      <h3 className="chartTitle">{title}</h3>
+      <h3 className="chartTitle">
+        {" "}
+        <ChatRounded style={{ marginRight: "10px" }} /> {title}
+      </h3>
       <ResponsiveContainer width="100%" aspect={4 / 1}>
         <LineChart data={data}>
           <XAxis dataKey="_id" stroke="#5550bd" />

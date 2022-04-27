@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
+  AccountBalance,
+  AddCircleOutlineSharp,
   ArrowDownwardSharp,
   ArrowUpwardOutlined,
   AttachMoneyOutlined,
@@ -30,7 +32,10 @@ export const FeaturedInfo = () => {
   return (
     <div className="featured">
       <div className="featuredItem">
-        <div className="featuredTitle">Sales </div>
+        <div className="featuredTitle">
+          {" "}
+          <AddCircleOutlineSharp /> Sales{" "}
+        </div>
         <div className="featuredMoneyContainer">
           <div className="featureMoney"></div>
 
@@ -53,7 +58,10 @@ export const FeaturedInfo = () => {
       </div>
 
       <div className="featuredItem">
-        <div className="featuredTitle"> Revenue </div>
+        <div className="featuredTitle">
+          {" "}
+          <AccountBalance /> Revenue{" "}
+        </div>
         <div className="featuredMoneyContainer">
           <div className="featureMoney">
             {" "}

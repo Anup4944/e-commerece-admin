@@ -1,3 +1,9 @@
+import { Badge } from "@material-ui/core";
+import {
+  Add,
+  SportsBasketballOutlined,
+  TrendingUpOutlined,
+} from "@material-ui/icons";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { mostSoldAction } from "../featuredInfo/orderAction";
@@ -13,13 +19,22 @@ const MostSold = () => {
   }, [dispatch]);
   return (
     <div className="mostSoldTop">
-      <h3 className="mostSoldHeader">Most Sold Product</h3>
+      <h3 className="mostSoldHeader">
+        {" "}
+        <TrendingUpOutlined style={{ marginRight: "10px" }} /> Most Sold Product
+      </h3>
       <table className="mostSoldTable">
         <th className="mostSoldTh">
-          <h2>Product Name</h2>
+          <h2 className="mostSoldHead">
+            {" "}
+            <SportsBasketballOutlined /> Product Name
+          </h2>
         </th>
         <th className="mostSoldTh">
-          <h2>Total Qty Sold</h2>
+          <h2 className="mostSoldHead">
+            {" "}
+            <Add /> Total Qty Sold
+          </h2>
         </th>
 
         {mostSoldProd.map((item, i) => {

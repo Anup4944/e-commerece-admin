@@ -1,3 +1,4 @@
+import { LocalShippingOutlined } from "@material-ui/icons";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { allOrderAction } from "../featuredInfo/orderAction";
@@ -27,7 +28,11 @@ export const WidgetLarge = () => {
     <div className="widgetLg">
       <div className="searchBar">
         {" "}
-        <h3 className="widgetLgTitle">Latest Order placed</h3>
+        <h3 className="widgetLgTitle">
+          {" "}
+          <LocalShippingOutlined style={{ marginRight: "10px" }} /> Latest Order
+          placed
+        </h3>
         <input
           className="searchInput"
           placeholder="Search by email"

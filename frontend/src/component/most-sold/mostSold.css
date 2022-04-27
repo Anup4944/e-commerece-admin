@@ -11,6 +11,8 @@
   font-size: 20px;
   font-weight: 700;
   color: darkblue;
+  display: flex;
+  align-items: center;
 }
 
 .mostSoldTable {
@@ -20,9 +22,14 @@
 
 .mostSoldTh {
   text-align: center;
-  color: rgb(19, 99, 168);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 17px;
+}
+
+.mostSoldHead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mostSoldTd {
