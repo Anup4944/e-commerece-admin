@@ -90,6 +90,10 @@
   margin: 10px 0px;
   color: #444;
 }
+.eyeIcons {
+  cursor: pointer;
+  margin-top: 20px;
+}
 
 .userShowIcon {
   font-size: 16px !important;

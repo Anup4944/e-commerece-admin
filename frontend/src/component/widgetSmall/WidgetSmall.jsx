@@ -49,6 +49,7 @@ export const WidgetSmall = () => {
             ) {
               return user;
             }
+            return false;
           })
           .map((user, i) => {
             return (

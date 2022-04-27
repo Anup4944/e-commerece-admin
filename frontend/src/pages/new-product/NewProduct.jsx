@@ -36,6 +36,10 @@ export const NewProduct = () => {
     });
   };
 
+  // const date = new Date();
+
+  // date > product.saleEndDate && setProduct(product.onSale === "false");
+
   const handleOnSubmit = (e) => {
     e.preventDefault();
 

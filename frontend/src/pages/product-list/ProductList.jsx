@@ -87,7 +87,7 @@ export const ProductList = () => {
         rows={products}
         columns={columns}
         getRowId={(row) => row._id}
-        pageSize={8}
+        pageSize={15}
         checkboxSelection
         disableSelectionOnClick
       />

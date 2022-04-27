@@ -16,7 +16,6 @@ export const getSingleClientApi = async (_id) => {
     const { data } = await axios.get(
       `http://localhost:5000/api/v1/client/${_id}`
     );
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

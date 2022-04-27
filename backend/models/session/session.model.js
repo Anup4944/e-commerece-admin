@@ -14,9 +14,7 @@ export const deleteAccessJwtByUserId = (userId) => {
 
 export const deleteAccessJwt = (accJwt) => {
   return SessionSchema.findOneAndDelete(accJwt)
-    .then((data) => {
-      console.log(data);
-    })
+    .then((data) => {})
     .catch((err) => {
       console.log(err);
     });

@@ -5,8 +5,10 @@ import {
   Email,
   PermIdentity,
   MoodRounded,
+  Visibility,
+  VisibilityOff,
 } from "@material-ui/icons";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getSingleUserAction,
@@ -25,6 +27,8 @@ const passVerificationError = {
 
 export const SingleUser = () => {
   const [password, setPassword] = useState(initialState);
+  const [show, setShow] = useState(true);
+  const [showConf, setShowConf] = useState(true);
 
   const [passwordError, setPasswordError] = useState(passVerificationError);
 
@@ -68,9 +72,6 @@ export const SingleUser = () => {
           : null}
         {isLoading && <Spinner />}
         <h1 className="userTitle">Edit User</h1>
-        <Link to="/newUser">
-          <button className="userAddButton">Create </button>{" "}
-        </Link>
       </div>
       <div className="userContainer">
         <div className="userShow">
@@ -112,7 +113,7 @@ export const SingleUser = () => {
           <form className="userUpdateForm" onSubmit={handleOnSubmit}>
             <label className="label">Password</label>
             <input
-              type="password"
+              type={show ? "password" : "text"}
               placeholder="Enter new password"
               className="userUpdateInput"
               name="newPass"
@@ -121,10 +122,19 @@ export const SingleUser = () => {
               required
             />
 
+            {show ? (
+              <VisibilityOff
+                onClick={() => setShow(false)}
+                className="eyeIcons"
+              />
+            ) : (
+              <Visibility onClick={() => setShow(true)} className="eyeIcons" />
+            )}
+
             <label className="label">Confirm Password</label>
 
             <input
-              type="password"
+              type={showConf ? "password" : "text"}
               placeholder="Re-enter new password"
               className="userUpdateInput"
               name="confPass"
@@ -132,6 +142,18 @@ export const SingleUser = () => {
               onChange={handleOnChange}
               required
             />
+
+            {showConf ? (
+              <VisibilityOff
+                onClick={() => setShowConf(false)}
+                className="eyeIcons"
+              />
+            ) : (
+              <Visibility
+                onClick={() => setShowConf(true)}
+                className="eyeIcons"
+              />
+            )}
 
             {!passwordError.confPass && (
               <div style={{ marginTop: "20px", color: "tomato" }}>

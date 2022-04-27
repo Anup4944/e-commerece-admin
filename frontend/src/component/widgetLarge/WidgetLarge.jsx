@@ -55,6 +55,7 @@ export const WidgetLarge = () => {
               } else if (item.email.toLowerCase().includes(search)) {
                 return item;
               }
+              return false;
             })
             .map((item, i) => {
               return (

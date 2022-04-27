@@ -44,6 +44,7 @@ const Transaction = () => {
               ) {
                 return item;
               }
+              return false;
             })
             .map((item, i) => {
               return (
